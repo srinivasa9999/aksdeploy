@@ -82,7 +82,7 @@ jobs:
           # Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
           no_deploy_after: # optional
           # Print the raw log of failed tasks.
-          no_raw_log: # optional
+          no_raw_log: false
           # The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).
           package: # optional
           # Pre-release for latest version of all packages to use for this release.
