@@ -71,7 +71,7 @@ jobs:
           # If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment.
           force: false
           # Force download of installed packages.
-          force_package_download: True
+          force_package_download: false
           # Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.
           git_ref: # optional
           # Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.
