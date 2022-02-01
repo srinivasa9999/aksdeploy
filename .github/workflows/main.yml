@@ -35,103 +35,103 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: Create Release in Octopus Deploy
-  # You may pin to the exact commit or the version.
-  # uses: OctopusDeploy/create-release-action@c524a1856c746fdd5f1cd4862bdd0d8c6bc5e15c
-  uses: OctopusDeploy/create-release-action@v1.1.1
-  with:
-    # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
-    api_key: # optional
-    # Cancel the deployment if the deployment_timeout is exceeded (the default timeout is 10 minutes).
-    cancel_on_timeout: # optional
-    # The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.
-    channel: # optional
-    # The path to a configuration file of default values with one "key=value" per line.
-    config_file: # optional
-    # Enable debug logging.
-    debug: # optional
-    # Use the default version number of all packages for this release.
-    default_package_version: # optional
-    # The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
-    deploy_at: # optional
-    # The name or ID of the environment to automatically deploy to (i.e. "Production" or "Environments-1"); specify this argument multiple times to deploy to multiple environments.
-    deploy_to: # optional
-    # The duration between deployment status checks (format: HH:MM:SS).
-    deployment_check_sleep_cycle: # optional, default is 00:00:10
-    # The duration to wait for the deployment to finish (format: HH:MM:SS). Note: This will not stop the deployment; the input value, wait_for_deployment is required.
-    deployment_timeout: # optional, default is 00:00:10
-    # A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered.
-    exclude_machines: # optional
-    # If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment.
-    force: # optional
-    # Force download of installed packages.
-    force_package_download: # optional
-    # Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.
-    git_ref: # optional
-    # Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.
-    git_commit: # optional
-    # Use Guided Failure mode.
-    guided_failure: # optional
-    # Create the release ignoring any version rules specified by the channel.
-    ignore_channel_rules: # optional
-    # Ignore existing releases if present in Octopus Deploy with the matching version number.
-    ignore_existing: # optional
-    # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
-    ignore_ssl_errors: # optional
-    # The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".
-    log_level: # optional, default is debug
-    # Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
-    no_deploy_after: # optional
-    # Print the raw log of failed tasks.
-    no_raw_log: # optional
-    # The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).
-    package: # optional
-    # Pre-release for latest version of all packages to use for this release.
-    package_prerelease: # optional
-    # The version number of all packages to use for this release.
-    package_version: # optional
-    # A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.
-    packages: # optional
-    # The folder designated for containing packages.
-    packages_folder: # optional
-    # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
-    password: # optional
-    # Show progress of the deployment.
-    progress: # optional
-    # The name or ID of the project associated with this release.
-    project: # optional
-    # The URL of a proxy to use (i.e. https://proxy.example.com).
-    proxy: # optional
-    # The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.
-    proxy_password: # optional
-    # The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.
-    proxy_username: # optional
-    # Redirect the raw log of failed tasks to a file.
-    raw_log_file: # optional
-    # The release notes associated with the new release (Markdown is supported).
-    release_notes: # optional
-    # Path to a file that contains release notes for the new release. Supports Markdown files.
-    release_notes_file: # optional
-    # The number for the new release.
-    release_number: # optional
-    # The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.
-    server: # optional
-    # Skip a step by name.
-    skip: # optional
-    # The name or ID of a space within which this command will be executed. If omitted, the default space will be used.
-    space: # optional
-    # A comma-separated list of machine names to target in the deployed environment. If not specified all machines in the environment will be considered.
-    specific_machines: # optional
-    # Create a deployment for the tenant with this name or ID; specify this argument multiple times to add multiple tenants or use a wildcard ("*") to deploy to all tenants who are ready for this release (according to lifecycle).
-    tenant: # optional
-    # Create a deployment for tenants matching this tag; specify this argument multiple times to build a query/filter with multiple tags.
-    tenant_tag: # optional
-    # A timeout value in seconds for network operations.
-    timeout: # optional, default is 600
-    # The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.
-    username: # optional
-    # Values for any prompted variables in the format, Label:Value. For JSON values, embedded quotation marks should be escaped with a backslash.
-    variable: # optional
-    # Wait for deployment to finish.
-    wait_for_deployment: # optional
-    # Perform a dry run; do not create or deploy a release.
-    what_if: # optional
+        # You may pin to the exact commit or the version.
+        # uses: OctopusDeploy/create-release-action@c524a1856c746fdd5f1cd4862bdd0d8c6bc5e15c
+        uses: OctopusDeploy/create-release-action@v1.1.1
+        with:
+          # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
+          api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
+          # Cancel the deployment if the deployment_timeout is exceeded (the default timeout is 10 minutes).
+          cancel_on_timeout: # optional
+          # The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.
+          channel: # optional
+          # The path to a configuration file of default values with one "key=value" per line.
+          config_file: # optional
+          # Enable debug logging.
+          debug: # optional
+          # Use the default version number of all packages for this release.
+          default_package_version: # optional
+          # The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
+          deploy_at: # optional
+          # The name or ID of the environment to automatically deploy to (i.e. "Production" or "Environments-1"); specify this argument multiple times to deploy to multiple environments.
+          deploy_to: # optional
+          # The duration between deployment status checks (format: HH:MM:SS).
+          deployment_check_sleep_cycle: # optional, default is 00:00:10
+          # The duration to wait for the deployment to finish (format: HH:MM:SS). Note: This will not stop the deployment; the input value, wait_for_deployment is required.
+          deployment_timeout: # optional, default is 00:00:10
+          # A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered.
+          exclude_machines: # optional
+          # If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment.
+          force: # optional
+          # Force download of installed packages.
+          force_package_download: # optional
+          # Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.
+          git_ref: # optional
+          # Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.
+          git_commit: # optional
+          # Use Guided Failure mode.
+          guided_failure: # optional
+          # Create the release ignoring any version rules specified by the channel.
+          ignore_channel_rules: # optional
+          # Ignore existing releases if present in Octopus Deploy with the matching version number.
+          ignore_existing: # optional
+          # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
+          ignore_ssl_errors: # optional
+          # The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".
+          log_level: # optional, default is debug
+          # Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
+          no_deploy_after: # optional
+          # Print the raw log of failed tasks.
+          no_raw_log: # optional
+          # The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).
+          package: # optional
+          # Pre-release for latest version of all packages to use for this release.
+          package_prerelease: # optional
+          # The version number of all packages to use for this release.
+          package_version: # optional
+          # A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.
+          packages: # optional
+          # The folder designated for containing packages.
+          packages_folder: # optional
+          # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
+          password: # optional
+          # Show progress of the deployment.
+          progress: # optional
+          # The name or ID of the project associated with this release.
+          project: firstProject
+          # The URL of a proxy to use (i.e. https://proxy.example.com).
+          proxy: # optional
+          # The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.
+          proxy_password: # optional
+          # The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.
+          proxy_username: # optional
+          # Redirect the raw log of failed tasks to a file.
+          raw_log_file: # optional
+          # The release notes associated with the new release (Markdown is supported).
+          release_notes: # optional
+          # Path to a file that contains release notes for the new release. Supports Markdown files.
+          release_notes_file: # optional
+          # The number for the new release.
+          release_number: # optional
+          # The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.
+          server: # optional
+          # Skip a step by name.
+          skip: # optional
+          # The name or ID of a space within which this command will be executed. If omitted, the default space will be used.
+          space: # optional
+          # A comma-separated list of machine names to target in the deployed environment. If not specified all machines in the environment will be considered.
+          specific_machines: # optional
+          # Create a deployment for the tenant with this name or ID; specify this argument multiple times to add multiple tenants or use a wildcard ("*") to deploy to all tenants who are ready for this release (according to lifecycle).
+          tenant: # optional
+          # Create a deployment for tenants matching this tag; specify this argument multiple times to build a query/filter with multiple tags.
+          tenant_tag: # optional
+          # A timeout value in seconds for network operations.
+          timeout: # optional, default is 600
+          # The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.
+          username: # optional
+          # Values for any prompted variables in the format, Label:Value. For JSON values, embedded quotation marks should be escaped with a backslash.
+          variable: # optional
+          # Wait for deployment to finish.
+          wait_for_deployment: # optional
+          # Perform a dry run; do not create or deploy a release.
+          what_if: # optional
