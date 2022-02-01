@@ -48,7 +48,7 @@ jobs:
           # The path to a configuration file of default values with one "key=value" per line.
           config_file: # optional
           # Enable debug logging.
-          debug: # optional
+          debug: false
           # Use the default version number of all packages for this release.
           default_package_version: # optional
           # The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
