@@ -99,7 +99,7 @@ step "Git - Pull (HTTPS)" {
             GitHttpsUrl = "https://github.com/srinivasa9999/aksdeploy.git"
             Octopus.Action.Template.Id = "ActionTemplates-2"
             Octopus.Action.Template.Version = "8"
-            Password = "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"
+            Password = "#{gitpass}"
             Username = "srinivasa9999"
         }
         worker_pool = "vmpool"
