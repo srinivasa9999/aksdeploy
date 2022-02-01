@@ -28,6 +28,14 @@ jobs:
           # Octopus CLI version
           version: # optional, default is latest
           
+      - name: Push a package to Octopus Deploy 🐙
+        uses: OctopusDeploy/push-package-action@<version>
+        with:
+          api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
+          password: 
+          packages: ./*
+          server: 'https://srinivas.octopus.app/'
+          username: 
       - name: Create a release in Octopus Deploy
         uses: OctopusDeploy/create-release-action@v1.1.1
         with:
