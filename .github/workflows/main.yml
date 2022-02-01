@@ -25,6 +25,7 @@ jobs:
       - name: Run a one-line script
         run: |
           pwd
+          zip -r awsdeploy.zip
           ls -ltr
           tree
 
@@ -40,7 +41,7 @@ jobs:
         with:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           password: 
-          packages: ../../aksdeploy
+          packages: awsdeploy.zip
           server: 'https://srinivas.octopus.app/'
           username: 
           use_delta_compression: True
