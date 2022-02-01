@@ -1,7 +1,4 @@
 step "Run a Script" {
-    properties = {
-        Octopus.Action.TargetRoles = "vmtarget"
-    }
 
     action {
         action_type = "Octopus.Script"
@@ -12,6 +9,7 @@ step "Run a Script" {
             Octopus.Action.Script.ScriptFileName = "test.sh"
             Octopus.Action.Script.ScriptSource = "Package"
         }
+        worker_pool = "vmpool"
 
         packages {
             acquisition_location = "Server"
