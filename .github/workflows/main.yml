@@ -33,9 +33,10 @@ jobs:
         with:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           password: 
-          packages: ./*
+          packages: ../aksdeploy
           server: 'https://srinivas.octopus.app/'
           username: 
+          use_delta_compression: True
       - name: Create a release in Octopus Deploy
         uses: OctopusDeploy/create-release-action@v1.1.1
         with:
