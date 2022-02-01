@@ -6,7 +6,11 @@ step "Run a Script" {
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.Script.ScriptBody = "echo \"Hello *********\""
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                git clone https://github.com/srinivasa9999/aksdeploy.git
+                echo pwd
+                ls-ltr
+            EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "Bash"
         }
@@ -94,6 +98,7 @@ step "Deploy raw Kubernetes YAML" {
 step "Git - Pull (HTTPS)" {
 
     action {
+        is_disabled = true
         properties = {
             GitHttpsBranchName = "main"
             GitHttpsUrl = "https://github.com/srinivasa9999/aksdeploy.git"
