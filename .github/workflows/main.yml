@@ -50,7 +50,7 @@ jobs:
           # Enable debug logging.
           debug: false
           # Use the default version number of all packages for this release.
-          default_package_version: # optional
+          default_package_version: true
           # The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
           deploy_at: # optional
           # The name or ID of the environment to automatically deploy to (i.e. "Production" or "Environments-1"); specify this argument multiple times to deploy to multiple environments.
