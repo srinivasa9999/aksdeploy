@@ -95,7 +95,7 @@ jobs:
           # Pre-release for latest version of all packages to use for this release.
           package_prerelease: # optional
           # The version number of all packages to use for this release.
-          package_version: # optional
+          package_version: v1.1.0
           # A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.
           packages: # optional
           # The folder designated for containing packages.
