@@ -96,7 +96,7 @@ jobs:
           # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
           password: # optional
           # Show progress of the deployment.
-          progress: # optional
+          progress: TRUE
           # The name or ID of the project associated with this release.
           project: firstProject
           # The URL of a proxy to use (i.e. https://proxy.example.com).
