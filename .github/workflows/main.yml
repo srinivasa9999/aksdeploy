@@ -73,7 +73,7 @@ jobs:
           # A timeout value in seconds for network operations.
           timeout: # optional, default is 600
           # Use delta compression when uploading packages to Octopus Deploy.
-          use_delta_compression: # optional, default is true
+          use_delta_compression: True
           # The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.
           username: # optional
     
