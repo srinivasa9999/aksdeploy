@@ -5,15 +5,21 @@ step "Run a Script" {
 
     action {
         action_type = "Octopus.Script"
-        is_disabled = true
         properties = {
-            Octopus.Action.Script.ScriptBody = <<-EOT
-                git clone https://github.com/srinivasa9999/aksdeploy.git
-                echo pwd
-                ls -ltr
-            EOT
-            Octopus.Action.Script.ScriptSource = "Inline"
-            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "github"
+            Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
+            Octopus.Action.Script.ScriptFileName = "test.sh"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+
+        packages {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "srinivasa9999/aksdeploy"
+            properties = {
+                SelectionMode = "immediate"
+            }
         }
     }
 }
