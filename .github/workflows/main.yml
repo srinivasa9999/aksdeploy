@@ -41,7 +41,7 @@ jobs:
         with:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           password: 
-          packages: awsdeploy.zip
+          packages: awsdeploy1.11.zip
           server: 'https://srinivas.octopus.app/'
           username: 
           use_delta_compression: True
