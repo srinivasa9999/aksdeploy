@@ -5,6 +5,7 @@ step "Run a Script" {
 
     action {
         action_type = "Octopus.Script"
+        is_disabled = true
         properties = {
             Octopus.Action.Script.ScriptBody = <<-EOT
                 git clone https://github.com/srinivasa9999/aksdeploy.git
