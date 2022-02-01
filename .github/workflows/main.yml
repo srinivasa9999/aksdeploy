@@ -132,6 +132,6 @@ jobs:
           # Values for any prompted variables in the format, Label:Value. For JSON values, embedded quotation marks should be escaped with a backslash.
           variable: # optional
           # Wait for deployment to finish.
-          wait_for_deployment: # optional
+          wait_for_deployment: TRUE
           # Perform a dry run; do not create or deploy a release.
           what_if: # optional
