@@ -69,7 +69,7 @@ jobs:
           # A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered.
           exclude_machines: # optional
           # If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment.
-          force: true
+          force: false
           # Force download of installed packages.
           force_package_download: True
           # Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.
