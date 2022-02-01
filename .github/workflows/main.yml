@@ -1,6 +1,8 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
+env:
+  OCTOPUS_CLI_SERVER: https://srinivas.octopus.app/
 
 # Controls when the workflow will run
 on:
@@ -44,7 +46,6 @@ jobs:
         # uses: OctopusDeploy/create-release-action@c524a1856c746fdd5f1cd4862bdd0d8c6bc5e15c
         uses: OctopusDeploy/create-release-action@v1.1.1
         with:
-          OCTOPUS_CLI_SERVER: https://srinivas.octopus.app/
           # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           # Cancel the deployment if the deployment_timeout is exceeded (the default timeout is 10 minutes).
