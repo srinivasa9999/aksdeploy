@@ -4,9 +4,7 @@ name: CI
 env:
   OCTOPUS_CLI_SERVER: https://srinivas.octopus.app/
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
@@ -17,29 +15,24 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  build:
+    runs-on: ubuntu-latest
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
       - name: Install Octopus CLI
-        # You may pin to the exact commit or the version.
-        # uses: OctopusDeploy/install-octopus-cli-action@c3d4d1c2d1914b3bac08ba0e92ce463b84cf6224
         uses: OctopusDeploy/install-octopus-cli-action@v1.1.9
         with:
           # Octopus CLI version
           version: # optional, default is latest
-      - name: Create a release in Octopus Deploy 🐙
+          
+      - name: Create a release in Octopus Deploy
         uses: OctopusDeploy/create-release-action@v1.1.1
         with:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
-          password: ${{ secrets.PASSWORD }}
+          password: 
           project: 'firstProject'
           server: 'https://srinivas.octopus.app/'
           username: 
