@@ -25,7 +25,7 @@ jobs:
       - name: Run a one-line script
         run: |
           pwd
-          zip -r awsdeploy.zip
+          zip -r awsdeploy.zip .
           ls -ltr
           tree
 
