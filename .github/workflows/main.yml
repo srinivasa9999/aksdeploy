@@ -42,7 +42,7 @@ jobs:
           # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           # Cancel the deployment if the deployment_timeout is exceeded (the default timeout is 10 minutes).
-          cancel_on_timeout: # optional
+          cancel_on_timeout: TRUE
           # The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.
           channel: # optional
           # The path to a configuration file of default values with one "key=value" per line.
