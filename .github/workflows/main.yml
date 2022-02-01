@@ -21,12 +21,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Run a one-line script
+        run: pwd;ls -ltr,tree
 
       - name: Install Octopus CLI
         uses: OctopusDeploy/install-octopus-cli-action@v1.1.9
         with:
           # Octopus CLI version
           version: # optional, default is latest
+          
           
       - name: Push a package to Octopus Deploy 🐙
         uses: OctopusDeploy/push-package-action@v1.1.1
