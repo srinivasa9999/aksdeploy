@@ -26,8 +26,13 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Install Octopus CLI
+        # You may pin to the exact commit or the version.
+        # uses: OctopusDeploy/install-octopus-cli-action@c3d4d1c2d1914b3bac08ba0e92ce463b84cf6224
+        uses: OctopusDeploy/install-octopus-cli-action@v1.1.9
+        with:
+          # Octopus CLI version
+          version: # optional, default is latest
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
