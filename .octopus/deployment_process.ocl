@@ -63,35 +63,24 @@ step "Deploy raw Kubernetes YAML" {
     action {
         action_type = "Octopus.KubernetesDeployRawYaml"
         environments = ["QA"]
-        is_disabled = true
         properties = {
-            Octopus.Action.KubernetesContainers.CustomResourceYaml = <<-EOT
-                apiVersion: apps/v1
-                kind: Deployment
-                metadata:
-                  name: nginx
-                  labels:
-                    app: nginx
-                spec:
-                  selector:
-                    matchLabels:
-                      app: nginx
-                  template:
-                    metadata:
-                      labels:
-                        app: nginx
-                    spec:
-                      containers:
-                      - image: nginx
-                        name: nginx
-                        ports:
-                        - containerPort: 8080
-            EOT
             Octopus.Action.KubernetesContainers.CustomResourceYamlFileName = "deploy.yml"
             Octopus.Action.KubernetesContainers.Namespace = "default"
-            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "github"
+            Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
+            Octopus.Action.Script.ScriptSource = "Package"
         }
         worker_pool = "vmpool"
+
+        packages {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "srinivasa9999/aksdeploy"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
     }
 }
 
