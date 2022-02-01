@@ -37,10 +37,46 @@ jobs:
           version: # optional, default is latest
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Push Package to Octopus Deploy
+        # You may pin to the exact commit or the version.
+        # uses: OctopusDeploy/push-package-action@043c88f1cfd90b72b8f428a68e62fd9f397dc408
+        uses: OctopusDeploy/push-package-action@v1.1.1
+        with:
+          # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
+          api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
+          # The path to a configuration file of default values with one "key=value" per line.
+          config_file: # optional
+          # Enable debug logging.
+          debug: # optional
+          # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
+          ignore_ssl_errors: # optional
+          # The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".
+          log_level: # optional, default is debug
+          # Determines the action to perform with package if it already exists in the repository. Valid values are "FailIfExists", "OverwriteExisting", and "IgnoreIfExists".
+          overwrite_mode: # optional, default is FailIfExists
+          # A comma-delimited list of packages to push to Octopus Deploy (i.e. package1,package2).
+          packages: # optional
+          # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
+          password: # optional
+          # The URL of a proxy to use (i.e. https://proxy.example.com).
+          proxy: # optional
+          # The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.
+          proxy_password: # optional
+          # The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.
+          proxy_username: # optional
+          # If the package already exists in the repository, the default behavior is to reject the new package being pushed. You can pass this flag to overwrite the existing package. This flag may be deprecated in a future version; passing it is the same as using "OverwriteExisting" for the input, overwrite_mode.
+          release_existing: # optional
+          # The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.
+          server: # optional
+          # The name or ID of a space within which this command will be executed. If omitted, the default space will be used.
+          space: # optional
+          # A timeout value in seconds for network operations.
+          timeout: # optional, default is 600
+          # Use delta compression when uploading packages to Octopus Deploy.
+          use_delta_compression: # optional, default is true
+          # The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.
+          username: # optional
+    
       - name: Create Release in Octopus Deploy
         # You may pin to the exact commit or the version.
         # uses: OctopusDeploy/create-release-action@c524a1856c746fdd5f1cd4862bdd0d8c6bc5e15c
