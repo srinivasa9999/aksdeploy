@@ -34,6 +34,7 @@ jobs:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           password: 
           project: 'firstProject'
+          deploy_to: 'QA'
           server: 'https://srinivas.octopus.app/'
           username: 
 
