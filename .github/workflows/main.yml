@@ -47,15 +47,15 @@ jobs:
           # The path to a configuration file of default values with one "key=value" per line.
           config_file: # optional
           # Enable debug logging.
-          debug: # optional
+          debug: True
           # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
-          ignore_ssl_errors: # optional
+          ignore_ssl_errors: True
           # The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".
-          log_level: # optional, default is debug
+          log_level: debug
           # Determines the action to perform with package if it already exists in the repository. Valid values are "FailIfExists", "OverwriteExisting", and "IgnoreIfExists".
           overwrite_mode: # optional, default is FailIfExists
           # A comma-delimited list of packages to push to Octopus Deploy (i.e. package1,package2).
-          packages: # optional
+          packages: srinivasa9999/aksdeploy
           # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
           password: # optional
           # The URL of a proxy to use (i.e. https://proxy.example.com).
