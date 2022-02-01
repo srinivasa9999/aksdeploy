@@ -72,7 +72,7 @@ jobs:
           # Use Guided Failure mode.
           guided_failure: # optional
           # Create the release ignoring any version rules specified by the channel.
-          ignore_channel_rules: # optional
+          ignore_channel_rules: true
           # Ignore existing releases if present in Octopus Deploy with the matching version number.
           ignore_existing: # optional
           # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
