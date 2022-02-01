@@ -91,7 +91,7 @@ jobs:
           # Print the raw log of failed tasks.
           no_raw_log: false
           # The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).
-          package: # optional
+          package: srinivasa9999/aksdeploy
           # Pre-release for latest version of all packages to use for this release.
           package_prerelease: # optional
           # The version number of all packages to use for this release.
