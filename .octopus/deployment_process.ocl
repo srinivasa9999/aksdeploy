@@ -9,7 +9,7 @@ step "Run a Script" {
             Octopus.Action.Script.ScriptBody = <<-EOT
                 git clone https://github.com/srinivasa9999/aksdeploy.git
                 echo pwd
-                ls-ltr
+                ls -ltr
             EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "Bash"
