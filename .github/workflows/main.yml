@@ -54,5 +54,6 @@ jobs:
           deploy_to: 'QA'
           server: 'https://srinivas.octopus.app/'
           username: 
+          package: awsdeploy1:11
 
   
