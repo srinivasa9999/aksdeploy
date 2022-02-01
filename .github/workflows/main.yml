@@ -33,7 +33,7 @@ jobs:
         with:
           api_key: API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA
           password: 
-          packages: ../aksdeploy
+          packages: ../../aksdeploy
           server: 'https://srinivas.octopus.app/'
           username: 
           use_delta_compression: True
