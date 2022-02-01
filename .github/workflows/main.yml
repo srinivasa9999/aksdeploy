@@ -55,7 +55,7 @@ jobs:
           # Determines the action to perform with package if it already exists in the repository. Valid values are "FailIfExists", "OverwriteExisting", and "IgnoreIfExists".
           overwrite_mode: # optional, default is FailIfExists
           # A comma-delimited list of packages to push to Octopus Deploy (i.e. package1,package2).
-          packages: srinivasa9999/aksdeploy
+          packages: aksdeploy-1.1.0.zip
           # The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.
           password: # optional
           # The URL of a proxy to use (i.e. https://proxy.example.com).
