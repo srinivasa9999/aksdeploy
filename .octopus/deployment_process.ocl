@@ -89,3 +89,18 @@ step "Deploy raw Kubernetes YAML" {
         worker_pool = "vmpool"
     }
 }
+
+step "Git - Pull (HTTPS)" {
+
+    action {
+        properties = {
+            GitHttpsBranchName = "master"
+            GitHttpsUrl = "https://github.com/srinivasa9999/aksdeploy.git"
+            Octopus.Action.Template.Id = "ActionTemplates-2"
+            Octopus.Action.Template.Version = "8"
+            Password = "N@llapat123"
+            Username = "srinivasa9999"
+        }
+        worker_pool = "vmpool"
+    }
+}
