@@ -74,11 +74,11 @@ jobs:
           # Create the release ignoring any version rules specified by the channel.
           ignore_channel_rules: true
           # Ignore existing releases if present in Octopus Deploy with the matching version number.
-          ignore_existing: # optional
+          ignore_existing: true
           # Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.
-          ignore_ssl_errors: # optional
+          ignore_ssl_errors: true
           # The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".
-          log_level: # optional, default is debug
+          log_level: debug
           # Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
           no_deploy_after: # optional
           # Print the raw log of failed tasks.
