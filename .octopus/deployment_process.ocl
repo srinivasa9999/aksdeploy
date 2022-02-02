@@ -29,7 +29,7 @@ step "Deploy raw Kubernetes YAML" {
 
     action {
         action_type = "Octopus.KubernetesDeployRawYaml"
-        environments = ["QA", "dev"]
+        environments = ["QA", "testenv1"]
         properties = {
             Octopus.Action.KubernetesContainers.CustomResourceYamlFileName = "deploy.yml"
             Octopus.Action.KubernetesContainers.Namespace = "default"
