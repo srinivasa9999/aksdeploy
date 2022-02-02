@@ -54,7 +54,7 @@ step "Deploy raw Kubernetes YAML- Dev" {
     }
 }
 
-step "Deploy raw Kubernetes YAML" {
+step "Deploy raw Kubernetes YAML - QA , test" {
     properties = {
         Octopus.Action.TargetRoles = "test"
     }
