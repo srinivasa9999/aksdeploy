@@ -50,3 +50,31 @@ step "Deploy raw Kubernetes YAML" {
         }
     }
 }
+
+step "Deploy raw Kubernetes YAML- Dev" {
+    properties = {
+        Octopus.Action.TargetRoles = "test"
+    }
+
+    action {
+        action_type = "Octopus.KubernetesDeployRawYaml"
+        properties = {
+            Octopus.Action.KubernetesContainers.CustomResourceYamlFileName = "deploy.yml"
+            Octopus.Action.KubernetesContainers.Namespace = "default"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.PackageId = "awsdeploy1"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool = "vmpool"
+
+        packages {
+            acquisition_location = "Server"
+            feed = "Octopus Server (built-in)"
+            package_id = "awsdeploy1"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
