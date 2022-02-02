@@ -24,9 +24,11 @@ step "Run a Script" {
 }
 
 step "Deploy raw Kubernetes YAML- Dev" {
+    condition = "Always"
     properties = {
         Octopus.Action.TargetRoles = "test"
     }
+    start_trigger = "StartWithPrevious"
 
     action {
         action_type = "Octopus.KubernetesDeployRawYaml"
