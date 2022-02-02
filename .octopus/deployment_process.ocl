@@ -38,7 +38,7 @@ step "Deploy raw Kubernetes YAML- Dev" {
             Octopus.Action.KubernetesContainers.Namespace = "default"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
-            Octopus.Action.Package.PackageId = "awsdeploy1"
+            Octopus.Action.Package.PackageId = "aksdeploy1"
             Octopus.Action.Script.ScriptSource = "Package"
         }
         worker_pool = "vmpool"
@@ -46,7 +46,7 @@ step "Deploy raw Kubernetes YAML- Dev" {
         packages {
             acquisition_location = "Server"
             feed = "Octopus Server (built-in)"
-            package_id = "awsdeploy1"
+            package_id = "aksdeploy1"
             properties = {
                 SelectionMode = "immediate"
             }
