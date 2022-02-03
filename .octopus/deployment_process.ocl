@@ -89,7 +89,7 @@ step "Deploy raw Kubernetes YAML - QA , test" {
         environments = ["QA", "testenv1"]
         notes = "list deployments"
         properties = {
-            Octopus.Action.ConditionVariableExpression = "#{Rolingupdate}"
+            Octopus.Action.ConditionVariableExpression = "#{Rolingupdate}=Yes"
             Octopus.Action.KubernetesContainers.Namespace = "default"
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "github"
