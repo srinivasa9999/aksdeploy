@@ -91,7 +91,7 @@ step "Deploy raw Kubernetes YAML - QA , test" {
         properties = {
             Octopus.Action.ConditionVariableExpression = "#{Rolingupdate}=Yes"
             Octopus.Action.KubernetesContainers.Namespace = "default"
-            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.DownloadOnTentacle = "True"
             Octopus.Action.Package.FeedId = "github"
             Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
             Octopus.Action.Script.ScriptFileName = "deploy.yml"
@@ -100,7 +100,7 @@ step "Deploy raw Kubernetes YAML - QA , test" {
         worker_pool = "vmpool"
 
         packages {
-            acquisition_location = "Server"
+            acquisition_location = "ExecutionTarget"
             feed = "github"
             package_id = "srinivasa9999/aksdeploy"
             properties = {
