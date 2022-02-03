@@ -14,7 +14,7 @@ spec:
         app: customnginx
     spec:
       containers:
-      - image: customnginx
+      - image: srinivasa9999/customnginx:39
         name: customnginx
         ports:
         - containerPort: 8080
