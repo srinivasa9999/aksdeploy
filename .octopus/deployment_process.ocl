@@ -60,7 +60,7 @@ step "Deploy raw Kubernetes YAML - QA , test" {
     }
     start_trigger = "StartWithPrevious"
 
-    action {
+    action "Deploy raw Kubernetes YAML - QA , test" {
         action_type = "Octopus.KubernetesDeployRawYaml"
         environments = ["QA", "testenv1"]
         properties = {
@@ -69,6 +69,32 @@ step "Deploy raw Kubernetes YAML - QA , test" {
             Octopus.Action.Package.DownloadOnTentacle = "False"
             Octopus.Action.Package.FeedId = "github"
             Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
+            Octopus.Action.Script.ScriptSource = "Package"
+        }
+        worker_pool = "vmpool"
+
+        packages {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "srinivasa9999/aksdeploy"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+
+    action "Run a kubectl CLI Script" {
+        action_type = "Octopus.KubernetesRunScript"
+        condition = "Variable"
+        environments = ["QA", "testenv1"]
+        notes = "list deployments"
+        properties = {
+            Octopus.Action.ConditionVariableExpression = "#{gitpass}"
+            Octopus.Action.KubernetesContainers.Namespace = "default"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "github"
+            Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
+            Octopus.Action.Script.ScriptFileName = "deploy.yml"
             Octopus.Action.Script.ScriptSource = "Package"
         }
         worker_pool = "vmpool"
