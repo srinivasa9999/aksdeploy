@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: JENKINS-CI
 
 # Controls when the workflow will run
 on:
@@ -31,4 +31,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: curl -u admin:11ef5e6b6e4af3e9a3783ca5d989ba680c http://34.125.214.195:8080/job/octopusDeploy/build?token=adtoken
+        run: curl -u admin:11ef5e6b6e4af3e9a3783ca5d989ba680c http://34.125.214.195:8080/job/octopusDeploy/build?token=adtoken -kv
