@@ -60,7 +60,7 @@ step "Deploy raw Kubernetes YAML - QA , test" {
     }
     start_trigger = "StartWithPrevious"
 
-    action "Deploy raw Kubernetes YAML - QA , test" {
+    action "Deploy  - QA , test" {
         action_type = "Octopus.KubernetesDeployRawYaml"
         environments = ["QA", "testenv1"]
         properties = {
