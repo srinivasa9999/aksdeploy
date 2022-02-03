@@ -83,29 +83,16 @@ step "Deploy raw Kubernetes YAML - QA , test" {
         }
     }
 
-    action "Run a kubectl CLI Script" {
-        action_type = "Octopus.KubernetesRunScript"
+    action "Rolling update" {
+        action_type = "Octopus.Script"
         condition = "Variable"
         environments = ["QA", "testenv1"]
-        notes = "list deployments"
         properties = {
             Octopus.Action.ConditionVariableExpression = "#{Rolingupdate}=Yes"
-            Octopus.Action.KubernetesContainers.Namespace = "default"
-            Octopus.Action.Package.DownloadOnTentacle = "True"
-            Octopus.Action.Package.FeedId = "github"
-            Octopus.Action.Package.PackageId = "srinivasa9999/aksdeploy"
-            Octopus.Action.Script.ScriptFileName = "deploy.yml"
-            Octopus.Action.Script.ScriptSource = "Package"
+            Octopus.Action.Script.ScriptBody = "echo \"condition job\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
         }
         worker_pool = "vmpool"
-
-        packages {
-            acquisition_location = "ExecutionTarget"
-            feed = "github"
-            package_id = "srinivasa9999/aksdeploy"
-            properties = {
-                SelectionMode = "immediate"
-            }
-        }
     }
 }
