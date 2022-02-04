@@ -11,7 +11,6 @@ provider "octopusdeploy" {
   # Configuration options
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
-  space_id   = data.octopusdeploy_space.space.id
 }
 
 data "octopusdeploy_users" example {
