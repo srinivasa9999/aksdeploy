@@ -54,6 +54,6 @@ data "octopusdeploy_project_groups" "groups" {
   take                   = 2
 }
 
-output "projects" {
+output "groups" {
     value = data.octopusdeploy_project_groups.groups
 }
