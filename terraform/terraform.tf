@@ -18,6 +18,6 @@ data "octopusdeploy_users" example {
 }
 
 output "users" {
-    value = data.octopusdeploy_users "srinivasa.nallapati@gmail.com" 
+    value = data.octopusdeploy_users #"srinivasa.nallapati@gmail.com" 
     sensitive = true
 }
