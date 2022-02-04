@@ -17,6 +17,8 @@ provider "octopusdeploy" {
 data "octopusdeploy_users" example {
   take = 100
 }
-data "users" {
+output "users" {
+    value = ""
+} "users" {
     value = data octopusdeploy_users example
 }
