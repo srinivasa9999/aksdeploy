@@ -13,11 +13,10 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
-data "octopusdeploy_users" example {
+data "octopusdeploy_users" "example" {
   take = 10
 }
 
 output "users" {
-    value = data.octopusdeploy_users.id
-    sensitive = true
+    value = data.octopusdeploy_users example
 }
