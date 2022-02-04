@@ -32,6 +32,9 @@ resource "octopusdeploy_project" "pcreate" {
   name                                 = "AVAReport"      #variable
   project_group_id                     = "ProjectGroups-2" #variable
   tenanted_deployment_participation    = "Untenanted"
+  release_creation_strategy {
+      
+  }
 
 
   
@@ -40,9 +43,9 @@ resource "octopusdeploy_project" "pcreate" {
     exclude_unhealthy_targets       = false
     skip_machine_behavior           = "None"
   }
-  git_persistence_settings  "git" {
-    url  = "https://github.com/srinivasa9999/aksdeploy.git"
-  }
+#   git_persistence_settings  "git" {
+#     url  = "https://github.com/srinivasa9999/aksdeploy.git"
+#   }
 
 
 #   git_persistence_settings.credentials {
