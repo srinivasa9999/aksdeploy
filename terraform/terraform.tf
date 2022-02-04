@@ -46,6 +46,9 @@ resource "octopusdeploy_project" "pcreate" {
     exclude_unhealthy_targets       = false
     skip_machine_behavior           = "None"
   }
+  git_persistence_settings {
+    url  = "https://github.com/srinivasa9999/aksdeploy.git"
+  }
 
 
 #   git_persistence_settings.credentials = {
