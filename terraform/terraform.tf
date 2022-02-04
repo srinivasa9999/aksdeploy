@@ -14,10 +14,10 @@ provider "octopusdeploy" {
 }
 
 data "octopusdeploy_users" example {
-  take = 100
+  take = 10
 }
 
 output "users" {
-    value = data.octopusdeploy_users example 
+    value = data.octopusdeploy_users "srinivasa.nallapati@gmail.com" 
     sensitive = true
 }
