@@ -19,12 +19,6 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = "AVA"
 }
 
-git_persistence_settings {
-    url = "https://github.com/srinivasa9999/aksdeploy.git"
-    default_branch  = "main"
- }
-
-
 resource "octopusdeploy_project" "pcreate" {
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
