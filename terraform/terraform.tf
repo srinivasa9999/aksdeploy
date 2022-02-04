@@ -14,9 +14,9 @@ provider "octopusdeploy" {
   space_id   = data.octopusdeploy_space.space.id
 }
 
-date "octopusdeploy_users" example {
+data "octopusdeploy_users" example {
   take = 100
 }
-date "users" {
+data "users" {
     value = data octopusdeploy_users example
 }
