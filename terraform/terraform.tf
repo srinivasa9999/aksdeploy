@@ -46,7 +46,7 @@ resource "octopusdeploy_project" "pcreate" {
   }
 
 
-  git_persistence_settings.credentials {
+  git_persistence_settings.credentials = {
       username = "srinivasa9999"
       password = "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"
 
