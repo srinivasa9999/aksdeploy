@@ -18,7 +18,5 @@ data "octopusdeploy_users" example {
   take = 100
 }
 output "users" {
-    value = ""
-} "users" {
-    value = data octopusdeploy_users example
+    value = "data octopusdeploy_users example"
 }
