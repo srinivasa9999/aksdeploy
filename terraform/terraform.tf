@@ -21,3 +21,12 @@ output "users" {
     value = data.octopusdeploy_users.example
     sensitive = false
 }
+
+data "octopusdeploy_projects" "project" {
+  take = 2
+
+}
+
+output "projects" {
+    value = data.octopusdeploy_projects.project
+}
