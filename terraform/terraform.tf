@@ -19,6 +19,37 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = "AVA"
 }
 
+resource "octopusdeploy_project" "pcreate" {
+  auto_create_release                  = false
+  default_guided_failure_mode          = "EnvironmentDefault"
+  default_to_skip_if_already_installed = false
+  description                          = "The development project."
+  discrete_channel_release             = false
+  is_disabled                          = false
+  is_discrete_channel_release          = false
+  is_version_controlled                = true
+  lifecycle_id                         = "Lifecycles-2"   #variable
+  name                                 = "AVAReport"      #variable
+  project_group_id                     = "ProjectGroups-2" #variable
+  tenanted_deployment_participation    = "Untenanted"
+
+  connectivity_policy {
+    allow_deployments_to_no_targets = false
+    exclude_unhealthy_targets       = false
+    skip_machine_behavior           = "None"
+  }
+
+  template {
+    default_value = "example-default-value"
+    help_text     = "example-help-test"
+    label         = "example-label"
+    name          = "example-template-value"
+    display_settings = {
+      "Octopus.ControlType" : "SingleLineText"
+    }
+  }
+}
+
 data "octopusdeploy_project_groups" "groups" {
   take                   = 2
 }
