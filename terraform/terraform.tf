@@ -33,11 +33,6 @@ resource "octopusdeploy_project" "pcreate" {
   project_group_id                     = "ProjectGroups-2" #variable
   tenanted_deployment_participation    = "Untenanted"
 
-  connectivity_policy {
-    allow_deployments_to_no_targets = false
-    exclude_unhealthy_targets       = false
-    skip_machine_behavior           = "None"
-  }
 
   git_persistence_settings {
       url = "https://github.com/srinivasa9999/aksdeploy.git"
@@ -47,8 +42,14 @@ resource "octopusdeploy_project" "pcreate" {
 
       }
       default_branch  = "main"
-
   }
+  
+  connectivity_policy {
+    allow_deployments_to_no_targets = false
+    exclude_unhealthy_targets       = false
+    skip_machine_behavior           = "None"
+  }
+
 
 #   git_persistence_settings.credentials {
 #       username = srinivasa9999
