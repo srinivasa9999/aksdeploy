@@ -39,6 +39,18 @@ resource "octopusdeploy_project" "pcreate" {
     skip_machine_behavior           = "None"
   }
 
+  git_persistence_settings {
+      url = "https://github.com/srinivasa9999/aksdeploy.git"
+      default_branch  = "main"
+
+  }
+
+  git_persistence_settings.credentials {
+      username = srinivasa9999
+      password = "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"
+
+  }
+
   template {
     default_value = "example-default-value"
     help_text     = "example-help-test"
