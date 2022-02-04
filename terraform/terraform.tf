@@ -13,3 +13,10 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
   space_id   = data.octopusdeploy_space.space.id
 }
+
+date "octopusdeploy_users" example {
+  take = 100
+}
+date "users" {
+    value = data octopusdeploy_users example
+}
