@@ -13,20 +13,11 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
-data "octopusdeploy_users" "example" {
-  take = 10
-}
-
-output "users" {
-    value = data.octopusdeploy_users.example
-    sensitive = true
-}
-
-data "octopusdeploy_projects" "example" {
+data "octopusdeploy_project_groups" "groups" {
   take                   = 2
-  name               = "firstProject"
+  skip                   =5
 }
 
 output "projects" {
-    value = data.octopusdeploy_projects.example
+    value = data.octopusdeploy_project_groups.groups
 }
