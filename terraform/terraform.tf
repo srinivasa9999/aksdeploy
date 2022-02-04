@@ -40,16 +40,16 @@ resource "octopusdeploy_project" "pcreate" {
     exclude_unhealthy_targets       = false
     skip_machine_behavior           = "None"
   }
-  git_persistence_settings = {
+  git_persistence_settings = [{
     url  = "https://github.com/srinivasa9999/aksdeploy.git"
-  }
+  }]
 
 
-  git_persistence_settings.credentials = {
+  git_persistence_settings.credentials = [{
     username = "srinivasa9999"
     password = "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"
 
-  }
+  }]
 
   template {
     default_value = "example-default-value"
