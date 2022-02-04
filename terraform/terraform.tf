@@ -32,9 +32,6 @@ resource "octopusdeploy_project" "pcreate" {
   name                                 = "AVAReport"      #variable
   project_group_id                     = "ProjectGroups-2" #variable
   tenanted_deployment_participation    = "Untenanted"
-  git_persistence_settings {
-      
-  }
 
 
   
