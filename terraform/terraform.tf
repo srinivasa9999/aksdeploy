@@ -24,6 +24,7 @@ output "users" {
 
 data "octopusdeploy_projects" "example" {
   take                   = 2
+  name               = "firstProject"
 }
 
 output "projects" {
