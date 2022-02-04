@@ -33,10 +33,10 @@ resource "octopusdeploy_project" "pcreate" {
   name                                 = "AVAReport"      #variable
   project_group_id                     = "ProjectGroups-2" #variable
   tenanted_deployment_participation    = "Untenanted"
-  git_persistence_settings {
-    url = "https://github.com/srinivasa9999/aksdeploy.git"
-    default_branch  = "main"
-  }
+#   git_persistence_settings {
+#     url = "https://github.com/srinivasa9999/aksdeploy.git"
+#     default_branch  = "main"
+#   }
 
   
   connectivity_policy {
