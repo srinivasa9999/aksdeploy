@@ -26,10 +26,7 @@ resource "octopusdeploy_project" "pcreate" {
   default_to_skip_if_already_installed = false
   description                          = "The development project."
   discrete_channel_release             = false
-  git_persistence_settings             = [{
-    url = "https://github.com/srinivasa9999/aksdeploy.git"
-    default_branch  = "main"
-    }]
+  git_persistence_settings             = []
   is_disabled                          = false
   is_discrete_channel_release          = false
   is_version_controlled                = true
