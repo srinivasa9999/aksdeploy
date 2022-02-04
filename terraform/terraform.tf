@@ -40,7 +40,7 @@ resource "octopusdeploy_project" "pcreate" {
     skip_machine_behavior           = "None"
   }
 
-  git_persistence_settings  {
+  git_persistence_settings {
             url = "https://github.com/srinivasa9999/aksdeploy.git"
             # credentials = {
             #     username = "srinivasa9999"
