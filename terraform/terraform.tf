@@ -41,20 +41,20 @@ resource "octopusdeploy_project" "pcreate" {
 
   git_persistence_settings {
       url = "https://github.com/srinivasa9999/aksdeploy.git"
-      git_persistence_settings.credentials {
+      credentials = {
             username = srinivasa9999
             password = "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"
 
-        }
+      }
       default_branch  = "main"
 
   }
 
-  git_persistence_settings.credentials {
-      username = srinivasa9999
-      password = "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"
+#   git_persistence_settings.credentials {
+#       username = srinivasa9999
+#       password = "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"
 
-  }
+#   }
 
   template {
     default_value = "example-default-value"
