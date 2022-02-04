@@ -27,5 +27,5 @@ data "octopusdeploy_projects" "example" {
 }
 
 output "projects" {
-    value = data.octopusdeploy_projects.example.[projects.slug]
+    value = data.octopusdeploy_projects.example.slug
 }
