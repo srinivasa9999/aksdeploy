@@ -74,7 +74,7 @@ resource "octopusdeploy_deployment_process" "example" {
   step {
     name         = "Manual intervention is needed"
     instructions = "Approve"
-    can_be_used_for_project_versioning = true
+    can_be_used_for_project_versioning = "true"
     manual_intervention_action {
       is_disabled                        = false
       is_required                        = true
