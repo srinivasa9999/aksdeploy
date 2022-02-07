@@ -21,6 +21,7 @@ resource "octopusdeploy_project_group" "gcreate" {
 
 data "octopusdeploy_project_groups" "groups" {
   take                   = 10
+  name                   = resource.octopusdeploy_project_group.gcreate.name
 }
 output "groups" {
     value = data.octopusdeploy_project_groups.groups
