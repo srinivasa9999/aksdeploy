@@ -79,7 +79,7 @@ resource "octopusdeploy_deployment_process" "example" {
       is_disabled                        = false
       is_required                        = true
       responsible_teams                  = "Everyone"
-      instructions = "Approve"
+      instructions                       = "Approve"
     }
   }
 
