@@ -25,7 +25,10 @@ data "octopusdeploy_project_groups" "groups" {
 # output "groups" {
 #   value = data.octopusdeploy_project_groups.groups.project_groups[0].id
 # }
-
+variable "projectID" {
+  type = string
+  default = data.octopusdeploy_project_groups.groups.project_groups[0].id
+}
 
 
 resource "octopusdeploy_project" "pcreate" {
@@ -40,7 +43,7 @@ resource "octopusdeploy_project" "pcreate" {
   is_version_controlled                = false
   lifecycle_id                         = "Lifecycles-2"   #variable
   name                                 = var.pname      #variable
-  project_group_id                     = data.octopusdeploy_project_groups.groups.project_groups[0].id
+  project_group_id                     = var.projectID
   tenanted_deployment_participation    = "Untenanted"
 
 
