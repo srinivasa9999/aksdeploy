@@ -96,3 +96,16 @@ step "Deploy raw Kubernetes YAML - QA , test" {
         worker_pool = "vmpool"
     }
 }
+
+step "Manual Intervention Required" {
+
+    action {
+        action_type = "Octopus.Manual"
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "True"
+            Octopus.Action.Manual.Instructions = "approve"
+            Octopus.Action.Manual.ResponsibleTeamIds = "Everyone"
+        }
+        worker_pool_variable = ""
+    }
+}
