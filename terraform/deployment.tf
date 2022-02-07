@@ -41,7 +41,6 @@ resource "octopusdeploy_deployment_process" "example" {
   }
 
   depends_on = [
-     data.octopusdeploy_project_groups.groups.result,
      octopusdeploy_project.pcreate
        ]
 }
