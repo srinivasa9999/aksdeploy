@@ -72,6 +72,7 @@ resource "octopusdeploy_deployment_process" "example" {
   project_id = "Projects-4"
 
   step {
+    condition    = "Success"
     name         = "Manual intervention is needed"
 #    instructions = "Approve"
 #    can_be_used_for_project_versioning = "true"
