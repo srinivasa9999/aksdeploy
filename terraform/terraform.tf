@@ -43,7 +43,7 @@ resource "octopusdeploy_project" "pcreate" {
   is_version_controlled                = false
   lifecycle_id                         = "Lifecycles-2"   #variable
   name                                 = var.pname      #variable
-  project_group_id                     = var.projectID
+  project_group_id                     = local.projectID
   tenanted_deployment_participation    = "Untenanted"
 
 
