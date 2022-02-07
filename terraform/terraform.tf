@@ -22,11 +22,10 @@ data "octopusdeploy_project_groups" "groups" {
   take                   = 10
   partial_name           = var.pgname
   project_groups         = [
-    { 
-      name = "AVA" 
-    }
+    {
+      name = "AVA"
+    },
   ]
-
 }
 output "groups" {
     value = data.octopusdeploy_project_groups.groups
