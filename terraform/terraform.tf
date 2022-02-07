@@ -16,7 +16,7 @@ provider "octopusdeploy" {
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
-  id           = var.pgname
+  id           = ""
 }
 
 data "octopusdeploy_project_groups" "groups" {
