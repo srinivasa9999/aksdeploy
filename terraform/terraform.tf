@@ -16,11 +16,12 @@ provider "octopusdeploy" {
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
+  id           = var.pgname
 }
 
 data "octopusdeploy_project_groups" "groups" {
   take                   = 10
-  partial_name           = var.pgname
+  id                     = var.pgname
 
 }
 output "groups" {
