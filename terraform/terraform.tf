@@ -68,6 +68,6 @@ output "groups" {
 }
 
 module "deployment" {
-  source = "./deployment.tf"
+  source = "./module/deployment.tf"
   
 }
