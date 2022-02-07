@@ -23,7 +23,7 @@ resource "octopusdeploy_deployment_process" "example" {
     condition           = "Success"
     name                = "Hello world ( Bash)"
     package_requirement = "LetOctopusDecide"
-    start_trigger       = "StartWithPrevious"
+    start_trigger       = "StartAfterPrevious"
     run_script_action {
       can_be_used_for_project_versioning = false
       condition                          = "Success"
@@ -37,7 +37,6 @@ resource "octopusdeploy_deployment_process" "example" {
         EOT
       run_on_server                      = "true"
       worker_pool_id                     = "WorkerPools-5"
-      start_trigger                      = "StartAfterPrevious"
     }
   }
 }
