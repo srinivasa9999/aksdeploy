@@ -25,9 +25,9 @@ data "octopusdeploy_project_groups" "groups" {
 # output "groups" {
 #   value = data.octopusdeploy_project_groups.groups.project_groups[0].id
 # }
-variable "projectID" {
-  type = string
-  default = var.test
+locals {
+  projectID = "data.octopusdeploy_project_groups.groups.project_groups[0].id"
+
 }
 
 
