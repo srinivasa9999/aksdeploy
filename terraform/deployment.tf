@@ -30,6 +30,7 @@ resource "octopusdeploy_deployment_process" "example" {
       is_disabled                        = false
       is_required                        = true
       name                               = "Hello world ( Bash)"
+      script_syntax                      = "Bash"
       script_body                        = <<-EOT
           echo 'Hello world, using Bash'
           ls -ltr
