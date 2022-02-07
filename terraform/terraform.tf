@@ -82,8 +82,7 @@ resource "octopusdeploy_deployment_process" "example" {
       is_required                        = true
       responsible_teams                  = "Everyone"
       instructions                       = "Approve"
-      properties                         = ""
-      run_on_server                      = true
+      properties                         = "BlockConcurrentDeployments"
     }
   }
 
