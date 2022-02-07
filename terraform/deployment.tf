@@ -1,6 +1,6 @@
 
 resource "octopusdeploy_deployment_process" "example" {
-  project_id = "Projects-4"
+  project_id = var.pname
   step {
     condition    = "Success"
     name         = "Manual intervention"
