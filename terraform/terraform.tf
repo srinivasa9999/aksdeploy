@@ -22,7 +22,7 @@ data "octopusdeploy_project_groups" "groups" {
   partial_name  = var.pgname
 }
 output "groups" {
-    value = data.octopusdeploy_project_groups.groups.project_groups
+    value = data.octopusdeploy_project_groups.groups.project_groups.id
 }
 
 
