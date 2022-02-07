@@ -29,7 +29,7 @@ output "groups" {
     value = data.octopusdeploy_project_groups.groups.project_groups[0].id
 
     depends_on = [
-      "data.octopusdeploy_project_groups.groups.result"
+      "data.octopusdeploy_project_groups.groups"
     ]
 }
 
