@@ -29,7 +29,6 @@ output "groups" {
     value = data.octopusdeploy_project_groups.groups.project_groups[0].id
 
     depends_on = [
- #     data.octopusdeploy_project_groups.groups,
       octopusdeploy_project_group.gcreate
     ]
 }
@@ -75,6 +74,9 @@ resource "octopusdeploy_project" "pcreate" {
       "Octopus.ControlType" : "SingleLineText"
     }
   }
+  depends_on = [
+     octopusdeploy_project_group.gcreate
+  ]
 }
 
 
