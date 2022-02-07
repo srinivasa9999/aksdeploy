@@ -22,6 +22,10 @@ data "octopusdeploy_project_groups" "groups" {
   partial_name  = var.pgname
 }
 
+output "group" {
+  value = octopusdeploy_project_group.gcreate
+}
+
 # output "groups" {
 #   value = data.octopusdeploy_project_groups.groups.project_groups[0].id
 # }
