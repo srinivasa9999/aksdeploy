@@ -17,6 +17,7 @@ provider "octopusdeploy" {
 resource "octopusdeploy_project_group" "gcreate" {
   description  = "AVA."
   name         = "AVA"
+  space_id     =  "Spaces-1"
 }
 
 resource "octopusdeploy_project" "pcreate" {
