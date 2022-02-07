@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    octopusdeploy = {
+      source = "OctopusDeployLabs/octopusdeploy"
+      version = "0.7.68"
+    }
+  }
+}
 
 resource "octopusdeploy_deployment_process" "example" {
   project_id = var.pname
