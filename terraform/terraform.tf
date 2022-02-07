@@ -79,7 +79,7 @@ resource "octopusdeploy_project" "pcreate" {
 
 
 module "deployProcess" {
-  source = "./modules/deployProcess"
+  source  = "./modules/deployProcess"
   prname  = var.pname
   
 }
