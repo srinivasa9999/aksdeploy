@@ -50,8 +50,8 @@ resource "octopusdeploy_deployment_process" "example" {
       instructions                       = "Approve"
 #      can_be_used_for_project_versioning = "true"
       properties                         = {
-            "Octopus.Action.Manual.BlockConcurrentDeployments" = "Approve"
-            "Octopus.Action.Manual.Instructions"              = "False"
+            "Octopus.Action.Manual.BlockConcurrentDeployments" = "False"
+            "Octopus.Action.Manual.Instructions"              = "Approve"
                 }
 
     }
