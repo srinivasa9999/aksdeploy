@@ -67,7 +67,3 @@ output "groups" {
     value = data.octopusdeploy_project_groups.groups
 }
 
-module "deployment" {
-  source = "./module/deployment.tf"
-  
-}
