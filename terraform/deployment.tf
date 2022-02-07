@@ -2,28 +2,6 @@
 resource "octopusdeploy_deployment_process" "example" {
   project_id = "Projects-4"
   step {
-    condition    = "Success"
-    name         = "Manual intervention is needed"
-    manual_intervention_action {
-      name                               = "Manual intervention is needed"
-      is_disabled                        = false
-      is_required                        = true
-      responsible_teams                  = "Everyone"
-      instructions                       = "Approve"
-      can_be_used_for_project_versioning = "true"
-      properties                         = {
-            "Octopus.Action.Manual.BlockConcurrentDeployments" = "False"
-            "Octopus.Action.Manual.Instructions"              = "approve"
-                }
-
-    }
-  }
-
-
-
-
-
-  step {
     condition           = "Success"
     name                = "Hello world (using PowerShell)"
     package_requirement = "LetOctopusDecide"
@@ -59,6 +37,23 @@ resource "octopusdeploy_deployment_process" "example" {
           echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
         EOT
       run_on_server                      = true
+    }
+  }
+  step {
+    condition    = "Success"
+    name         = "Manual intervention is needed"
+    manual_intervention_action {
+      name                               = "Manual intervention is needed"
+      is_disabled                        = false
+      is_required                        = true
+      responsible_teams                  = "Everyone"
+      instructions                       = "Approve"
+      can_be_used_for_project_versioning = "true"
+      properties                         = {
+            "Octopus.Action.Manual.BlockConcurrentDeployments" = "False"
+            "Octopus.Action.Manual.Instructions"              = "approve"
+                }
+
     }
   }
 }
