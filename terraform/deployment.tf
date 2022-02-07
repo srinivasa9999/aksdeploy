@@ -37,6 +37,7 @@ resource "octopusdeploy_deployment_process" "example" {
         EOT
       run_on_server                      = "true"
       worker_pool_id                     = "WorkerPools-5"
+      start_trigger                      = "StartAfterPrevious"
     }
   }
 }
