@@ -47,10 +47,9 @@ resource "octopusdeploy_deployment_process" "example" {
       is_disabled                        = false
       is_required                        = true
       responsible_teams                  = "teams-everyone"
-      instructions                       = "Approve"
 #      can_be_used_for_project_versioning = "true"
       properties                         = {
-            "Octopus.Action.Manual.BlockConcurrentDeployments" = "False"
+            "Octopus.Action.Manual.BlockConcurrentDeployments" = "True"
             "Octopus.Action.Manual.Instructions"              = "Approve"
                 }
 
