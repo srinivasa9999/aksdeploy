@@ -15,7 +15,6 @@ provider "octopusdeploy" {
 
 
 resource "octopusdeploy_project_group" "gcreate" {
-  description  = "Project Group:"var.pgname
   name         = var.pgname
 }
 
