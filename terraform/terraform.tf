@@ -26,7 +26,7 @@ data "octopusdeploy_project_groups" "groups" {
 # }
 
 output "groups" {
-    value = data.octopusdeploy_project_groups.groups.project_groups[0].id
+    value = octopusdeploy_project_group.gcreate.project_groups[0].id
 
     depends_on = [
       octopusdeploy_project_group.gcreate
