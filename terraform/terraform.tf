@@ -17,10 +17,10 @@ provider "octopusdeploy" {
 resource "octopusdeploy_project_group" "gcreate" {
   description  = "AVA."
   name         = "AVA"
-  space_id     =  "Spaces-1"
 }
 
 resource "octopusdeploy_project" "pcreate" {
+  space_id                             =  "Spaces-1"
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
   default_to_skip_if_already_installed = false
@@ -60,11 +60,11 @@ resource "octopusdeploy_project" "pcreate" {
   }
 }
 
-data "octopusdeploy_project_groups" "groups" {
-  take                   = 2
-}
+# data "octopusdeploy_project_groups" "groups" {
+#   take                   = 2
+# }
 
-output "groups" {
-    value = data.octopusdeploy_project_groups.groups
-}
+# output "groups" {
+#     value = data.octopusdeploy_project_groups.groups
+# }
 
