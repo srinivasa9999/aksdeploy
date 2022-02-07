@@ -48,10 +48,10 @@ resource "octopusdeploy_deployment_process" "example" {
       is_required                        = true
       responsible_teams                  = "Everyone"
       instructions                       = "Approve"
-      can_be_used_for_project_versioning = "true"
+#      can_be_used_for_project_versioning = "true"
       properties                         = {
             "Octopus.Action.Manual.BlockConcurrentDeployments" = "False"
-            "Octopus.Action.Manual.Instructions"              = "approve"
+            "Octopus.Action.Manual.Instructions"              = "Approve"
                 }
 
     }
