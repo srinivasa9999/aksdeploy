@@ -1,0 +1,2 @@
+pgname = "Test"
+pgname = "testproject"
