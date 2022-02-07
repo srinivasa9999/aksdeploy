@@ -27,7 +27,7 @@ data "octopusdeploy_project_groups" "groups" {
 # }
 variable "projectID" {
   type = string
-  default = data.octopusdeploy_project_groups.groups.project_groups[0].id
+  default = var.test
 }
 
 
