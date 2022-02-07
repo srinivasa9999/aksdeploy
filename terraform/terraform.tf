@@ -35,46 +35,46 @@ output "group" {
 # }
 
 
-# resource "octopusdeploy_project" "pcreate" {
-#   space_id                             =  "Spaces-1"
-#   auto_create_release                  = false
-#   default_guided_failure_mode          = "EnvironmentDefault"
-#   default_to_skip_if_already_installed = false
-#   description                          = "The development project."
-#   discrete_channel_release             = false
-#   is_disabled                          = false
-#   is_discrete_channel_release          = false
-#   is_version_controlled                = false
-#   lifecycle_id                         = "Lifecycles-2"   #variable
-#   name                                 = var.pname      #variable
-#   project_group_id                     = local.projectID
-#   tenanted_deployment_participation    = "Untenanted"
+resource "octopusdeploy_project" "pcreate" {
+  space_id                             =  "Spaces-1"
+  auto_create_release                  = false
+  default_guided_failure_mode          = "EnvironmentDefault"
+  default_to_skip_if_already_installed = false
+  description                          = "The development project."
+  discrete_channel_release             = false
+  is_disabled                          = false
+  is_discrete_channel_release          = false
+  is_version_controlled                = false
+  lifecycle_id                         = "Lifecycles-2"   #variable
+  name                                 = var.pname      #variable
+  project_group_id                     = octopusdeploy_project_group.gcreate.id
+  tenanted_deployment_participation    = "Untenanted"
 
 
   
-#   connectivity_policy {
-#     allow_deployments_to_no_targets = false
-#     exclude_unhealthy_targets       = false
-#     skip_machine_behavior           = "None"
+  connectivity_policy {
+    allow_deployments_to_no_targets = false
+    exclude_unhealthy_targets       = false
+    skip_machine_behavior           = "None"
+  }
+#   git_persistence_settings  "git" {
+#     url  = "https://github.com/srinivasa9999/aksdeploy.git"
 #   }
-# #   git_persistence_settings  "git" {
-# #     url  = "https://github.com/srinivasa9999/aksdeploy.git"
-# #   }
-# #   git_persistence_settings.credentials {
-# #     username = "srinivasa9999"
-# #     password = "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"
-# #   }
+#   git_persistence_settings.credentials {
+#     username = "srinivasa9999"
+#     password = "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"
+#   }
 
-#   template {
-#     default_value = "example-default-value"
-#     help_text     = "example-help-test"
-#     label         = "example-label"
-#     name          = "example-template-value"
-#     display_settings = {
-#       "Octopus.ControlType" : "SingleLineText"
-#     }
-#   }
-#   depends_on  = [octopusdeploy_project_group.gcreate]
-# }
+  template {
+    default_value = "example-default-value"
+    help_text     = "example-help-test"
+    label         = "example-label"
+    name          = "example-template-value"
+    display_settings = {
+      "Octopus.ControlType" : "SingleLineText"
+    }
+  }
+  depends_on  = [octopusdeploy_project_group.gcreate]
+}
 
 
