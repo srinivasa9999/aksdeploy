@@ -8,7 +8,7 @@ terraform {
 }
 
 resource "octopusdeploy_deployment_process" "example" {
-  project_id = var.prname
+  project_id = prname
   step {
     condition    = "Success"
     name         = "Manual intervention"
@@ -49,7 +49,4 @@ resource "octopusdeploy_deployment_process" "example" {
     }
   }
 
-  depends_on = [
-     octopusdeploy_project.pcreate
-       ]
 }
