@@ -15,8 +15,8 @@ provider "octopusdeploy" {
 
 
 resource "octopusdeploy_project_group" "gcreate" {
-  description  = "AVA."
-  name         = "AVA"
+  description  = "Project Group:"var.pgname
+  name         = var.pgname
 }
 
 data "octopusdeploy_project_groups" "groups" {
@@ -41,8 +41,8 @@ resource "octopusdeploy_project" "pcreate" {
   is_discrete_channel_release          = false
   is_version_controlled                = false
   lifecycle_id                         = "Lifecycles-2"   #variable
-  name                                 = "AVAReport"      #variable
-  project_group_id                     = "ProjectGroups-2" #variable
+  name                                 = var.pname      #variable
+  project_group_id                     = octopusdeploy_project_groups.groups.id #variable
   tenanted_deployment_participation    = "Untenanted"
 
 
