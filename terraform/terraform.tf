@@ -23,7 +23,7 @@ data "octopusdeploy_project_groups" "groups" {
 }
 
 output "group" {
-  value = octopusdeploy_project_group.gcreate
+  value = octopusdeploy_project_group.gcreate.id
 }
 
 # output "groups" {
