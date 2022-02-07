@@ -35,7 +35,7 @@ resource "octopusdeploy_deployment_process" "example" {
           #TODO: Experiment with steps of your own :)
           echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
         EOT
-      run_on_server                      = true
+      run_on_server                      = True
       worker_pool_id                     = "WorkerPools-5"
     }
   }
