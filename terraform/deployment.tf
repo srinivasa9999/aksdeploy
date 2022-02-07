@@ -11,7 +11,7 @@ resource "octopusdeploy_deployment_process" "example" {
       condition                          = "Success"
       is_disabled                        = false
       is_required                        = true
-      name                               = "Hello world (using PowerShell)"
+      name                               = "Hello world ( PowerShell)"
       script_body                        = <<-EOT
           Write-Host 'Hello world, using PowerShell'
           #TODO: Experiment with steps of your own :)
@@ -22,7 +22,7 @@ resource "octopusdeploy_deployment_process" "example" {
   }
   step {
     condition           = "Success"
-    name                = "Hello world (using Bash)"
+    name                = "Hello world ( Bash)"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartWithPrevious"
     run_script_action {
@@ -30,7 +30,7 @@ resource "octopusdeploy_deployment_process" "example" {
       condition                          = "Success"
       is_disabled                        = false
       is_required                        = true
-      name                               = "Hello world (using Bash)"
+      name                               = "Hello world ( Bash)"
       script_body                        = <<-EOT
           echo 'Hello world, using Bash'
           #TODO: Experiment with steps of your own :)
@@ -41,9 +41,9 @@ resource "octopusdeploy_deployment_process" "example" {
   }
   step {
     condition    = "Success"
-    name         = "Manual intervention is needed"
+    name         = "Manual intervention"
     manual_intervention_action {
-      name                               = "Manual intervention is needed"
+      name                               = "Manual intervention"
       is_disabled                        = false
       is_required                        = true
       responsible_teams                  = "teams-everyone"
