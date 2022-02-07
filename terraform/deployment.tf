@@ -36,9 +36,6 @@ resource "octopusdeploy_deployment_process" "example" {
           echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
         EOT
       run_on_server                      = true
-      properties                         = {
-             "Octopus.Action.RunOnServer"               = "True"
-                }
       worker_pool_id                     = "WorkerPools-5"
     }
   }
