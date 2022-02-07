@@ -20,6 +20,7 @@ resource "octopusdeploy_project_group" "gcreate" {
 
 data "octopusdeploy_project_groups" "groups" {
   partial_name  = var.pgname
+  project_groups = [id]
   
   
   
