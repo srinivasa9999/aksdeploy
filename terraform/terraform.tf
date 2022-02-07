@@ -76,7 +76,7 @@ resource "octopusdeploy_project" "pcreate" {
     }
   }
   depends_on = [
-     "octopusdeploy_project_group.gcreate"
+     resource.octopusdeploy_project_group.gcreate.result
   ]
 }
 
