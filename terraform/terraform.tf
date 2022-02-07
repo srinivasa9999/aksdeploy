@@ -25,7 +25,7 @@ data "octopusdeploy_project_groups" "groups" {
 
 }
 output "groups" {
-    value = data.octopusdeploy_project_groups.groups
+    value = data.octopusdeploy_project_groups.groups.id
 }
 
 
