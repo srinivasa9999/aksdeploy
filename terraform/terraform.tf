@@ -43,12 +43,9 @@ resource "octopusdeploy_project" "pcreate" {
 #   git_persistence_settings  "git" {
 #     url  = "https://github.com/srinivasa9999/aksdeploy.git"
 #   }
-
-
 #   git_persistence_settings.credentials {
 #     username = "srinivasa9999"
 #     password = "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"
-
 #   }
 
   template {
@@ -68,4 +65,46 @@ data "octopusdeploy_project_groups" "groups" {
 
 output "groups" {
     value = data.octopusdeploy_project_groups.groups
+}
+
+resource "octopusdeploy_deployment_process" "example" {
+  project_id = "Projects-4"
+  step {
+    condition           = "Success"
+    name                = "Hello world (using PowerShell)"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = false
+      is_required                        = true
+      name                               = "Hello world (using PowerShell)"
+      script_body                        = <<-EOT
+          Write-Host 'Hello world, using PowerShell'
+          #TODO: Experiment with steps of your own :)
+          Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+        EOT
+      run_on_server                      = true
+    }
+  }
+  step {
+    condition           = "Success"
+    name                = "Hello world (using Bash)"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartWithPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = false
+      is_required                        = true
+      name                               = "Hello world (using Bash)"
+      script_body                        = <<-EOT
+          echo 'Hello world, using Bash'
+          #TODO: Experiment with steps of your own :)
+          echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+        EOT
+      run_on_server                      = true
+    }
+  }
 }
