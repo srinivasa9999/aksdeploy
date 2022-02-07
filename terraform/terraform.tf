@@ -18,11 +18,15 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
 }
 
-data "octopusdeploy_project_groups" "groups" {
-  partial_name  = var.pgname
-}
+# data "octopusdeploy_project_groups" "groups" {
+#   partial_name  = var.pgname
+# }
+# output "groups" {
+#     value = data.octopusdeploy_project_groups.groups.project_groups[0].id
+# }
+
 output "groups" {
-    value = data.octopusdeploy_project_groups.groups.project_groups[0].id
+    value = resource.octopusdeploy_project_groups.gcreate.project_groups[0].id
 }
 
 
