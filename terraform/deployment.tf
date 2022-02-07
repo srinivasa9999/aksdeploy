@@ -39,4 +39,8 @@ resource "octopusdeploy_deployment_process" "example" {
       worker_pool_id                     = "WorkerPools-5"
     }
   }
+
+  depends_on = [
+     data.octopusdeploy_project_groups.groups
+  ]
 }
