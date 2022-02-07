@@ -32,10 +32,10 @@ resource "octopusdeploy_deployment_process" "example" {
       name                               = "Hello world ( Bash)"
       script_body                        = <<-EOT
           echo 'Hello world, using Bash'
-          #TODO: Experiment with steps of your own :)
-          echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+          ls -ltr
+          
         EOT
-      run_on_server                      = "True"
+      run_on_server                      = "true"
       worker_pool_id                     = "WorkerPools-5"
     }
   }
