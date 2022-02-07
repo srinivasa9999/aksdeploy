@@ -19,6 +19,15 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = "AVA"
 }
 
+data "octopusdeploy_project_groups" "groups" {
+  take                   = 10
+}
+output "groups" {
+    value = data.octopusdeploy_project_groups.groups
+}
+
+
+
 resource "octopusdeploy_project" "pcreate" {
   space_id                             =  "Spaces-1"
   auto_create_release                  = false
@@ -60,11 +69,4 @@ resource "octopusdeploy_project" "pcreate" {
   }
 }
 
-# data "octopusdeploy_project_groups" "groups" {
-#   take                   = 2
-# }
-
-# output "groups" {
-#     value = data.octopusdeploy_project_groups.groups
-# }
 
