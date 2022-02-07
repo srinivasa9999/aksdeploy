@@ -8,7 +8,7 @@ terraform {
 }
 
 resource "octopusdeploy_deployment_process" "example" {
-  project_id = var.pname
+  project_id = var.prname
   step {
     condition    = "Success"
     name         = "Manual intervention"
