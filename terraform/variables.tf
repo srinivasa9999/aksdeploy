@@ -1,13 +1,11 @@
 variable "pgname" {
   type         = string
-  default      = "AVA"
+#  default      = "AVA"
   description  = "Project Group Name"
 }
 
 variable "pname" {
   type         = string
-  default      = "AVAReport"
+#  default      = "AVAReport"
   description  = "Project  Name"
-
-  
 }
