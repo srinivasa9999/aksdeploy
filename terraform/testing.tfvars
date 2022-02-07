@@ -1,2 +1,2 @@
-pgname = "AVA"
+pgname = "AVAA"
 pname = "testproject"
