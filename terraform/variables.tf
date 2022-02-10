@@ -1,11 +1,11 @@
 variable "pgname" {
   type         = string
-#  default      = "AVA"
+  default      = "group"
   description  = "Project Group Name"
 }
 
 variable "pname" {
   type         = string
-#  default      = "AVAReport"
+  default      = "project"
   description  = "Project  Name"
 }
