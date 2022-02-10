@@ -69,6 +69,15 @@ resource "octopusdeploy_deployment_process" "example" {
       #     "Octopus.Action.Script.ScriptSource"            = "Inline"
       #     "Octopus.Action.Script.Syntax"                  = "Bash"
       # }
+      properties                         = {
+          "Octopus.Action.Package.DownloadOnTentacle" = "True"
+          "Octopus.Action.Package.FeedId"             = "Feeds-1002"
+          "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
+          "Octopus.Action.RunOnServer"                = "True"
+          "Octopus.Action.Script.ScriptFileName"      = "test.sh"
+          "Octopus.Action.Script.ScriptSource"        = "Package"
+      }
+                }
   #    script_source                      = "Inline"
       run_on_server                      = "true"
       script_file_name                   = "test.sh"
