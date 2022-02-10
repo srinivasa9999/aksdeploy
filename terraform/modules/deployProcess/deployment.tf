@@ -88,7 +88,7 @@ resource "octopusdeploy_deployment_process" "example" {
 #           name                 = "test"
 #           package_id           = "srinivasa9999/aksdeploy"
 #  #         properties           = []
-      }
+#      }
     }
   }
 
