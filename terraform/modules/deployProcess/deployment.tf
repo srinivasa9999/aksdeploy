@@ -55,7 +55,7 @@ resource "octopusdeploy_deployment_process" "example" {
     start_trigger       = "StartAfterPrevious"
     target_roles        = ["test"]
     run_kubectl_script_action {
-      can_be_used_for_project_versioning = false
+      can_be_used_for_project_versioning = true
       condition                          = "Success"
       environments                       = []
       excluded_environments              = []
@@ -71,13 +71,13 @@ resource "octopusdeploy_deployment_process" "example" {
       # }
   #    script_source                      = "Inline"
       run_on_server                      = "true"
-      script_file_name                   = "test"
+      script_file_name                   = "test.sh"
       primary_package {
-          acquisition_location = "test"
-          feed_id              = "test"
-          id                   = "test"
+          acquisition_location = "ExecutionTarget"
+          feed_id              = "Feeds-1002"
+#          id                   = "test"
           name                 = "test"
-          package_id           = "test"
+          package_id           = "srinivasa9999/aksdeploy"
  #         properties           = []
       }
     }
