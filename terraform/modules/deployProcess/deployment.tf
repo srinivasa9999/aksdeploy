@@ -61,7 +61,7 @@ resource "octopusdeploy_deployment_process" "example" {
       excluded_environments              = []
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
-      is_required                        = true
+      is_required                        = false
       properties                         = {
           "Octopus.Action.KubernetesContainers.Namespace" = "default"
           "Octopus.Action.RunOnServer"                    = "true"
