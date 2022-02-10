@@ -71,6 +71,7 @@ resource "octopusdeploy_deployment_process" "example" {
       }
   #    script_source                      = "Inline"
       run_on_server                      = "true"
+      script_file_name                   = "test"
       primary_package {
           acquisition_location = "test"
           feed_id              = "test"
