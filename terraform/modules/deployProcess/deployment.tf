@@ -71,6 +71,14 @@ resource "octopusdeploy_deployment_process" "example" {
       }
       script_source                      = "Inline"
       run_on_server                      = "true"
+      primary_package {
+          acquisition_location = "test"
+          feed_id              = "test"
+          id                   = "test"
+          name                 = "test"
+          package_id           = "test"
+          properties           = "test"
+      }
     }
   }
 
