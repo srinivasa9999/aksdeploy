@@ -62,13 +62,13 @@ resource "octopusdeploy_deployment_process" "example" {
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
       is_required                        = false
-      properties                         = {
-          "Octopus.Action.KubernetesContainers.Namespace" = "default"
-          "Octopus.Action.RunOnServer"                    = "true"
-          "Octopus.Action.Script.ScriptBody"              = "kubectl apply deploy.yml"
-          "Octopus.Action.Script.ScriptSource"            = "Inline"
-          "Octopus.Action.Script.Syntax"                  = "Bash"
-      }
+      # properties                         = {
+      #     "Octopus.Action.KubernetesContainers.Namespace" = "default"
+      #     "Octopus.Action.RunOnServer"                    = "true"
+      #     "Octopus.Action.Script.ScriptBody"              = "kubectl apply deploy.yml"
+      #     "Octopus.Action.Script.ScriptSource"            = "Inline"
+      #     "Octopus.Action.Script.Syntax"                  = "Bash"
+      # }
   #    script_source                      = "Inline"
       run_on_server                      = "true"
       script_file_name                   = "test"
