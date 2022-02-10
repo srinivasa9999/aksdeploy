@@ -71,7 +71,6 @@ resource "octopusdeploy_deployment_process" "example" {
           "Octopus.Action.Script.Syntax"                  = "Bash"
       }
       run_on_server                      = "true"
-      worker_pool_id                     = "WorkerPools-5"
     }
   }
 
