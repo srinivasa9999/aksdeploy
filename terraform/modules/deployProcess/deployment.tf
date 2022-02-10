@@ -77,7 +77,7 @@ resource "octopusdeploy_deployment_process" "example" {
           id                   = "test"
           name                 = "test"
           package_id           = "test"
-          properties           = []
+ #         properties           = []
       }
     }
   }
