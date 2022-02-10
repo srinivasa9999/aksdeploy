@@ -80,7 +80,7 @@ resource "octopusdeploy_deployment_process" "example" {
                 
 #   #    script_source                      = "Inline"
 #       run_on_server                      = "true"
-#       script_file_name                   = "test.sh"
+       script_file_name                   = "test.sh"
 #       package {
 #           acquisition_location = "ExecutionTarget"
 #           feed_id              = "Feeds-1002"
