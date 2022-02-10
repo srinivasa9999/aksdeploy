@@ -52,7 +52,6 @@ resource "octopusdeploy_deployment_process" "example" {
   step {
     condition           = "Success"
     name                = "Kubernetes Deploy"
-    package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
     target_roles        = ["test"]
     run_kubectl_script_action {
