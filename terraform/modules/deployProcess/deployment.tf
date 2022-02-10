@@ -78,16 +78,16 @@ resource "octopusdeploy_deployment_process" "example" {
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
                 
-  #    script_source                      = "Inline"
-      run_on_server                      = "true"
-      script_file_name                   = "test.sh"
-      package {
-          acquisition_location = "ExecutionTarget"
-          feed_id              = "Feeds-1002"
-#          id                   = "test"
-          name                 = "test"
-          package_id           = "srinivasa9999/aksdeploy"
- #         properties           = []
+#   #    script_source                      = "Inline"
+#       run_on_server                      = "true"
+#       script_file_name                   = "test.sh"
+#       package {
+#           acquisition_location = "ExecutionTarget"
+#           feed_id              = "Feeds-1002"
+# #          id                   = "test"
+#           name                 = "test"
+#           package_id           = "srinivasa9999/aksdeploy"
+#  #         properties           = []
       }
     }
   }
