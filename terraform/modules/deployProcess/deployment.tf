@@ -77,7 +77,7 @@ resource "octopusdeploy_deployment_process" "example" {
           "Octopus.Action.Script.ScriptFileName"      = "test.sh"
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
-                }
+                
   #    script_source                      = "Inline"
       run_on_server                      = "true"
       script_file_name                   = "test.sh"
