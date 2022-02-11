@@ -1,10 +1,12 @@
 pwd
 echo test
 ls -ltr
-echo 
+echo ************
 echo $JBNUM
+echo $(get_octopusvariable "JBNUM")
+echo ***********
 
-kubectl apply -f deploy.yml  -n 
+kubectl apply -f deploy.yml
 
 
 
@@ -15,5 +17,6 @@ kubectl apply -f deploy.yml  -n
 ## there can be multiple k8s repo
 ## download K8s from repo
 ## variable are : APpname , ,ENVironment, service name , APPversion, , Namespace,
-            ##tags, IMage & image tag,Build strategy[] ,Action[firsttime,upgrade-canary,upgrade-blueGreen,upgrde-RolingUpdate,Upgrade-recreate]
+            ##tags, IMage & image tag,Build strategy[] ,
+            ##Action[firsttime,upgrade-canary,upgrade-blueGreen,upgrde-RolingUpdate,Upgrade-recreate]
 
