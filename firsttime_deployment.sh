@@ -1,10 +1,14 @@
 pwd
 echo test
 ls -ltr
-echo ************
-echo $JBNUM
-echo $(get_octopusvariable "JBNUM")
-echo ***********
+echo "************1"
+# echo $JBNUM
+echo "************2"
+JBNUMBER=`echo $(get_octopusvariable "JBNUM")`
+echo "JBNUMBER"
+echo "***********3"
+
+sed -i s/imageversion/$JBNUMBER/g deploy.yml
 
 kubectl apply -f deploy.yml
 
