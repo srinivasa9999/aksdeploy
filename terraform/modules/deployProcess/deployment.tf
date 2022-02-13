@@ -79,16 +79,18 @@ resource "octopusdeploy_deployment_process" "example" {
       }
                 
 #   #    script_source                      = "Inline"
-#       run_on_server                      = "true"
+       run_on_server                      = "true"
        script_file_name                   = "firsttime_deployment.sh"
-      package {
+       package {
           acquisition_location = "ExecutionTarget"
           feed_id              = "Feeds-1002"
 #          id                   = "test"
           name                 = "k8stest"
           package_id           = "srinivasa9999/k8stest"
- #         properties           = []
-     }
+          properties           = {
+            "Octopus.Action.RunOnServer"                = "True"
+          }
+      }
     }
   }
 
