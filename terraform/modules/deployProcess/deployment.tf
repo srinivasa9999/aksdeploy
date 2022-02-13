@@ -83,7 +83,7 @@ resource "octopusdeploy_deployment_process" "example" {
        script_file_name                   = "firsttime_deployment.sh"
       package {
           acquisition_location = "ExecutionTarget"
-          feed_id              = "Feeds-1003"
+          feed_id              = "Feeds-1002"
 #          id                   = "test"
           name                 = "k8stest"
           package_id           = "srinivasa9999/k8stest"
