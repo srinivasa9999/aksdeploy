@@ -10,7 +10,7 @@ echo "***********3"
 
 sed -i s/imageversion/$JBNUMBER/g deploy.yml
 
-kubectl apply -f deploy.yml
+kubectl apply -f deploy.yml --record
 
 
 
