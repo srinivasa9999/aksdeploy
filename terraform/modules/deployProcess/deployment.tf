@@ -74,21 +74,21 @@ resource "octopusdeploy_deployment_process" "example" {
           "Octopus.Action.Package.FeedId"             = "Feeds-1002"
           "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
           "Octopus.Action.RunOnServer"                = "True"
-          "Octopus.Action.Script.ScriptFileName"      = "test.sh"
+          "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
                 
 #   #    script_source                      = "Inline"
 #       run_on_server                      = "true"
-       script_file_name                   = "test.sh"
-#       package {
-#           acquisition_location = "ExecutionTarget"
-#           feed_id              = "Feeds-1002"
-# #          id                   = "test"
-#           name                 = "test"
-#           package_id           = "srinivasa9999/aksdeploy"
-#  #         properties           = []
-#      }
+       script_file_name                   = "firsttime_deployment.sh"
+      package {
+          acquisition_location = "ExecutionTarget"
+          feed_id              = "Feeds-1003"
+#          id                   = "test"
+          name                 = "k8stest"
+          package_id           = "srinivasa9999/k8stest"
+ #         properties           = []
+     }
     }
   }
 
