@@ -6,7 +6,7 @@ sed -i s/imageversion/$JBNUMBER/g ../k8stest/deploy.yml
 
 DTYPE=`echo $(get_octopusvariable "DEPLOYTYPE")`
 if [[ $DTYPE == "firsttime" ]];do
-kubectl apply -f ../k8stest --record
+kubectl apply -f ./k8stest --record
 fi
 
 
