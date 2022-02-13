@@ -2,7 +2,7 @@ JBNUMBER=`echo $(get_octopusvariable "JBNUM")`
 echo "*******jenkins build: $JBNUMBER"
 echo "***********3"
 
-sed -i s/imageversion/$JBNUMBER/g ../k8stest/deploy.yml
+sed -i s/imageversion/$JBNUMBER/g ./k8stest/deploy.yml
 
 DTYPE=`echo $(get_octopusvariable "DEPLOYTYPE")`
 echo "**********Deploy Type : $DTYPE"
