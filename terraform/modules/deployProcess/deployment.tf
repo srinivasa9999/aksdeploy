@@ -86,7 +86,7 @@ resource "octopusdeploy_deployment_process" "example" {
           feed_id              = "Feeds-1002"
 #          id                   = "test"
           name                 = "k8stest"
-          extract_during_deployment = "True"
+          extract_during_deployment = "true"
           package_id           = "srinivasa9999/k8stest"
           # properties           = {
           #   "Octopus.Action.RunOnServer"                = "True"
