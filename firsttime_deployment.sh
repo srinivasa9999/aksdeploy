@@ -1,16 +1,13 @@
-pwd
-echo test
-ls -ltr
-echo "************1"
-# echo $JBNUM
-echo "************2"
 JBNUMBER=`echo $(get_octopusvariable "JBNUM")`
 echo "$JBNUMBER"
 echo "***********3"
 
-sed -i s/imageversion/$JBNUMBER/g deploy.yml
+sed -i s/imageversion/$JBNUMBER/g ../k8stest/deploy.yml
 
-kubectl apply -f deploy.yml --record
+DTYPE=`echo $(get_octopusvariable "DEPLOYTYPE")`
+if [[ $DTYPE == "firsttime" ]];do
+kubectl apply -f ../k8stest --record
+fi
 
 
 
