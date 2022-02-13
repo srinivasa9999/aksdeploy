@@ -7,9 +7,9 @@ sed -i s/imageversion/$JBNUMBER/g ../k8stest/deploy.yml
 DTYPE=`echo $(get_octopusvariable "DEPLOYTYPE")`
 echo "**********Deploy Type : $DTYPE"
 
-if [[ $DTYPE == "firsttime" ]];do
+if [[ $DTYPE == "firsttime" ]];then
  kubectl apply -f ./k8stest -R --record
-elif [[ $DTYPE == "updatedeploy" ]];do
+elif [[ $DTYPE == "updatedeploy" ]];then
  kubectl apply -f ./k8stest/deployments -R --record
 fi
 
