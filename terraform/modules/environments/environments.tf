@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-resource "octopusdeploy_environment" "example" {
+resource "octopusdeploy_environment" "dev" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the development team."
   name                         = "development"
@@ -15,7 +15,7 @@ resource "octopusdeploy_environment" "example" {
   use_guided_failure           = false
 }
 
-resource "octopusdeploy_environment" "example" {
+resource "octopusdeploy_environment" "qa" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the qa team."
   name                         = "qa"
@@ -23,7 +23,7 @@ resource "octopusdeploy_environment" "example" {
   use_guided_failure           = false
 }
 
-resource "octopusdeploy_environment" "example" {
+resource "octopusdeploy_environment" "prod" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the Production team."
   name                         = "prod"
