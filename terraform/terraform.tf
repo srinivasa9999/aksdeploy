@@ -102,6 +102,6 @@ data "octopusdeploy_environments" "example" {
   take         = 100
 }
 output "environments" {
-    value = data.octopusdeploy_environments.example.environments[0].name
+    value = data.octopusdeploy_environments.example.environments[*].name
 }
 
