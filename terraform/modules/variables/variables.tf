@@ -14,6 +14,12 @@ resource "octopusdeploy_variable" "deploytype" {
      prompt     {
          is_required  = "true"
      }
-     
-
+}
+resource "octopusdeploy_variable" "imageversion" {
+     name      = "imageversion"
+     type      = "String"
+     owner_id = var.projectid
+     prompt     {
+         is_required  = "true"
+     }
 }
