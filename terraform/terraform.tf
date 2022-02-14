@@ -98,3 +98,24 @@ module "projectvariables" {
 }
 
 
+resource "octopusdeploy_lifecycle" "lifecycle" {
+  description = "This is the default lifecycle."
+  name        = "LifeCycle"
+
+  release_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = true
+    unit                = "Days"
+  }
+  tentacle_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = false
+    unit                = "Items"
+  }
+
+  phase {
+    automatic_deployment_targets = ["Environments-33","Environments-28","Environments-25"]
+    name                         = "Phase"
+  }
+}
+
