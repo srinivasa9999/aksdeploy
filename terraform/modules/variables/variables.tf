@@ -10,8 +10,10 @@ terraform {
 resource "octopusdeploy_variable" "deploytype" {
      name      = "deploytype"
      type      = "String"
+     project_id = var.projectid
      prompt     {
          is_required  = "true"
      }
+     
 
 }

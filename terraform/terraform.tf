@@ -94,6 +94,7 @@ module "environments" {
 
 module "projectvariables" {
   source  = "./modules/variables"
+  project_id = octopusdeploy_project.pcreate.id
 }
 
 
