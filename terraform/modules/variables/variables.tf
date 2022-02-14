@@ -10,7 +10,7 @@ terraform {
 resource "octopusdeploy_variable" "deploytype" {
      name      = "deploytype"
      type      = "String"
-     prompt    = {
+     prompt     {
          "is_required"  = "true"
      }
 
