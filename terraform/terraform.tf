@@ -90,18 +90,10 @@ module "deployProcess" {
 
 module "environments" {
   source  = "./modules/environments"
-  # prname  = var.pname
-  # depends_on = [
-  #    octopusdeploy_project.pcreate
-  # ]
-  
 }
 
-data "octopusdeploy_environments" "example" {
-#  skip         = 5
-  take         = 100
+module "projectvariables" {
+  source  = "./modules/variables"
 }
-output "environments" {
-    value = data.octopusdeploy_environments.example.environments[*].name
-}
+
 
