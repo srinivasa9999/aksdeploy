@@ -11,6 +11,24 @@ resource "octopusdeploy_environment" "example" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the development team."
   name                         = "development"
+  sort_order                   = 0
   use_guided_failure           = false
 }
+
+resource "octopusdeploy_environment" "example" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the qa team."
+  name                         = "qa"
+  sort_order                   = 1
+  use_guided_failure           = false
+}
+
+resource "octopusdeploy_environment" "example" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the Production team."
+  name                         = "prod"
+  sort_order                   = 2
+  use_guided_failure           = false
+}
+
 
