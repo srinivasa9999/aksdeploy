@@ -10,7 +10,7 @@ terraform {
 resource "octopusdeploy_environment" "example" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the development team."
-  name                         = "Development Environment (OK to Delete)"
+  name                         = "development"
   use_guided_failure           = false
 }
 
@@ -19,5 +19,5 @@ data "octopusdeploy_environments" "example" {
   take         = 100
 }
 output "environments" {
-    value = data.octopusdeploy_environments.example.name
+    value = data.octopusdeploy_environments.example
 }
