@@ -11,7 +11,7 @@ resource "octopusdeploy_variable" "deploytype" {
      name      = "deploytype"
      type      = "String"
      prompt     {
-         "is_required"  = "true"
+         is_required  = "true"
      }
 
 }
