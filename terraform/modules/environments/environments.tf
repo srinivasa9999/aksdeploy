@@ -11,3 +11,6 @@ data "octopusdeploy_environments" "example" {
   skip         = 5
   take         = 100
 }
+output "environments" {
+    value = octopusdeploy_environments.example.name
+}
