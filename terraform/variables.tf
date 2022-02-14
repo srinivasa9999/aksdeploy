@@ -9,3 +9,9 @@ variable "pname" {
   default      = "project"
   description  = "Project  Name"
 }
+
+variable "provider_ver" {
+  type         = string
+  default      = "0.7.64"
+  description  = "Provider Version"
+}
