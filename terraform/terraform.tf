@@ -87,3 +87,13 @@ module "deployProcess" {
   
 }
 
+
+module "environments" {
+  source  = "./modules/environments"
+  # prname  = var.pname
+  # depends_on = [
+  #    octopusdeploy_project.pcreate
+  # ]
+  
+}
+
