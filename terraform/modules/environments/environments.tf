@@ -7,6 +7,13 @@ terraform {
   }
 }
 
+resource "octopusdeploy_environment" "example" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the development team."
+  name                         = "Development Environment (OK to Delete)"
+  use_guided_failure           = false
+}
+
 data "octopusdeploy_environments" "example" {
   skip         = 5
   take         = 100
