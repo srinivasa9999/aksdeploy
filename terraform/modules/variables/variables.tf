@@ -21,5 +21,6 @@ resource "octopusdeploy_variable" "imageversion" {
      owner_id = var.projectid
      prompt     {
          is_required  = "true"
+         ControlType  = "dropdown"
      }
 }
