@@ -7,6 +7,11 @@ terraform {
   }
 }
 
+variable "projectid" {
+  type         = string
+  description  = "Project  Name"
+}
+
 resource "octopusdeploy_variable" "deploytype" {
      name      = "deploytype"
      type      = "String"
@@ -17,6 +22,15 @@ resource "octopusdeploy_variable" "deploytype" {
 }
 resource "octopusdeploy_variable" "imageversion" {
      name      = "imageversion"
+     type      = "String"
+     owner_id = var.projectid
+     prompt     {
+         is_required  = "true"
+ #        ControlType  = "dropdown"
+     }
+}
+resource "octopusdeploy_variable" "environment" {
+     name      = "environment"
      type      = "String"
      owner_id = var.projectid
      prompt     {
