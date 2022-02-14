@@ -14,10 +14,3 @@ resource "octopusdeploy_environment" "example" {
   use_guided_failure           = false
 }
 
-data "octopusdeploy_environments" "example" {
-  skip         = 5
-  take         = 100
-}
-output "environments" {
-    value = data.octopusdeploy_environments.example
-}

@@ -97,3 +97,11 @@ module "environments" {
   
 }
 
+data "octopusdeploy_environments" "example" {
+  skip         = 5
+  take         = 100
+}
+output "environments" {
+    value = data.octopusdeploy_environments.example
+}
+
