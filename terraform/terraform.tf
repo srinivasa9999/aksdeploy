@@ -116,6 +116,7 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
   phase {
     automatic_deployment_targets = ["Environments-33","Environments-28","Environments-25"]
     name                         = "Phase"
+    minimum_environments_before_promotion = 1
   }
 }
 
