@@ -10,7 +10,7 @@ echo "**********Deploy Type : $DTYPE"
 if [[ $DTYPE == "firsttime" ]];then
  kubectl apply -f ./k8stest -R --record
 elif [[ $DTYPE == "updatedeploy" ]];then
- kubectl apply -f ./k8stest/deployments -R --record
+ kubectl apply -f ./k8stest/deploy.yml -R --record
 fi
 
 
