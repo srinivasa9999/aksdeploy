@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-resource "octopusdeploy_environment" "dev" {
+resource "octopusdeploy_environment" "development" {
   allow_dynamic_infrastructure = false
   description                  = "An environment for the development team."
   name                         = "development"
@@ -31,4 +31,11 @@ resource "octopusdeploy_environment" "prod" {
   use_guided_failure           = false
 }
 
+data "octopusdeploy_environments" "example" {
+#  skip         = 5
+  take         = 100
+}
+output "environments" {
+    value = data.octopusdeploy_environments.example.environments[*].name
+}
 
