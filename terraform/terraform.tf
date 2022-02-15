@@ -205,7 +205,6 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     name                = "Kubernetes Deploy"
     start_trigger       = "StartAfterPrevious"
     target_roles        = ["Development"]
-    worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
     run_kubectl_script_action {
       can_be_used_for_project_versioning = true
       condition                          = "Success"
@@ -214,14 +213,6 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
       is_required                        = false
-      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
-      # properties                         = {
-      #     "Octopus.Action.KubernetesContainers.Namespace" = "default"
-      #     "Octopus.Action.RunOnServer"                    = "true"
-      #     "Octopus.Action.Script.ScriptBody"              = "kubectl apply deploy.yml"
-      #     "Octopus.Action.Script.ScriptSource"            = "Inline"
-      #     "Octopus.Action.Script.Syntax"                  = "Bash"
-      # }
       properties                         = {
           "Octopus.Action.Package.DownloadOnTentacle" = "True"
           "Octopus.Action.Package.FeedId"             = "Feeds-1002"
@@ -230,20 +221,16 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
           "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
-                
-#   #    script_source                      = "Inline"
-    #   run_on_server                      = "true"
+       run_on_server                      = "true"
+       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
        script_file_name                   = "firsttime_deployment.sh"
        package {
           acquisition_location = "ExecutionTarget"
           feed_id              = "Feeds-1002"
-#          id                   = "test"
           name                 = "k8stest"
           extract_during_deployment = "true"
           package_id           = "srinivasa9999/k8stest"
-          # properties           = {
-          #   "Octopus.Action.RunOnServer"                = "True"
-          # }
+
       }
     }
   }
