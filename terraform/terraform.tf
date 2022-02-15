@@ -145,7 +145,7 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 
 
 
-resource "octopusdeploy_deployment_process" "example" {
+resource "octopusdeploy_deployment_process" "deploymentProcess" {
   project_id = octopusdeploy_project.pcreate.id
   step {
     condition    = "Success"
@@ -275,9 +275,9 @@ resource "octopusdeploy_variable" "environment" {
 data "octopusdeploy_spaces" "spaces" {
   is_default   = "true"
   take         = 100
-  spaces       = {[
-    "is_default" : "true"
-  ]
+  spaces        {
+    is_default  = true
+  
   }
 }
 output "defaultgroup" {
