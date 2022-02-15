@@ -72,7 +72,7 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
   }
 
   phase {
-    automatic_deployment_targets = [var.vardev,local.varqa,local.varprod]
+    automatic_deployment_targets = [local.vardev,local.varqa,local.varprod]
     name                         = "Phase"
     minimum_environments_before_promotion = 1
   }
