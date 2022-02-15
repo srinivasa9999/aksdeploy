@@ -50,10 +50,13 @@ variable "vardev" {
 locals {
   varqa = octopusdeploy_environment.qa.id
 }
-variable "varprod" {
- type    = string
- default = octopusdeploy_environment.prod.id
+locals {
+  varprod = octopusdeploy_environment.prod.id
 }
+# variable "varprod" {
+#  type    = string
+#  default = octopusdeploy_environment.prod.id
+# }
 
 
 ## Creating lifecycle between Environments
