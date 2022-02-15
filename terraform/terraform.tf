@@ -154,6 +154,9 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     is_default                    = "true"
     description                   =  "workers will be loaded from Octopus cloud"
 }
+data "octopusdeploy_worker_pools" "workerPools" {
+    take   = 10
+}
 
 # module "deployProcess" {
 #   source  = "./modules/deployProcess"
