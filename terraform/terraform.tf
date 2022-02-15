@@ -28,6 +28,21 @@ output "spaceslist" {
   value = data.octopusdeploy_spaces.spaces
 }
 
+
+## Create Project Group
+
+resource "octopusdeploy_project_group" "gcreate" {
+  name         = var.pgname
+}
+
+data "octopusdeploy_project_groups" "groups" {
+  partial_name  = var.pgname
+}
+
+output "group" {
+  value = octopusdeploy_project_group.gcreate
+}
+
 # ## Creating Environments (development, qa & Prod)
 resource "octopusdeploy_environment" "environments" {
   for_each = toset(var.environments)
@@ -88,19 +103,7 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
   }
 }
 
-## Create Project Group
 
-resource "octopusdeploy_project_group" "gcreate" {
-  name         = var.pgname
-}
-
-data "octopusdeploy_project_groups" "groups" {
-  partial_name  = var.pgname
-}
-
-output "group" {
-  value = octopusdeploy_project_group.gcreate
-}
 
 ## Create Project 
 
