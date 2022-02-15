@@ -20,7 +20,7 @@ resource "octopusdeploy_environment" "environments" {
   name                         = each.value
   use_guided_failure           = false
   lifecycle {
-        ignore_changes = ["name"]
+        ignore_changes = [name]
   }
 }
 
