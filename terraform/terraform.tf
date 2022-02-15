@@ -13,6 +13,9 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
+module "environments" {
+  source  = "./modules/environments"
+}
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
@@ -88,9 +91,7 @@ module "deployProcess" {
 }
 
 
-module "environments" {
-  source  = "./modules/environments"
-}
+
 
 module "projectvariables" {
   source    = "./modules/variables"

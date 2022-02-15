@@ -25,3 +25,4 @@ fi
             ##tags, IMage & image tag,Build strategy[] ,
             ##Action[firsttime,upgrade-canary,upgrade-blueGreen,upgrde-RolingUpdate,Upgrade-recreate]
 
+##Re order -> environemnts -> lifecycle
