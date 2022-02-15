@@ -10,7 +10,8 @@ terraform {
 ##  Octopus Login 
 provider "octopusdeploy" {
   address    = "https://srinivas.octopus.app/"   
-  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
+  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
+  space_id   = "Spaces-2"             
 }
 
 resource "octopusdeploy_space" "spaces" {
@@ -274,14 +275,9 @@ resource "octopusdeploy_variable" "environment" {
 
 data "octopusdeploy_spaces" "spaces" {
   take         = 100
-  most_recent = true
-  # spaces        {
-  #   is_default  = "true"
-
-  # }
 }
 output "defaultgroup" {
-  value = data.octopusdeploy_spaces.spaces.spaces[*].is_default
+  value = data.octopusdeploy_spaces.spaces.spaces[*]
 }
 
 
