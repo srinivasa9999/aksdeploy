@@ -73,7 +73,7 @@ resource "octopusdeploy_deployment_process" "example" {
           "Octopus.Action.Package.DownloadOnTentacle" = "True"
           "Octopus.Action.Package.FeedId"             = "Feeds-1002"
           "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
-          "Octopus.Action.RunOnServer"                = "True"
+ #         "Octopus.Action.RunOnServer"                = "True"
           "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
