@@ -144,7 +144,7 @@ resource "octopusdeploy_project" "pcreate" {
       "Octopus.ControlType" : "SingleLineText"
     }
   }
-  depends_on  = [octopusdeploy_project_group.gcreate]
+# depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
 
