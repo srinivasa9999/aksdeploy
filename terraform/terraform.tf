@@ -231,7 +231,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
           package_id           = "srinivasa9999/k8stest"
 
       }
-      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
+   #   worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
 
     }
   }
