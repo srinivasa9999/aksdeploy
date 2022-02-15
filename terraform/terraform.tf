@@ -22,7 +22,6 @@ resource "octopusdeploy_environment" "environments" {
 }
 
 output "envs" {
-
   value = values(octopusdeploy_environment.environments)[*]
 }
 
@@ -50,16 +49,16 @@ output "envs" {
 #   use_guided_failure           = false
 # }
 
-# locals {
-#   vardev = octopusdeploy_environment[devel]].id
-# }
+locals {
+  vardev = octopusdeploy_environment[development].id
+}
 
-# locals {
-#   varqa = octopusdeploy_environment.qa.id
-# }
-# locals {
-#   varprod = octopusdeploy_environment.prod.id
-# }
+locals {
+  varqa = octopusdeploy_environment[qa].id
+}
+locals {
+  varprod = octopusdeploy_environment[prod].id
+}
 # variable "varprod" {
 #  type    = string
 #  default = octopusdeploy_environment.prod.id
