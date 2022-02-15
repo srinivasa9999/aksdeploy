@@ -274,7 +274,7 @@ resource "octopusdeploy_variable" "environment" {
 
 data "octopusdeploy_spaces" "spaces" {
   take         = 100
-  spaces       = {
+  spaces        {
     is_default  = true
 
   }
