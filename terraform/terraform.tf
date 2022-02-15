@@ -7,15 +7,76 @@ terraform {
   }
 }
 
+##  Octopus Login 
 provider "octopusdeploy" {
-  # Configuration options
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
-module "environments" {
-  source  = "./modules/environments"
+## Creating Environments (development, qa & Prod)
+resource "octopusdeploy_environment" "development" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the development team."
+  name                         = "development"
+  sort_order                   = 0
+  use_guided_failure           = false
 }
+
+resource "octopusdeploy_environment" "qa" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the qa team."
+  name                         = "qa"
+  sort_order                   = 1
+  use_guided_failure           = false
+}
+
+resource "octopusdeploy_environment" "prod" {
+  allow_dynamic_infrastructure = false
+  description                  = "An environment for the Production team."
+  name                         = "prod"
+  sort_order                   = 2
+  use_guided_failure           = false
+}
+
+variable "vardev" {
+ type    = string
+ default = octopusdeploy_environment.development.id
+}
+variable "varqa" {
+ type    = string
+ default = octopusdeploy_environment.qa.id
+}
+variable "varprod" {
+ type    = string
+ default = octopusdeploy_environment.prod.id
+}
+
+
+## Creating lifecycle between Environments
+
+resource "octopusdeploy_lifecycle" "lifecycle" {
+  description = "This is the default lifecycle."
+  name        = "LifeCycle"
+
+  release_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = true
+    unit                = "Days"
+  }
+  tentacle_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = false
+    unit                = "Items"
+  }
+
+  phase {
+    automatic_deployment_targets = [var.vardev,var.varqa,var.varprod]
+    name                         = "Phase"
+    minimum_environments_before_promotion = 1
+  }
+}
+
+
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
@@ -99,25 +160,5 @@ module "projectvariables" {
 }
 
 
-resource "octopusdeploy_lifecycle" "lifecycle" {
-  description = "This is the default lifecycle."
-  name        = "LifeCycle"
 
-  release_retention_policy {
-    quantity_to_keep    = 30
-    should_keep_forever = true
-    unit                = "Days"
-  }
-  tentacle_retention_policy {
-    quantity_to_keep    = 30
-    should_keep_forever = false
-    unit                = "Items"
-  }
-
-  phase {
-    automatic_deployment_targets = ["Environments-33","Environments-28","Environments-25"]
-    name                         = "Phase"
-    minimum_environments_before_promotion = 1
-  }
-}
 
