@@ -92,6 +92,7 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
+  space_id     = octopusdeploy_space.spaces.id
 }
 
 data "octopusdeploy_project_groups" "groups" {
