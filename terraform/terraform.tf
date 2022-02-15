@@ -13,70 +13,77 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
-## Creating Environments (development, qa & Prod)
-resource "octopusdeploy_environment" "development" {
+# ## Creating Environments (development, qa & Prod)
+resource "octopusdeploy_environment" "environments" {
+  for_each = toset(var.environments)
   allow_dynamic_infrastructure = false
-  description                  = "An environment for the development team."
-  name                         = "development"
-  sort_order                   = 0
+  name                         = each.value
   use_guided_failure           = false
 }
 
-resource "octopusdeploy_environment" "qa" {
-  allow_dynamic_infrastructure = false
-  description                  = "An environment for the qa team."
-  name                         = "qa"
-  sort_order                   = 1
-  use_guided_failure           = false
-}
+# resource "octopusdeploy_environment" "development" {
+#   allow_dynamic_infrastructure = false
+#   description                  = "An environment for the development team."
+#   name                         = "development"
+#   sort_order                   = 0
+#   use_guided_failure           = false
+# }
 
-resource "octopusdeploy_environment" "prod" {
-  allow_dynamic_infrastructure = false
-  description                  = "An environment for the Production team."
-  name                         = "prod"
-  sort_order                   = 2
-  use_guided_failure           = false
-}
+# resource "octopusdeploy_environment" "qa" {
+#   allow_dynamic_infrastructure = false
+#   description                  = "An environment for the qa team."
+#   name                         = "qa"
+#   sort_order                   = 1
+#   use_guided_failure           = false
+# }
 
-locals {
-  vardev = octopusdeploy_environment.development.id
-}
+# resource "octopusdeploy_environment" "prod" {
+#   allow_dynamic_infrastructure = false
+#   description                  = "An environment for the Production team."
+#   name                         = "prod"
+#   sort_order                   = 2
+#   use_guided_failure           = false
+# }
 
-locals {
-  varqa = octopusdeploy_environment.qa.id
-}
-locals {
-  varprod = octopusdeploy_environment.prod.id
-}
+# locals {
+#   vardev = octopusdeploy_environment.development.id
+# }
+
+# locals {
+#   varqa = octopusdeploy_environment.qa.id
+# }
+# locals {
+#   varprod = octopusdeploy_environment.prod.id
+# }
 # variable "varprod" {
 #  type    = string
 #  default = octopusdeploy_environment.prod.id
 # }
 
 
-## Creating lifecycle between Environments
+# ## Creating lifecycle between Environments
 
-resource "octopusdeploy_lifecycle" "lifecycle" {
-  description = "This is the default lifecycle."
-  name        = "LifeCycle"
+# resource "octopusdeploy_lifecycle" "lifecycle" {
+#   description = "This is the default lifecycle."
+#   name        = "LifeCycle"
 
-  release_retention_policy {
-    quantity_to_keep    = 30
-    should_keep_forever = true
-    unit                = "Days"
-  }
-  tentacle_retention_policy {
-    quantity_to_keep    = 30
-    should_keep_forever = false
-    unit                = "Items"
-  }
+#   release_retention_policy {
+#     quantity_to_keep    = 30
+#     should_keep_forever = true
+#     unit                = "Days"
+#   }
+#   tentacle_retention_policy {
+#     quantity_to_keep    = 30
+#     should_keep_forever = false
+#     unit                = "Items"
+#   }
 
-  phase {
-    automatic_deployment_targets = [local.vardev,local.varqa,local.varprod]
-    name                         = "Phase"
-    minimum_environments_before_promotion = 1
-  }
-}
+#   phase {
+#     automatic_deployment_targets = [local.vardev,local.varqa,local.varprod]
+#     name                         = "Phase"
+#     minimum_environments_before_promotion = 1
+#   }
+# }
 
 
 
