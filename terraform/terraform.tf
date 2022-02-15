@@ -106,7 +106,7 @@ output "group" {
 
 
 resource "octopusdeploy_project" "pcreate" {
-  space_id                             =  octopusdeploy_space.spaces.id
+  space_id                             = octopusdeploy_space.spaces.id
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
   default_to_skip_if_already_installed = false
