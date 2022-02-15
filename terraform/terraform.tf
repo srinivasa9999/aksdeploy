@@ -276,7 +276,7 @@ data "octopusdeploy_spaces" "spaces" {
   is_default   = "true"
   take         = 100
   spaces       = {[
-    "is_default" = "true"
+    "is_default" : "true"
   ]
   }
 }
