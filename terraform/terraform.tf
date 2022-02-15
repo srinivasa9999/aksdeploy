@@ -214,7 +214,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
       is_required                        = false
-     # worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
       # properties                         = {
       #     "Octopus.Action.KubernetesContainers.Namespace" = "default"
       #     "Octopus.Action.RunOnServer"                    = "true"
