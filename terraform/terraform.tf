@@ -16,7 +16,7 @@ provider "octopusdeploy" {
 resource "octopusdeploy_space" "spaces" {
   description                 = ""
   name                        = var.pgname
-  is_default                  = false
+  is_default                  = "true"
   is_task_queue_stopped       = false
   space_managers_team_members = []
   space_managers_teams        = ["teams-everyone"]
