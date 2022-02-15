@@ -97,7 +97,7 @@ resource "octopusdeploy_project" "pcreate" {
   is_disabled                          = false
   is_discrete_channel_release          = false
   is_version_controlled                = false
-  lifecycle_id                         = "Lifecycles-23"   #variable
+  lifecycle_id                         = octopusdeploy_lifecycle.lifecycle.id
   name                                 = var.pname      #variable
   project_group_id                     = octopusdeploy_project_group.gcreate.id
   tenanted_deployment_participation    = "Untenanted"
