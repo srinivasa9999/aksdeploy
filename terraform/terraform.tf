@@ -50,14 +50,14 @@ output "envs" {
 # }
 
 locals {
-  vardev = values(octopusdeploy_environment)[development].id
+  vardev = values(octopusdeploy_environment.environments)[development].id
 }
 
 locals {
-  varqa = octopusdeploy_environment["qa"].id
+  varqa = octopusdeploy_environment.environments["qa"].id
 }
 locals {
-  varprod = octopusdeploy_environment["prod"].id
+  varprod = octopusdeploy_environment.environments["prod"].id
 }
 # variable "varprod" {
 #  type    = string
