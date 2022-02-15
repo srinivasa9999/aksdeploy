@@ -11,7 +11,7 @@ variable "pname" {
 }
 
 variable "environments" {
-  description = "Create Environments with these names"
+  description = "Create Environments with these Names"
   type        = list(string)
   default     = ["development", "qa", "prod"]
 }
