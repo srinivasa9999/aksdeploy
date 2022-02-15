@@ -148,23 +148,47 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
 
-# module "deployProcess" {
-#   source  = "./modules/deployProcess"
-#   prname  = var.pname
-#   depends_on = [
-#      octopusdeploy_project.pcreate
-#   ]
+module "deployProcess" {
+  source  = "./modules/deployProcess"
+  prname  = var.pname
+  depends_on = [
+     octopusdeploy_project.pcreate
+  ]
   
-# }
+}
 
 
 
+locals {
+  projectid = octopusdeploy_project.pcreate.id
+}
 
-# module "projectvariables" {
-#   source    = "./modules/variables"
-#   projectid = octopusdeploy_project.pcreate.id
-# }
-
+resource "octopusdeploy_variable" "deploytype" {
+     name      = "deploytype"
+     type      = "String"
+     owner_id = var.projectid
+     prompt     {
+         is_required  = "true"
+     }
+}
+resource "octopusdeploy_variable" "imageversion" {
+     name      = "imageversion"
+     type      = "String"
+     owner_id = var.projectid
+     prompt     {
+         is_required  = "true"
+ #        ControlType  = "dropdown"
+     }
+}
+resource "octopusdeploy_variable" "environment" {
+     name      = "environment"
+     type      = "String"
+     owner_id = var.projectid
+     prompt     {
+         is_required  = "true"
+ #        ControlType  = "dropdown"
+     }
+}
 
 
 
