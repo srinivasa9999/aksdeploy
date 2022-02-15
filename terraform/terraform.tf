@@ -222,7 +222,6 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
           "Octopus.Action.Script.ScriptSource"        = "Package"
       }
        run_on_server                      = "true"
-       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
        script_file_name                   = "firsttime_deployment.sh"
        package {
           acquisition_location = "ExecutionTarget"
@@ -232,6 +231,8 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
           package_id           = "srinivasa9999/k8stest"
 
       }
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
+
     }
   }
 
