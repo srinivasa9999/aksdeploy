@@ -50,7 +50,7 @@ output "envs" {
 # }
 
 locals {
-  vardev = octopusdeploy_environment[development].id
+  vardev = values(octopusdeploy_environment[development].id)
 }
 
 locals {
