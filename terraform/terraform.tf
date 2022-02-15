@@ -8,13 +8,14 @@ terraform {
 }
 
 ##  Octopus Login 
-provider "octopusdeploy" "test" {
+provider "octopusdeploy" "unscoped" {
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
 }
 
 resource "octopusdeploy_space" "spaces" {
   description                 = ""
+  provider                    = octopusdeploy.unscoped
   name                        = var.pgname
   is_default                  = "false"
   is_task_queue_stopped       = false
