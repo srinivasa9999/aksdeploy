@@ -156,17 +156,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 }
 
 
-# module "deployProcess" {
-#   source  = "./modules/deployProcess"
-#   prname  = var.pname
-#   depends_on = [
-#      octopusdeploy_project.pcreate
-#   ]
-  
-# }
-
-
-
+## Define deployment Process
 
 resource "octopusdeploy_deployment_process" "deploymentProcess" {
   project_id = octopusdeploy_project.pcreate.id
@@ -206,7 +196,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
           
         EOT
       run_on_server                      = "true"
-      worker_pool_id                     = "WorkerPools-5"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
     }
   }
 
@@ -214,7 +204,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     condition           = "Success"
     name                = "Kubernetes Deploy"
     start_trigger       = "StartAfterPrevious"
-    target_roles        = ["test"]
+    target_roles        = ["Development"]
     run_kubectl_script_action {
       can_be_used_for_project_versioning = true
       condition                          = "Success"
@@ -223,6 +213,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
       is_required                        = false
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
       # properties                         = {
       #     "Octopus.Action.KubernetesContainers.Namespace" = "default"
       #     "Octopus.Action.RunOnServer"                    = "true"
