@@ -21,12 +21,12 @@ resource "octopusdeploy_space" "spaces" {
   space_managers_team_members = []
   space_managers_teams        = ["teams-everyone"]
 }
-data "octopusdeploy_spaces" "spaces" {
-  take         = 100
-}
-output "spaceslist" {
-  value = data.octopusdeploy_spaces.spaces
-}
+# data "octopusdeploy_spaces" "spaces" {
+#   take         = 100
+# }
+# output "spaceslist" {
+#   value = data.octopusdeploy_spaces.spaces
+# }
 
 
 
@@ -38,9 +38,9 @@ resource "octopusdeploy_environment" "environments" {
   use_guided_failure           = false
 }
 
-output "envs" {
-  value = values(octopusdeploy_environment.environments)[*]
-}
+# output "envs" {
+#   value = values(octopusdeploy_environment.environments)[*]
+# }
 
 locals {
   vardev = octopusdeploy_environment.environments["development"].id
@@ -87,13 +87,13 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
 }
 
-data "octopusdeploy_project_groups" "groups" {
-  partial_name  = var.pgname
-}
+# data "octopusdeploy_project_groups" "groups" {
+#   partial_name  = var.pgname
+# }
 
-output "group" {
-  value = octopusdeploy_project_group.gcreate
-}
+# output "group" {
+#   value = octopusdeploy_project_group.gcreate
+# }
 ## Create Project 
 
 
@@ -271,5 +271,13 @@ resource "octopusdeploy_variable" "environment" {
      }
 }
 
+
+data "octopusdeploy_spaces" "spaces" {
+  is_default   = "true"
+  take         = 100
+}
+output "defaultgroup" {
+  value = data.octopusdeploy_spaces.spaces
+}
 
 
