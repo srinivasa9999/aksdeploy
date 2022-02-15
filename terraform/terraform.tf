@@ -8,13 +8,14 @@ terraform {
 }
 
 ##  Octopus Login 
-provider "octopusdeploy" "unscoped" {
+provider "octopusdeploy" {
+  alias    = "spacesupport"
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
 }
 
 resource "octopusdeploy_space" "spaces" {
-  provider                    = octopusdeploy.unscoped
+  provider                    = octopusdeploy.spacesupport
   description                 = ""
   name                        = var.pgname
   is_default                  = "false"
