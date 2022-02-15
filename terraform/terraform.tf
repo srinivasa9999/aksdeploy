@@ -36,7 +36,7 @@ resource "octopusdeploy_environment" "environments" {
   use_guided_failure           = false
   # lifecycle {
   #       ignore_changes = [name]
-  }
+  #}
 }
 
 output "envs" {
