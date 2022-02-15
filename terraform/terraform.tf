@@ -148,14 +148,14 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
 
-module "deployProcess" {
-  source  = "./modules/deployProcess"
-  prname  = var.pname
-  depends_on = [
-     octopusdeploy_project.pcreate
-  ]
+# module "deployProcess" {
+#   source  = "./modules/deployProcess"
+#   prname  = var.pname
+#   depends_on = [
+#      octopusdeploy_project.pcreate
+#   ]
   
-}
+# }
 
 
 
