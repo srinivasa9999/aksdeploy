@@ -275,6 +275,9 @@ resource "octopusdeploy_variable" "environment" {
 data "octopusdeploy_spaces" "spaces" {
   is_default   = "true"
   take         = 100
+  spaces       = {
+    is_default = "true"
+  }
 }
 output "defaultgroup" {
   value = data.octopusdeploy_spaces.spaces
