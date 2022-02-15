@@ -18,6 +18,8 @@ resource "octopusdeploy_space" "spaces" {
   name                        = var.pgname
   is_default                  = false
   is_task_queue_stopped       = false
+  space_managers_team_members = []
+  space_managers_teams        = ["teams-everyone"]
 }
 data "octopusdeploy_spaces" "spaces" {
   take         = 100
