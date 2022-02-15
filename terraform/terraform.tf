@@ -280,7 +280,7 @@ data "octopusdeploy_spaces" "spaces" {
   # }
 }
 output "defaultgroup" {
-  value = data.octopusdeploy_spaces.spaces
+  value = data.octopusdeploy_spaces.spaces.spaces
 }
 
 
