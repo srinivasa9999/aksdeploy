@@ -54,10 +54,10 @@ locals {
 }
 
 locals {
-  varqa = octopusdeploy_environment[qa].id
+  varqa = octopusdeploy_environment["qa"].id
 }
 locals {
-  varprod = octopusdeploy_environment[prod].id
+  varprod = octopusdeploy_environment["prod"].id
 }
 # variable "varprod" {
 #  type    = string
