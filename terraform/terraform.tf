@@ -38,14 +38,9 @@ resource "octopusdeploy_environment" "prod" {
   use_guided_failure           = false
 }
 
-variable "vardev" {
- type    = string
- default = "octopusdeploy_environment.development.id"
+locals {
+  vardev = octopusdeploy_environment.development.id
 }
-# variable "varqa" {
-#  type    = string
-#  default = octopusdeploy_environment.qa.id
-# }
 
 locals {
   varqa = octopusdeploy_environment.qa.id
