@@ -33,22 +33,6 @@ output "envs" {
 #   use_guided_failure           = false
 # }
 
-# resource "octopusdeploy_environment" "qa" {
-#   allow_dynamic_infrastructure = false
-#   description                  = "An environment for the qa team."
-#   name                         = "qa"
-#   sort_order                   = 1
-#   use_guided_failure           = false
-# }
-
-# resource "octopusdeploy_environment" "prod" {
-#   allow_dynamic_infrastructure = false
-#   description                  = "An environment for the Production team."
-#   name                         = "prod"
-#   sort_order                   = 2
-#   use_guided_failure           = false
-# }
-
 locals {
   vardev = octopusdeploy_environment.environments["development"].id
 }
@@ -59,37 +43,34 @@ locals {
 locals {
   varprod = octopusdeploy_environment.environments["prod"].id
 }
-# variable "varprod" {
-#  type    = string
-#  default = octopusdeploy_environment.prod.id
-# }
 
 
-# ## Creating lifecycle between Environments
 
-# resource "octopusdeploy_lifecycle" "lifecycle" {
-#   description = "This is the default lifecycle."
-#   name        = "LifeCycle"
+## Creating lifecycle between Environments
 
-#   release_retention_policy {
-#     quantity_to_keep    = 30
-#     should_keep_forever = true
-#     unit                = "Days"
-#   }
-#   tentacle_retention_policy {
-#     quantity_to_keep    = 30
-#     should_keep_forever = false
-#     unit                = "Items"
-#   }
+resource "octopusdeploy_lifecycle" "lifecycle" {
+  description = "This is the default lifecycle."
+  name        = "LifeCycle"
 
-#   phase {
-#     automatic_deployment_targets = [local.vardev,local.varqa,local.varprod]
-#     name                         = "Phase"
-#     minimum_environments_before_promotion = 1
-#   }
-# }
+  release_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = true
+    unit                = "Days"
+  }
+  tentacle_retention_policy {
+    quantity_to_keep    = 30
+    should_keep_forever = false
+    unit                = "Items"
+  }
 
+  phase {
+    automatic_deployment_targets = [local.vardev,local.varqa,local.varprod]
+    name                         = "Phase"
+    minimum_environments_before_promotion = 1
+  }
+}
 
+## Create Project Group
 
 resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
@@ -103,13 +84,7 @@ output "group" {
   value = octopusdeploy_project_group.gcreate.id
 }
 
-# output "groups" {
-#   value = data.octopusdeploy_project_groups.groups.project_groups[0].id
-# }
-# locals {
-#   projectID = "data.octopusdeploy_project_groups.groups.project_groups[0].id"
-
-# }
+## Create Project 
 
 
 resource "octopusdeploy_project" "pcreate" {
