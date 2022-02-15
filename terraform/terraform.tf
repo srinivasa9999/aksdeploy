@@ -13,6 +13,13 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
+data "octopusdeploy_spaces" "spaces" {
+  take         = 100
+}
+output "spaceslist" {
+  value = octopusdeploy_spaces.spaces
+}
+
 # ## Creating Environments (development, qa & Prod)
 resource "octopusdeploy_environment" "environments" {
   for_each = toset(var.environments)
