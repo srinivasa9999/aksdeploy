@@ -8,7 +8,7 @@ terraform {
 }
 
 ##  Octopus Login 
-provider "octopusdeploy" "unscoped" {
+provider "octopusdeploy" "test" {
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
 }
