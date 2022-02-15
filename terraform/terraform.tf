@@ -166,7 +166,7 @@ locals {
 resource "octopusdeploy_variable" "deploytype" {
      name      = "deploytype"
      type      = "String"
-     owner_id = var.projectid
+     owner_id = local.projectid
      prompt     {
          is_required  = "true"
      }
@@ -174,7 +174,7 @@ resource "octopusdeploy_variable" "deploytype" {
 resource "octopusdeploy_variable" "imageversion" {
      name      = "imageversion"
      type      = "String"
-     owner_id = var.projectid
+     owner_id = local.projectid
      prompt     {
          is_required  = "true"
  #        ControlType  = "dropdown"
@@ -183,7 +183,7 @@ resource "octopusdeploy_variable" "imageversion" {
 resource "octopusdeploy_variable" "environment" {
      name      = "environment"
      type      = "String"
-     owner_id = var.projectid
+     owner_id = local.projectid
      prompt     {
          is_required  = "true"
  #        ControlType  = "dropdown"
