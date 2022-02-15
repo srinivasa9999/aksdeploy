@@ -137,7 +137,7 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
   environments                      = [local.vardev,local.varqa,local.varprod]
   name                              = "Kubernetes Cluster "
-  roles                             = ["Development Team", "System Administrators"]
+  roles                             = ["Development"]
   tenanted_deployment_participation = "Untenanted"
   skip_tls_verification             = "true"
 
@@ -147,6 +147,14 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
 
   }
 }
+
+resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
+    name                          = "dynamicWorkerpool"
+    worker_type                   = "Ubuntu"
+    is_default                    = "true"
+    description                   =  "workers will be loaded from Octopus cloud"
+}
+
 # module "deployProcess" {
 #   source  = "./modules/deployProcess"
 #   prname  = var.pname
