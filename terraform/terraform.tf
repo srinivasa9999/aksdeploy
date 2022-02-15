@@ -143,7 +143,6 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
 
   authentication {
       account_id = "Accounts-21"
-      cluster_name = "cluster-name"
 
   }
 }
