@@ -134,7 +134,7 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
 resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
-  cluster_url                       = "https://akscluster-dns-7f2e4cbb.hcp.eastus.azmk8s.io:443"
+  cluster_url                       = var.k8scluster
   environments                      = [local.vardev,local.varqa,local.varprod]
   name                              = "Kubernetes Cluster "
   roles                             = ["Development Team", "System Administrators"]

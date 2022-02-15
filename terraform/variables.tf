@@ -15,3 +15,9 @@ variable "environments" {
   type        = list(string)
   default     = ["development", "qa", "prod"]
 }
+
+variable "k8scluster" {
+  type        = string
+  default     = "https://akscluster-dns-7f2e4cbb.hcp.eastus.azmk8s.io:443"
+  description = "Create k8s deployment target "
+}
