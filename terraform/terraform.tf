@@ -17,7 +17,7 @@ data "octopusdeploy_spaces" "spaces" {
   take         = 100
 }
 output "spaceslist" {
-  value = octopusdeploy_spaces.spaces
+  value = data.octopusdeploy_spaces.spaces
 }
 
 # ## Creating Environments (development, qa & Prod)
