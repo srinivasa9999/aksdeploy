@@ -13,6 +13,12 @@ provider "octopusdeploy" {
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"             
 }
 
+resource "octopusdeploy_space" "spaces" {
+  description                 = ""
+  name                        = var.pgname
+  is_default                  = false
+  is_task_queue_stopped       = false
+}
 data "octopusdeploy_spaces" "spaces" {
   take         = 100
 }
@@ -98,7 +104,7 @@ output "group" {
 
 
 resource "octopusdeploy_project" "pcreate" {
-  space_id                             =  "Spaces-1"
+  space_id                             =  octopusdeploy_space.spaces.id
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
   default_to_skip_if_already_installed = false
