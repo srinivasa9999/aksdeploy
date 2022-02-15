@@ -1,12 +1,12 @@
 variable "pgname" {
   type         = string
-  default      = "group"
+  default      = "ECommerce App"
   description  = "Project Group Name"
 }
 
 variable "pname" {
   type         = string
-  default      = "project"
+  default      = "Ecommerce Services"
   description  = "Project  Name"
 }
 
