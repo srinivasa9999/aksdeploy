@@ -14,8 +14,8 @@ provider "octopusdeploy" "unscoped" {
 }
 
 resource "octopusdeploy_space" "spaces" {
-  description                 = ""
   provider                    = octopusdeploy.unscoped
+  description                 = ""
   name                        = var.pgname
   is_default                  = "false"
   is_task_queue_stopped       = false
