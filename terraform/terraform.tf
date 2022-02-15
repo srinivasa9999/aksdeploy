@@ -159,36 +159,36 @@ module "deployProcess" {
 
 
 
-locals {
-  projectid = octopusdeploy_project.pcreate.id
-}
+# locals {
+#   projectid = octopusdeploy_project.pcreate.id
+# }
 
-resource "octopusdeploy_variable" "deploytype" {
-     name      = "deploytype"
-     type      = "String"
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
-     }
-}
-resource "octopusdeploy_variable" "imageversion" {
-     name      = "imageversion"
-     type      = "String"
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
- #        ControlType  = "dropdown"
-     }
-}
-resource "octopusdeploy_variable" "environment" {
-     name      = "environment"
-     type      = "String"
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
- #        ControlType  = "dropdown"
-     }
-}
+# resource "octopusdeploy_variable" "deploytype" {
+#      name      = "deploytype"
+#      type      = "String"
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#      }
+# }
+# resource "octopusdeploy_variable" "imageversion" {
+#      name      = "imageversion"
+#      type      = "String"
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#  #        ControlType  = "dropdown"
+#      }
+# }
+# resource "octopusdeploy_variable" "environment" {
+#      name      = "environment"
+#      type      = "String"
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#  #        ControlType  = "dropdown"
+#      }
+# }
 
 
 
