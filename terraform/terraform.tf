@@ -11,24 +11,22 @@ terraform {
 provider "octopusdeploy" {
   address    = "https://srinivas.octopus.app/"   
   api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
-  space_id   = "Spaces-2"             
 }
 
 resource "octopusdeploy_space" "spaces" {
   description                 = ""
   name                        = var.pgname
-  is_default                  = "true"
+  is_default                  = "false"
   is_task_queue_stopped       = false
   space_managers_team_members = []
   space_managers_teams        = ["teams-everyone"]
 }
-# data "octopusdeploy_spaces" "spaces" {
-#   take         = 100
-# }
-# output "spaceslist" {
-#   value = data.octopusdeploy_spaces.spaces
-# }
 
+provider "octopusdeploy" {
+  address    = "https://srinivas.octopus.app/"   
+  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
+  space_id   =  octopusdeploy_space.spaces.id
+}
 
 
 # ## Creating Environments (development, qa & Prod)
@@ -273,11 +271,5 @@ resource "octopusdeploy_variable" "environment" {
 }
 
 
-data "octopusdeploy_spaces" "spaces" {
-  take         = 100
-}
-output "defaultgroup" {
-  value = data.octopusdeploy_spaces.spaces.spaces[*]
-}
 
 
