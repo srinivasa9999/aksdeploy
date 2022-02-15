@@ -34,8 +34,8 @@ resource "octopusdeploy_environment" "environments" {
   allow_dynamic_infrastructure = false
   name                         = each.value
   use_guided_failure           = false
-  lifecycle {
-        ignore_changes = [name]
+  # lifecycle {
+  #       ignore_changes = [name]
   }
 }
 
