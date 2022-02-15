@@ -21,6 +21,11 @@ resource "octopusdeploy_environment" "environments" {
   use_guided_failure           = false
 }
 
+output "envs" {
+
+  value = values(octopusdeploy_environment.environments)[*]
+}
+
 # resource "octopusdeploy_environment" "development" {
 #   allow_dynamic_infrastructure = false
 #   description                  = "An environment for the development team."
@@ -46,7 +51,7 @@ resource "octopusdeploy_environment" "environments" {
 # }
 
 # locals {
-#   vardev = octopusdeploy_environment.development.id
+#   vardev = octopusdeploy_environment[devel]].id
 # }
 
 # locals {
