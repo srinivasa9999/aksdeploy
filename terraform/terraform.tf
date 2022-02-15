@@ -139,6 +139,7 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   name                              = "Kubernetes Cluster "
   roles                             = ["Development Team", "System Administrators"]
   tenanted_deployment_participation = "Untenanted"
+  skip_tls_verification             = "true"
 
 
   authentication {
