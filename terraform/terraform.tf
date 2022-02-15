@@ -100,7 +100,7 @@ data "octopusdeploy_project_groups" "groups" {
 }
 
 output "group" {
-  value = octopusdeploy_project_group.gcreate.id
+  value = octopusdeploy_project_group.gcreate
 }
 
 ## Create Project 
