@@ -4,7 +4,6 @@ declare -a servicenames=("$2" "$3" "$4")
 for SERVICE_NAME in "${servicenames[@]}"; do
     echo $SERVICE_NAME
     case $SERVICE_NAME in
-    #DEPLOYMENT_NAME="${SERVICE_NAME,,}"
     DEPLOYMENT_NAME=$(echo $SERVICE_NAME | tr [:upper:] [:lower:])
     shoppingCart)
         if [[ $DTYPE == "firsttime" ]];then
