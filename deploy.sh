@@ -42,7 +42,8 @@ for SERVICE_NAME in "${servicenames[@]}";do
 			fi
 			;;
 		*)
-			echo "***"
+			echo "**********Service name is incorrect***"
+			exit 1
 			;;
 	esac
 done
