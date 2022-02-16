@@ -7,12 +7,17 @@ sed -i s/imageversion/$JBNUMBER/g ./k8stest/deployments/deploy.yml
 DTYPE=`echo $(get_octopusvariable "DEPLOYTYPE")`
 echo "**********Deploy Type : $DTYPE"
 
-if [[ $DTYPE == "firsttime" ]];then
- kubectl apply -f ./k8stest -R --record
-elif [[ $DTYPE == "updatedeploy" ]];then
- kubectl apply -f ./k8stest/deploy.yml -R --record
-fi
+SERVICE_NAME=shoppingCart
 
+if [[ $DTYPE == "firsttime" ]];then
+ kubectl apply -f ./$SERVICE_NAME -R --record
+elif [[ $DTYPE == "updatedeploy" ]];then
+ kubectl apply -f ./$SERVICE_NAME/deploy.yml -R --record
+elif [[ $DTYPE == "stop" ]];then
+kubectl scale deploy $SERVICE_NAME --replicas=0
+elif [[ $DTYPE == "start" ]];then
+kubectl scale deploy $SERVICE_NAME --replicas=3
+fi
 
 
 ## dynamic variable in octopus CD
