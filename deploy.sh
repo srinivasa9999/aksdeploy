@@ -42,7 +42,7 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         fi
         ;;
     *)
-        echo "K8sdeploy not processed"
+        echo "***"
         ;;
     esac
 done
