@@ -18,9 +18,9 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         ;;
     productMgm)
         if [[ $DTYPE == "firsttime" ]];then
-            kubectl apply -f ./$SERVICE_NAME -R --record
+            kubectl apply -f ../$SERVICE_NAME -R --record
         elif [[ $DTYPE == "updatedeploy" ]];then
-            kubectl apply -f ./$SERVICE_NAME/deploy.yml -R --record
+            kubectl apply -f ../$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
             kubectl scale deploy $SERVICE_NAME --replicas=0
         elif [[ $DTYPE == "start" ]];then
