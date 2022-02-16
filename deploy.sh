@@ -1,4 +1,3 @@
-tree ../
 echo "deployment type: $1"
 DTYPE=$1
 declare -a servicenames=("$2" "$3" "$4")
@@ -43,8 +42,8 @@ for SERVICE_NAME in "${servicenames[@]}";do
 			fi
 			;;
 		*)
-			echo "**********Service name is incorrect***"
-			exit 1
+			echo "*********$SERVICE_NAME:*Service name is incorrect***"
+#			exit 1
 			;;
 	esac
 done
