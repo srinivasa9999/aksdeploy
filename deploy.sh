@@ -7,9 +7,9 @@ for SERVICE_NAME in "${servicenames[@]}"; do
     case $SERVICE_NAME in 
     shoppingCart)
         if [[ $DTYPE == "firsttime" ]];then
-            kubectl apply -f ./$SERVICE_NAME -R --record
+            kubectl apply -f ../$SERVICE_NAME -R --record
         elif [[ $DTYPE == "updatedeploy" ]];then
-            kubectl apply -f ./$SERVICE_NAME/deploy.yml -R --record
+            kubectl apply -f ../$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
             kubectl scale deploy $SERVICE_NAME --replicas=0
         elif [[ $DTYPE == "start" ]];then
@@ -29,7 +29,7 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         ;;
     customerMgm)
         if [[ $DTYPE == "firsttime" ]];then
-            kubectl apply -f ./$SERVICE_NAME -R --record
+            kubectl apply -f ../$SERVICE_NAME -R --record
         elif [[ $DTYPE == "updatedeploy" ]];then
             kubectl apply -f ./$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
@@ -42,7 +42,7 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         fi
         ;;
     *)
-        echo "K8s deploy not processed"
+        echo "K8sdeploy not processed"
         ;;
     esac
 done
