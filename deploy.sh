@@ -1,7 +1,7 @@
 echo "deployment type: $1"
 DTYPE=$1
 declare -a servicenames=("$2" "$3" "$4")
-for SERVICE_NAME in "${servicenames[@]}"; do
+for SERVICE_NAME in "${servicenames[@]}";do
     echo $SERVICE_NAME
     case $SERVICE_NAME in
     DEPLOYMENT_NAME=$(echo $SERVICE_NAME | tr [:upper:] [:lower:])
