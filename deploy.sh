@@ -2,7 +2,7 @@ echo "deployment type: $1"
 DTYPE=$1
 declare -a servicenames=("$2" "$3" "$4")
 for SERVICE_NAME in "${servicenames[@]}";do
-	DEPLOY_NAME=${SEVICE_NAME,,}
+	DEPLOY_NAME=${SERVICE_NAME,,}
 	echo $SERVICE_NAME
 	case $SERVICE_NAME in
 		shoppingCart)
