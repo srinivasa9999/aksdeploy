@@ -1,5 +1,10 @@
+#!/bin/bash
+echo deployment type: $1
+
 SERVICENAMES=("shoppingCart" "productMgm" "customerMgm") ##input variable
 for SERVICE_NAME in ${SERVICENAMES[@]}; do
+    echo $SERVICE_NAME
+    
 
     case $SERVICE_NAME in
 
