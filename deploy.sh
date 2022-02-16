@@ -1,4 +1,3 @@
-#!/bin/bash
 echo "deployment type: $1"
 DTYPE=$1
 declare -a servicenames=("$2" "$3" "$4")
