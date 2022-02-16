@@ -1,7 +1,7 @@
 echo "deployment type: $1"
 DTYPE=$1
-declare -a SERVICENAMES=("$2" "$3" "$4")
-for SERVICE_NAME in "${SERVICENAMES[@]}"; do
+declare -a servicenames=("$2" "$3" "$4")
+for SERVICE_NAME in "${servicenames[@]}"; do
     echo $SERVICE_NAME
     case $SERVICE_NAME in 
     shoppingCart)
