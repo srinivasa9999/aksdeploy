@@ -1,7 +1,7 @@
 #!/bin/bash
-echo deployment type: $1
+echo "deployment type: $1"
 
-SERVICENAMES=("shoppingCart" "productMgm" "customerMgm") ##input variable
+SERVICENAMES=("shoppingCart" "productMgm" "customerMgm") 
 for SERVICE_NAME in ${SERVICENAMES[@]}; do
     echo $SERVICE_NAME
     
