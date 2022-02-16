@@ -1,4 +1,3 @@
-#!/bin/bash
 echo "deployment type: $1"
 
 SERVICENAMES=("shoppingCart" "productMgm" "customerMgm") 
