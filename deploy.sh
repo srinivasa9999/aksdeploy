@@ -12,9 +12,9 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         elif [[ $DTYPE == "updatedeploy" ]];then
             kubectl apply -f ../$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=0
+            kubectl scale deploy $SERVICE_NAME --replicas=0
         elif [[ $DTYPE == "start" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=3
+            kubectl scale deploy $SERVICE_NAME --replicas=3
         fi
         ;;
     productMgm)
@@ -23,9 +23,9 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         elif [[ $DTYPE == "updatedeploy" ]];then
             kubectl apply -f ../$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=0
+            kubectl scale deploy $SERVICE_NAME --replicas=0
         elif [[ $DTYPE == "start" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=5
+            kubectl scale deploy $SERVICE_NAME --replicas=5
         fi
         ;;
     customerMgm)
@@ -34,12 +34,12 @@ for SERVICE_NAME in "${servicenames[@]}"; do
         elif [[ $DTYPE == "updatedeploy" ]];then
             kubectl apply -f ./$SERVICE_NAME/deploy.yml -R --record
         elif [[ $DTYPE == "stop" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=0
+            kubectl scale deploy $SERVICE_NAME --replicas=0
         elif [[ $DTYPE == "start" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=2
+            kubectl scale deploy $SERVICE_NAME --replicas=2
         elif [[ $DTYPE == "restart" ]];then
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=0
-            kubectl scale deploy $DEPLOYMENT_NAME --replicas=2
+            kubectl scale deploy $SERVICE_NAME --replicas=0
+            kubectl scale deploy $SERVICE_NAME --replicas=2
         fi
         ;;
     *)
