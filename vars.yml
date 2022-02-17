@@ -1,0 +1,4 @@
+shoppingCart:
+  git_url: "https://github.com/srinivasa9999/shoppingCart.git"
+  ENV:     "development"
+  
