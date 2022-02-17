@@ -275,7 +275,7 @@ resource "octopusdeploy_variable" "environment" {
 }
 
 data "octopusdeploy_accounts" "example" {
-  account_type  = "token"
+  account_type  = "Token"
   take = 10
 }
 
