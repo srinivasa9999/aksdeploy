@@ -281,14 +281,7 @@ resource "octopusdeploy_variable" "environment" {
      }
 }
 
-data "octopusdeploy_accounts" "example" {
-  account_type  = "Token"
-  take = 10
-}
 
-output "Accounts" {
-  value = data.octopusdeploy_accounts.example
-}
 
 
 
