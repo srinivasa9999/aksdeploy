@@ -254,16 +254,16 @@ locals {
   projectid = octopusdeploy_project.pcreate.id
 }
 
-resource "octopusdeploy_variable" "deploytype" {
-     name      = "deploytype"
+resource "octopusdeploy_variable" "namespace" {
+     name      = "productMgm:namespace"
      type      = "String"
      owner_id = local.projectid
      prompt     {
          is_required  = "true"
      }
 }
-resource "octopusdeploy_variable" "imageversion" {
-     name      = "imageversion"
+resource "octopusdeploy_variable" "deploy_action" {
+     name      = "shoppingCart:deploy_action"
      type      = "String"
      owner_id = local.projectid
      prompt     {
@@ -273,6 +273,16 @@ resource "octopusdeploy_variable" "imageversion" {
 }
 resource "octopusdeploy_variable" "environment" {
      name      = "environment"
+     type      = "String"
+     owner_id = local.projectid
+     prompt     {
+         is_required  = "true"
+ #        ControlType  = "dropdown"
+     }
+}
+
+resource "octopusdeploy_variable" "services" {
+     name      = "services"
      type      = "String"
      owner_id = local.projectid
      prompt     {
