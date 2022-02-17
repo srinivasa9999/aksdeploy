@@ -7,7 +7,7 @@ for SERVICE_NAME in ${SERVICES[@]};do
     ENVIRONMENT=$(python3 yamlparser.py shoppingCart environment)
     echo -e "$SERVICE_NAME -> $DEPLOY_ACTION -> $DEPLOY_STRATEGY -> $K8S_REPO"
 
-    git checkout $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME
+    git clone $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME
 
     case $DEPLOY_ACTION in
         firsttime)
