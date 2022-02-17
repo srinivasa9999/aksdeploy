@@ -3,10 +3,13 @@ shoppingCart:
    environment: "development"
    deploy_action: "firsttime"
    deploy_strategy: "rollingupdate"
+   namespace: "ecommerce"
 
 productMgm:
    git_url: "https://github.com/srinivasa9999/productMgm.git"
    environment: "development"
    deploy_action: "firsttime"
    deploy_strategy: "rollingupdate"
+   namespace: "ecommerce"
+
 
