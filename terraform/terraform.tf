@@ -274,12 +274,12 @@ resource "octopusdeploy_variable" "environment" {
      }
 }
 
-data "octopusdeploy_accounts" "example" {
+data "octopusdeploy_token_account" "example" {
    take = 10
 }
 
 output "Accounts" {
-  value = data.octopusdeploy_accounts.example
+  value = data.octopusdeploy_token_account.example
 }
 
 
