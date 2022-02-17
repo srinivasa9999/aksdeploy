@@ -133,6 +133,12 @@ resource "octopusdeploy_project" "pcreate" {
 depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
+resource "octopusdeploy_token_account" "akstoken" {
+  name  = "Token Account "
+  space_id = octopusdeploy_space.spaces.id
+  token = "e43a46946cb6e5f2652d2ab7b5189ebcfca5856f45b5656a5945869d00b21cc1e353493fa833f6f2bda390d470e720749089d4ddf9da2fe403c4323f1620e20f"
+}
+
 resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
   environments                      = [local.vardev,local.varqa,local.varprod]
@@ -141,13 +147,14 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   tenanted_deployment_participation = "Untenanted"
   skip_tls_verification             = "true"
 
-
   authentication {
-      account_id = "Accounts-21"
+      account_id = octopusdeploy_token_account.akstoken.id
 
   }
 }
 
+
+## Create dynamic worker pool , Cannot create stic VMS
 resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     name                          = "dynamicWorkerpool"
     worker_type                   = "UbuntuDefault"
