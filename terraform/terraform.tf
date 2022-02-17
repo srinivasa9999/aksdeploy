@@ -274,6 +274,14 @@ resource "octopusdeploy_variable" "environment" {
      }
 }
 
+data "octopusdeploy_accounts" "example" {
+   take = 10
+}
+
+output "Accounts" {
+  value = octopusdeploy_accounts.example
+}
+
 
 
 
