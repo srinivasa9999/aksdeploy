@@ -279,7 +279,7 @@ data "octopusdeploy_accounts" "example" {
 }
 
 output "Accounts" {
-  value = octopusdeploy_accounts.example
+  value = data.octopusdeploy_accounts.example
 }
 
 
