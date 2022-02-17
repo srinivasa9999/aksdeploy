@@ -4,7 +4,7 @@ for SERVICE_NAME in ${SERVICES[@]};do
     DEPLOY_ACTION=$(python3 yamlparser.py $SERVICE_NAME deploy_action)
     DEPLOY_STRATEGY=$(python3 yamlparser.py shoppingCart deploy_strategy)
     K8S_REPO=$(python3 yamlparser.py shoppingCart git_url)
-    echo -e "$SERVICE_NAME" -> "$DEPLOY_ACTION" -> "$DEPLOY_STRATEGY" -> "$K8S_REPO"
+    echo -e "$SERVICE_NAME -> $DEPLOY_ACTION -> $DEPLOY_STRATEGY -> $K8S_REPO"
     # git checkout $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME
 
     # case $DEPLOY_ACTION in
