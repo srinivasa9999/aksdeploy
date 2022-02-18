@@ -172,7 +172,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     name         = "Manual intervention"
     manual_intervention_action {
       name                               = "Manual intervention"
-      is_disabled                        = "True"
+      is_disabled                        = "true"
       is_required                        = true
       responsible_teams                  = "teams-everyone"
       instructions                       = "Approve"
