@@ -174,7 +174,7 @@ resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
   port        = 22
   account_id  = octopusdeploy_ssh_key_account.sshaccount.id
   roles       = ["vmtarget"]
-  environments= []
+  environments= [local.vardev,local.varqa,local.varprod]
 }
 
 ## Define deployment Process
