@@ -162,20 +162,20 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
-resource "octopusdeploy_ssh_key_account" "sshaccount" {
-  name             = "SSH Key Pair Account"
-  private_key_file = "./test.ppk"
-  username         = "srinivasarao_nallapati"
-}
-resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
-  name        = "vmtarget"
-  fingerprint = ""
-  host        = "34.125.179.254"
-  port        = 22
-  account_id  = octopusdeploy_ssh_key_account.sshaccount.id
-  roles       = ["vmtarget"]
-  environments= [local.vardev,local.varqa,local.varprod]
-}
+# resource "octopusdeploy_ssh_key_account" "sshaccount" {
+#   name             = "SSH Key Pair Account"
+#   private_key_file = "./test.ppk"
+#   username         = "srinivasarao_nallapati"
+# }
+# resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
+#   name        = "vmtarget"
+#   fingerprint = ""
+#   host        = "34.125.179.254"
+#   port        = 22
+#   account_id  = octopusdeploy_ssh_key_account.sshaccount.id
+#   roles       = ["vmtarget"]
+#   environments= [local.vardev,local.varqa,local.varprod]
+# }
 
 ## Define deployment Process
 
@@ -331,6 +331,7 @@ resource "octopusdeploy_variable" "environment" {
 resource "octopusdeploy_variable" "services" {
      name      = "services"
      type      = "String"
+     value     = local.yamlvars.services
      owner_id = local.projectid
      prompt     {
          is_required  = "true"
