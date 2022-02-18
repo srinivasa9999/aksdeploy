@@ -169,11 +169,11 @@ resource "octopusdeploy_ssh_key_account" "sshaccount" {
 }
 resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
   name        = "vmtarget"
-#  fingerprint = "[fingerprint]"
+  fingerprint = ""
   host        = "34.125.179.254"
   port        = 22
   account_id  = octopusdeploy_ssh_key_account.sshaccount.id
-  roles       = "vmtarget"
+  roles       = ["vmtarget"]
 }
 
 ## Define deployment Process
