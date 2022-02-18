@@ -167,12 +167,13 @@ resource "octopusdeploy_ssh_key_account" "sshaccount" {
   private_key_file = "/home/srinivasarao_nallapati/test.key"
   username         = "srinivasarao_nallapati"
 }
-resource "octopusdeploy_ssh_connection_deployment_target" "example" {
-  name        = "SSH Connection Deployment Target (OK to Delete)"
+resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
+  name        = "vmtarget"
 #  fingerprint = "[fingerprint]"
   host        = "34.125.179.254"
   port        = 22
   account_id  = octopusdeploy_ssh_key_account.sshaccount.id
+  roles       = "vmtarget"
 }
 
 ## Define deployment Process
