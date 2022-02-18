@@ -164,7 +164,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 resource "octopusdeploy_ssh_key_account" "sshaccount" {
   name             = "SSH Key Pair Account"
-  private_key_file = "/home/srinivasarao_nallapati/.ssh/id_rsa.pub"
+  private_key_file = "test.key"
   username         = "srinivasarao_nallapati"
 }
 resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
