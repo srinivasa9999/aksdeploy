@@ -162,22 +162,22 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
-# resource "octopusdeploy_ssh_key_account" "sshaccount" {
-#   name             = "SSH Key Pair Account"
-#   private_key_file = "./test.ppk"
-#   username         = "srinivasarao_nallapati"
-# }
-# resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
-#   name        = "vmtarget"
-#   fingerprint = ""
-#   host        = "34.125.179.254"
-#   port        = 22
-#   account_id  = octopusdeploy_ssh_key_account.sshaccount.id
-#   roles       = ["vmtarget"]
-#   environments= [local.vardev,local.varqa,local.varprod]
-# }
+resource "octopusdeploy_ssh_key_account" "sshaccount" {
+  name             = "SSH Key Pair Account"
+  private_key_file = "instance2.key"
+  username         = "srinivasarao_nallapati"
+}
+resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
+  name        = "vmtarget"
+  fingerprint = ""
+  host        = "34.125.179.254"
+  port        = 22
+  account_id  = octopusdeploy_ssh_key_account.sshaccount.id
+  roles       = ["vmtarget"]
+  environments= [local.vardev,local.varqa,local.varprod]
+}
 
-## Define deployment Process
+# Define deployment Process
 
 resource "octopusdeploy_deployment_process" "deploymentProcess" {
   project_id = octopusdeploy_project.pcreate.id
