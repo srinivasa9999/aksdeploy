@@ -274,7 +274,12 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
        ]
 }
 
-
+locals {
+  yamlvars = yamldecode(file("../vars.yaml"))
+}
+output "deployAction" {
+  value = local.yamlvars.productMgm:namespace
+}
 
 locals {
   projectid = octopusdeploy_project.pcreate.id
