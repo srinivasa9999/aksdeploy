@@ -238,7 +238,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       name                               = "Deploy to K8s"
       script_syntax                      = "Bash"
       properties        = {
-         "Octopus.Action.EnabledFeatures" = "Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles" -> "Octopus.Features.JsonConfigurationVariables"
+         "Octopus.Action.EnabledFeatures" = "Octopus.Features.JsonConfigurationVariables"
          "Octopus.Action.Package.JsonConfigurationVariablesTargets" = "vars.yaml"
       }
       script_body                        = <<-EOT
