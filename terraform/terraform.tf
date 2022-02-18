@@ -164,7 +164,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 resource "octopusdeploy_ssh_key_account" "sshaccount" {
   name             = "SSH Key Pair Account"
-  private_key_file = "/home/srinivasarao_nallapati/.ssh/id_rsa"
+  private_key_file = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAGcefri/e4PgGyCutgkul5IFoytlFd7uQjZHYeSzIdO1tf/9l7pnXrzYeZ5irUzURhI36Q+iUREESneMF9syGie8Lc5/j4383/Ghx7w0vsugnTEZxL0n1GiO6WebJYStROH0jECqRkAA67cd3GR+BiKB0hA30nnJ3Wbu04/DOP3MY7kMPlKGzcdOy/2gBPCzUipbekO8kx4fwQCJMb+RR2b9HN3LNVF0PHAo3gSVf8dim5L4/l2+JLBeuYxxy+Lr9IEIGt7wFxooboq/zydlBoxJDf3uZ/QgEbnv57mFRugbGgYuH/L2CtfRiVflUCzHbj3UOh10tIYqqDhLLhnehMU= google-ssh {"userName":"srinivasarao.nallapati@gmail.com","expireOn":"2022-02-18T07:15:55+0000"}"]
   username         = "srinivasarao_nallapati"
 }
 resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
