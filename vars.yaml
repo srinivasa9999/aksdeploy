@@ -1,3 +1,5 @@
+services: "shoppingCart productMgm"
+
 shoppingCart:
    git_url: "https://github.com/srinivasa9999/shoppingCart.git"
    environment: "development"
