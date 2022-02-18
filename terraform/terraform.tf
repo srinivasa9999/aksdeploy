@@ -229,6 +229,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     name                = "Deploy to K8s"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
+    features     = [  "Octopus.Features.JsonConfigurationVariables", ]
     run_script_action {
       can_be_used_for_project_versioning = false
       condition                          = "Success"
@@ -236,6 +237,10 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       is_required                        = true
       name                               = "Deploy to K8s"
       script_syntax                      = "Bash"
+      properties        = {
+         "Octopus.Action.EnabledFeatures" = "Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles" -> "Octopus.Features.JsonConfigurationVariables"
+         "Octopus.Action.Package.JsonConfigurationVariablesTargets" = "vars.yaml"
+      }
       script_body                        = <<-EOT
             cd /home/srinivas/aksdeploy/
             cat vars.yaml
