@@ -278,7 +278,7 @@ locals {
   yamlvars = yamldecode(file("../vars.yaml"))
 }
 output "deployAction" {
-  value = local.yamlvars.productMgm:namespace
+  value = local.yamlvars.productMgm.namespace
 }
 
 locals {
