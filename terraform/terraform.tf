@@ -229,8 +229,8 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     name                = "Deploy to K8s"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
-    features     = [  "Octopus.Features.JsonConfigurationVariables", ]
     run_script_action {
+      features     = [  "Octopus.Features.JsonConfigurationVariables", ]
       can_be_used_for_project_versioning = false
       condition                          = "Success"
       is_disabled                        = false
