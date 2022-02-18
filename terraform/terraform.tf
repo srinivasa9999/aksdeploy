@@ -277,9 +277,9 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
 locals {
   yamlvars = yamldecode(file("../vars.yaml"))
 }
-output "deployAction" {
-  value = local.yamlvars.productMgm.namespace
-}
+# output "namespace" {
+#   value = local.yamlvars.productMgm.namespace
+# }
 
 locals {
   projectid = octopusdeploy_project.pcreate.id
@@ -288,6 +288,7 @@ locals {
 resource "octopusdeploy_variable" "namespace" {
      name      = "productMgm:namespace"
      type      = "String"
+     value     = local.yamlvars.productMgm.namespace
      owner_id = local.projectid
      prompt     {
          is_required  = "true"
@@ -296,6 +297,7 @@ resource "octopusdeploy_variable" "namespace" {
 resource "octopusdeploy_variable" "deploy_action" {
      name      = "shoppingCart:deploy_action"
      type      = "String"
+     value     = local.yamlvars.shoppingCart.deploy_action
      owner_id = local.projectid
      prompt     {
          is_required  = "true"
