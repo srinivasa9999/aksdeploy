@@ -210,7 +210,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
     }
   }
 
-    step {
+  step {
     condition           = "Success"
     name                = "Deploy to K8s"
     package_requirement = "LetOctopusDecide"
@@ -269,10 +269,10 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
 #     }
 #   }
 
-#   depends_on = [
-#      octopusdeploy_project.pcreate
-#        ]
-# }
+  depends_on = [
+     octopusdeploy_project.pcreate
+       ]
+}
 
 
 
