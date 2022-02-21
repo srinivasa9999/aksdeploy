@@ -194,7 +194,7 @@ data "octopusdeploy_projects" "projectnames" {
 }
 
 output "projectlist" {
-  value = data.octopusdeploy_projects.projectnames[*].id
+  value = data.octopusdeploy_projects.projectnames.projects[*].id
 }
 
 # resource "octopusdeploy_deployment_process" "deploymentProcess" {
