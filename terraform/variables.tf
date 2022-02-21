@@ -1,12 +1,12 @@
 variable "pgname" {
   type         = string
-  default      = "CVS"
+ # default      = "CVS"
   description  = "Project Group Name"
 }
 
 variable "pname" {
   type         = list
-  default      = ["ABC","DEF"]
+#  default      = ["ABC","DEF"]
   description  = "Project  Name"
 }
 
