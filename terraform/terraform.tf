@@ -185,16 +185,17 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 # Define deployment Process
 
 
-data "octopusdeploy_projects" "projectnames" {
-      take = 10
-      # projects  {
-      #     project_group_id = octopusdeploy_project_group.gcreate.id
-      # }
+# data "octopusdeploy_projects" "projectnames" {
+#       take = 10
+#       # projects  {
+#       #     project_group_id = octopusdeploy_project_group.gcreate.id
+#       # }
 
-}
+# }
 
-output "projectlist" {
-  value = data.octopusdeploy_projects.projectnames.projects[*].id
+locals "projectlist" {
+ # value = data.octopusdeploy_projects.projectnames.projects[*].id
+  projectlist = octopusdeploy_project.pcreate.projects[*].id
 }
 
 # resource "octopusdeploy_deployment_process" "deploymentProcess" {
