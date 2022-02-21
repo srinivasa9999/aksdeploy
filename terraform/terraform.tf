@@ -172,7 +172,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
-  projectlists = octopusdeploy_project.pcreate[*].id
+  projectlists = octopusdeploy_project.pcreate[*]
   depends_on  = [octopusdeploy_project.pcreate]
 }
 
@@ -180,7 +180,7 @@ output "test" {
   value = local.projectlists
 }
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
-  for_each = toset(local.projectlists)
+  for_each = toset(local.projectlists[*].id)
  # count                                = length(var.pname)
   project_id              =  each.value
   step {
