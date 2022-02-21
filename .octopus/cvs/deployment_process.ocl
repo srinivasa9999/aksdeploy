@@ -1,0 +1,112 @@
+step "Deployment Summary" {
+
+    action {
+        action_type = "Octopus.Script"
+        is_disabled = true
+        is_required = true
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                echo "Deployment summary"          
+                
+            EOT
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+        worker_pool = "dynamicWorkerpool"
+    }
+}
+
+step "Manual intervention" {
+
+    action {
+        action_type = "Octopus.Manual"
+        is_disabled = true
+        is_required = true
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "True"
+            Octopus.Action.Manual.Instructions = "Approve"
+            Octopus.Action.Manual.ResponsibleTeamIds = "Everyone"
+        }
+    }
+}
+
+step "Create change request" {
+
+    action {
+        action_type = "Octopus.Script"
+        is_disabled = true
+        is_required = true
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                echo "Create change request"          
+                
+            EOT
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+        worker_pool = "dynamicWorkerpool"
+    }
+}
+
+step "Prepare to Deploy" {
+
+    action {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles,Octopus.Features.SubstituteInFiles"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                cd /home/srinivas/
+                rm -rf aksdeploy
+                git clone https://github.com/srinivasa9999/aksdeploy.git
+                cd aksdeploy
+                cat vars.yaml
+                          
+                
+            EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+        worker_pool = "test"
+    }
+}
+
+step "Deploy to K8s" {
+
+    action {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.JsonConfigurationVariables,Octopus.Features.SubstituteInFiles"
+            Octopus.Action.Package.JsonConfigurationVariablesTargets = "/home/srinivas/aksdeploy/vars.yaml"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                cd /home/srinivas/aksdeploy/
+                cat vars.yaml
+                ./deployment.sh $(get_octopusvariable "services")
+                          
+                
+            EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+        worker_pool = "test"
+    }
+}
+
+step "Send an Email" {
+
+    action {
+        action_type = "Octopus.Email"
+        is_disabled = true
+        properties = {
+            Octopus.Action.Email.Body = "deployment completed successfully"
+            Octopus.Action.Email.Subject = "AVA Deployment"
+            Octopus.Action.Email.To = "srinivasa.nallapati@gmail.com"
+            Octopus.Action.Email.ToTeamIds = "Everyone"
+        }
+    }
+}
