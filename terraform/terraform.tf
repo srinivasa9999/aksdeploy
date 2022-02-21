@@ -180,7 +180,7 @@ output "test" {
   value = local.projectlists
 }
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
-  for_each = toset(local.projectlists)
+  for_each = toset(var.pname)
  # count                                = length(var.pname)
   project_id              =  each.value
   step {
