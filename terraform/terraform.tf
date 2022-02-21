@@ -185,7 +185,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
   project_id = octopusdeploy_project.pcreate.id
   step {
     condition           = "Success"
-    name                = "Prepare to Deploy"
+    name                = "Deployment Summary"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
     run_script_action {
@@ -193,7 +193,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       condition                          = "Success"
       is_disabled                        = true
       is_required                        = true
-      name                               = "Prepare to Deploy"
+      name                               = "Deployment Summary"
       script_syntax                      = "Bash"
       script_body                        = <<-EOT
           echo "Deployment summary"          
@@ -226,7 +226,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
 
   step {
     condition           = "Success"
-    name                = "Prepare to Deploy"
+    name                = "Create change request"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
     run_script_action {
@@ -234,7 +234,7 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
       condition                          = "Success"
       is_disabled                        = true
       is_required                        = true
-      name                               = "Prepare to Deploy"
+      name                               = "Create change request"
       script_syntax                      = "Bash"
       script_body                        = <<-EOT
           echo "Create change request"          
