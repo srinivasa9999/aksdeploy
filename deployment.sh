@@ -12,7 +12,7 @@ for SERVICE_NAME in ${SERVICES[@]};do
 
     case $DEPLOY_ACTION in
         firsttime)
-            kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY -R -n $NAMESPACE
+            kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY -R -n $NAMESPACE/$DEPLOY_STRATEGY
             ;;
         upgrade)
             kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY/deploy.yml -n $NAMESPACE ##Version will change
