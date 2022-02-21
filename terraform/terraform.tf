@@ -198,6 +198,9 @@ locals  {
   projectlists = octopusdeploy_project.pcreate[*].id
 }
 
+output "test" {
+  value = local.projectlists
+}
 #  resource "octopusdeploy_deployment_process" "deploymentProcess" {
 #    for_each = toset(local.projectlists)
 #  #  count                   = length(var.pname)
