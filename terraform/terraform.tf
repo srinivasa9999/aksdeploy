@@ -193,7 +193,7 @@ data "octopusdeploy_projects" "projectnames" {
 
 }
 
-output "projects" {
+output "projectlist" {
   value = data.octopusdeploy_projects.projectnames[*].id
 }
 
