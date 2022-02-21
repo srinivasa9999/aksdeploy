@@ -348,10 +348,10 @@ step {
               is_required                        = false
               name                               = "Send an Email"
               properties                         = {
-                  - "Octopus.Action.Email.Body"      = "deployment completed successfully"
-                  - "Octopus.Action.Email.Subject"   = "AVA Deployemnt"
-                  - "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
-                  - "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
+                  "Octopus.Action.Email.Body"      = "deployment completed successfully"
+                  "Octopus.Action.Email.Subject"   = "AVA Deployemnt"
+                  "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
+                  "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
                 }
               run_on_server                      = false
 
