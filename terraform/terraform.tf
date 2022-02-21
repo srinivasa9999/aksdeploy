@@ -389,6 +389,8 @@ resource "octopusdeploy_variable" "services" {
      }
 }
 
+}
+
 
 
 
