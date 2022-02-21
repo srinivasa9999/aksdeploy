@@ -345,6 +345,16 @@ resource "octopusdeploy_variable" "services" {
 }
 
 
+data "octopusdeploy_accounts" "example" {
+  take         = 100
+}
+
+output "sshaccount" {
+  value = data.octopusdeploy_accounts.example 
+} 
+
+
+
 
 
 
