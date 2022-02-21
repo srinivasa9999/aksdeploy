@@ -172,7 +172,7 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
-  projectlists = octopusdeploy_project.pcreate[*].id
+  projectlists = octopusdeploy_project.pcreate
   depends_on  = [octopusdeploy_project.pcreate]
 }
 
