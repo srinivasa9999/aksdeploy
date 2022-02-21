@@ -187,9 +187,9 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 data "octopusdeploy_projects" "projectnames" {
       take = 10
-      projects = {
-    project_group_id = octopusdeploy_project_group.gcreate
- }
+      projects  {
+          project_group_id = octopusdeploy_project_group.gcreate
+      }
 
 }
 
