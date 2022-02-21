@@ -173,6 +173,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
   projectlists = octopusdeploy_project.pcreate[*].id
+  depends_on  = [octopusdeploy_project.pcreate]
 }
 
 output "test" {
