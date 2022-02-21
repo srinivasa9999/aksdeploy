@@ -187,6 +187,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 
 resource "octopusdeploy_deployment_process" "deploymentProcess" {
+  count                                = length(var.pname)
   project_id =  octopusdeploy_project.pcreate[count.index]
   step {
     condition           = "Success"
