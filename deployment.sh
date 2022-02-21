@@ -6,7 +6,7 @@ for SERVICE_NAME in ${SERVICES[@]};do
     K8S_REPO=$(python3 yamlparser.py $SERVICE_NAME git_url)
     ENVIRONMENT=$(python3 yamlparser.py $SERVICE_NAME environment)
     NAMESPACE=$(python3 yamlparser.py $SERVICE_NAME namespace)
-    IMAGEVER=$(python3 yamlparser.py $SERVICE_NAME iamgeversion)
+    IMAGEVER=$(python3 yamlparser.py $SERVICE_NAME imageversion)
     echo -e "$SERVICE_NAME -> $DEPLOY_ACTION -> $DEPLOY_STRATEGY -> $K8S_REPO"
 
     git clone $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME/$DEPLOY_STRATEGY
