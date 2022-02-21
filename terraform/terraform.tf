@@ -333,6 +333,31 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
 #     }
 #   }
 
+step {
+          condition           = "Success"
+          name                = "Send an Email"
+          package_requirement = "LetOctopusDecide"
+          properties          = {} 
+          start_trigger       = "StartAfterPrevious"
+          action {
+              action_type                        = "Octopus.Email" 
+              can_be_used_for_project_versioning = false 
+              condition                          = "Success"
+              features                           = []
+              is_disabled                        = false
+              is_required                        = false
+              name                               = "Send an Email"
+              properties                         = {
+                  - "Octopus.Action.Email.Body"      = "deployment completed successfully"
+                  - "Octopus.Action.Email.Subject"   = "AVA Deployemnt"
+                  - "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
+                  - "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
+                }
+              run_on_server                      = false
+
+            }
+}
+
   depends_on = [
      octopusdeploy_project.pcreate
        ]
