@@ -1,15 +1,21 @@
-terraform {
-  backend "azurerm" {
-    storage_account_name = "terraformoctopus"
-    container_name       = "terraform"
-    key                  = "key1"
+# terraform {
+#   backend "azurerm" {
+#     storage_account_name = "terraformoctopus"
+#     container_name       = "terraform"
+#     key                  = "key1"
 
-    # rather than defining this inline, the SAS Token can also be sourced
-    # from an Environment Variable - more information is available below.
-    sas_token = "sp=racwdli&st=2022-02-21T09:44:33Z&se=2022-02-26T17:44:33Z&sv=2020-08-04&sr=c&sig=eZCMFwtmYE8oTmXRPz2zq9jXL8RZE%2FNPyoSGlZdyhts%3D"
+#     # rather than defining this inline, the SAS Token can also be sourced
+#     # from an Environment Variable - more information is available below.
+#     sas_token = "sp=racwdli&st=2022-02-21T09:44:33Z&se=2022-02-26T17:44:33Z&sv=2020-08-04&sr=c&sig=eZCMFwtmYE8oTmXRPz2zq9jXL8RZE%2FNPyoSGlZdyhts%3D"
+#   }
+# }
+
+terraform {
+  backend "gcs" {
+    bucket  = "terraform-octopus"
+    prefix  = "terraform/state"
   }
 }
-
 
 terraform {
   required_providers {
