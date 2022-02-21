@@ -8,11 +8,11 @@ for SERVICE_NAME in ${SERVICES[@]};do
     NAMESPACE=$(python3 yamlparser.py $SERVICE_NAME namespace)
     echo -e "$SERVICE_NAME -> $DEPLOY_ACTION -> $DEPLOY_STRATEGY -> $K8S_REPO"
 
-    git clone $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME
+    git clone $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME/$DEPLOY_STRATEGY
 
     case $DEPLOY_ACTION in
         firsttime)
-            kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY -R -n $NAMESPACE/$DEPLOY_STRATEGY
+            kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY -R -n $NAMESPACE
             ;;
         upgrade)
             kubectl apply -f ./$SERVICE_NAME/$DEPLOY_STRATEGY/deploy.yml -n $NAMESPACE ##Version will change
