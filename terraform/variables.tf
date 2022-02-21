@@ -5,8 +5,8 @@ variable "pgname" {
 }
 
 variable "pname" {
-  type         = string
-  default      = "AVA"
+  type         = list
+  default      = ["ABC","DEF"]
   description  = "Project  Name"
 }
 
