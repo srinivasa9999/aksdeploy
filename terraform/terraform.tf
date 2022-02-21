@@ -101,17 +101,9 @@ resource "octopusdeploy_project_group" "gcreate" {
   name         = var.pgname
 }
 
-# data "octopusdeploy_project_groups" "groups" {
-#   partial_name  = var.pgname
-# }
-
-# output "group" {
-#   value = octopusdeploy_project_group.gcreate
-# }
-## Create Project 
-
 
 resource "octopusdeploy_project" "pcreate" {
+  count                                = length(var.pname)
   space_id                             = octopusdeploy_space.spaces.id
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
@@ -122,7 +114,7 @@ resource "octopusdeploy_project" "pcreate" {
   is_discrete_channel_release          = false
   is_version_controlled                = false
   lifecycle_id                         = octopusdeploy_lifecycle.lifecycle.id
-  name                                 = var.pname      #variable
+  name                                 = element(var.pname, count.index)     #variable
   project_group_id                     = octopusdeploy_project_group.gcreate.id
   tenanted_deployment_participation    = "Untenanted"
 
@@ -376,56 +368,56 @@ step {
        ]
 }
 
-locals {
-  yamlvars = yamldecode(file("../vars.yaml"))
-}
-# output "namespace" {
-#   value = local.yamlvars.productMgm.namespace
+# locals {
+#   yamlvars = yamldecode(file("../vars.yaml"))
+# }
+# # output "namespace" {
+# #   value = local.yamlvars.productMgm.namespace
+# # }
+
+# locals {
+#   projectid = octopusdeploy_project.pcreate.id
 # }
 
-locals {
-  projectid = octopusdeploy_project.pcreate.id
-}
+# resource "octopusdeploy_variable" "namespace" {
+#      name      = "productMgm:namespace"
+#      type      = "String"
+#      value     = local.yamlvars.productMgm.namespace
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#      }
+# }
+# resource "octopusdeploy_variable" "deploy_action" {
+#      name      = "shoppingCart:deploy_action"
+#      type      = "String"
+#      value     = local.yamlvars.shoppingCart.deploy_action
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#  #        ControlType  = "dropdown"
+#      }
+# }
+# resource "octopusdeploy_variable" "environment" {
+#      name      = "environment"
+#      type      = "String"
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#  #        ControlType  = "dropdown"
+#      }
+# }
 
-resource "octopusdeploy_variable" "namespace" {
-     name      = "productMgm:namespace"
-     type      = "String"
-     value     = local.yamlvars.productMgm.namespace
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
-     }
-}
-resource "octopusdeploy_variable" "deploy_action" {
-     name      = "shoppingCart:deploy_action"
-     type      = "String"
-     value     = local.yamlvars.shoppingCart.deploy_action
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
- #        ControlType  = "dropdown"
-     }
-}
-resource "octopusdeploy_variable" "environment" {
-     name      = "environment"
-     type      = "String"
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
- #        ControlType  = "dropdown"
-     }
-}
-
-resource "octopusdeploy_variable" "services" {
-     name      = "services"
-     type      = "String"
-     value     = local.yamlvars.services
-     owner_id = local.projectid
-     prompt     {
-         is_required  = "true"
- #        ControlType  = "dropdown"
-     }
-}
+# resource "octopusdeploy_variable" "services" {
+#      name      = "services"
+#      type      = "String"
+#      value     = local.yamlvars.services
+#      owner_id = local.projectid
+#      prompt     {
+#          is_required  = "true"
+#  #        ControlType  = "dropdown"
+#      }
+# }
 
 
 
