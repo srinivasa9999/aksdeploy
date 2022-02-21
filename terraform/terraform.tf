@@ -82,7 +82,7 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
   }
   tentacle_retention_policy {
     quantity_to_keep    = 30
-    should_keep_forever = false
+    should_keep_forever = true
     unit                = "Items"
   }
 
@@ -155,7 +155,7 @@ resource "octopusdeploy_token_account" "akstoken" {
 resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
   environments                      = [local.vardev,local.varqa,local.varprod]
-  name                              = "Kubernetes Cluster "
+  name                              = "Kubernetes Cluster"
   roles                             = ["Development"]
   tenanted_deployment_participation = "Untenanted"
   skip_tls_verification             = "true"
