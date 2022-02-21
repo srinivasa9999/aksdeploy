@@ -147,7 +147,7 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 }
 
 resource "octopusdeploy_token_account" "akstoken" {
-  name  = "Token Account "
+  name  = "Token Account"
   space_id = octopusdeploy_space.spaces.id
   token = "e43a46946cb6e5f2652d2ab7b5189ebcfca5856f45b5656a5945869d00b21cc1e353493fa833f6f2bda390d470e720749089d4ddf9da2fe403c4323f1620e20f"
 }
