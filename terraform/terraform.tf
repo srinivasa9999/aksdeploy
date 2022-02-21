@@ -103,7 +103,8 @@ resource "octopusdeploy_project_group" "gcreate" {
 
 
 resource "octopusdeploy_project" "pcreate" {
-  count                                = length(var.pname)
+  for_each                             = toset(var.pname)
+#  count                                = length(var.pname)
   space_id                             = octopusdeploy_space.spaces.id
   auto_create_release                  = false
   default_guided_failure_mode          = "EnvironmentDefault"
@@ -114,7 +115,8 @@ resource "octopusdeploy_project" "pcreate" {
   is_discrete_channel_release          = false
   is_version_controlled                = false
   lifecycle_id                         = octopusdeploy_lifecycle.lifecycle.id
-  name                                 = element(var.pname, count.index)     #variable
+#  name                                 = element(var.pname, count.index)     #variable
+  name                                 = each.value
   project_group_id                     = octopusdeploy_project_group.gcreate.id
   tenanted_deployment_participation    = "Untenanted"
 
@@ -167,31 +169,6 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
-# resource "octopusdeploy_ssh_key_account" "sshaccount" {
-#   name             = "SSH Key Pair Account"
-#   private_key_file = ""
-#   username         = "srinivas"
-# }
-# resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
-#   name        = "vmtarget"
-#   fingerprint = ""
-#   host        = "34.125.179.254"
-#   port        = 22
-#   account_id  = "createmanually"
-#   roles       = ["vmtarget"]
-#   environments= [local.vardev,local.varqa,local.varprod]
-# }
-
-# Define deployment Process
-
-
-# data "octopusdeploy_projects" "projectnames" {
-#       take = 10
-#       # projects  {
-#       #     project_group_id = octopusdeploy_project_group.gcreate.id
-#       # }
-
-# }
 
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
