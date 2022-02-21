@@ -179,8 +179,33 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 # Define deployment Process
 
+
+
 resource "octopusdeploy_deployment_process" "deploymentProcess" {
   project_id = octopusdeploy_project.pcreate.id
+  step {
+    condition           = "Success"
+    name                = "Prepare to Deploy"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = true
+      is_required                        = true
+      name                               = "Prepare to Deploy"
+      script_syntax                      = "Bash"
+      script_body                        = <<-EOT
+          echo "Deployment summary"          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+    }
+  }
+
+
+
+
   step {
     condition    = "Success"
     name         = "Manual intervention"
@@ -196,6 +221,26 @@ resource "octopusdeploy_deployment_process" "deploymentProcess" {
             "Octopus.Action.Manual.Instructions"              = "Approve"
                 }
 
+    }
+  }
+
+  step {
+    condition           = "Success"
+    name                = "Prepare to Deploy"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = true
+      is_required                        = true
+      name                               = "Prepare to Deploy"
+      script_syntax                      = "Bash"
+      script_body                        = <<-EOT
+          echo "Create change request"          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
     }
   }
 
