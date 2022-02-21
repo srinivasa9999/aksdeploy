@@ -195,191 +195,192 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 locals "projectlist" {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
-  projectlist = octopusdeploy_project.pcreate.projects[*].id
+  projectlists = octopusdeploy_project.pcreate.projects[*].id
 }
 
-# resource "octopusdeploy_deployment_process" "deploymentProcess" {
-#   count                   = length(var.pname)
-#   project_id              =  octopusdeploy_project.pcreate[count.index].
+ resource "octopusdeploy_deployment_process" "deploymentProcess" {
+   for_each = toset(var.projectlists)
+   count                   = length(var.pname)
+  project_id              =  octopusdeploy_project.pcreate[count.index]
+  step {
+    condition           = "Success"
+    name                = "Deployment Summary"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = true
+      is_required                        = true
+      name                               = "Deployment Summary"
+      script_syntax                      = "Bash"
+      script_body                        = <<-EOT
+          echo "Deployment summary"          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+    }
+  }
+
+
+
+
+  step {
+    condition    = "Success"
+    name         = "Manual intervention"
+    manual_intervention_action {
+      name                               = "Manual intervention"
+      is_disabled                        = "true"
+      is_required                        = true
+      responsible_teams                  = "teams-everyone"
+      instructions                       = "Approve"
+#      can_be_used_for_project_versioning = "true"
+      properties                         = {
+            "Octopus.Action.Manual.BlockConcurrentDeployments" = "True"
+            "Octopus.Action.Manual.Instructions"              = "Approve"
+                }
+
+    }
+  }
+
+  step {
+    condition           = "Success"
+    name                = "Create change request"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = true
+      is_required                        = true
+      name                               = "Create change request"
+      script_syntax                      = "Bash"
+      script_body                        = <<-EOT
+          echo "Create change request"          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+    }
+  }
+
+  step {
+    condition           = "Success"
+    name                = "Prepare to Deploy"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = false
+      is_required                        = true
+      name                               = "Prepare to Deploy"
+      script_syntax                      = "Bash"
+      script_body                        = <<-EOT
+            cd /home/srinivas/
+            rm -rf aksdeploy
+            git clone https://github.com/srinivasa9999/aksdeploy.git
+            cd aksdeploy
+            cat vars.yaml
+          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+    }
+  }
+
+  step {
+    condition           = "Success"
+    name                = "Deploy to K8s"
+    package_requirement = "LetOctopusDecide"
+    start_trigger       = "StartAfterPrevious"
+    run_script_action {
+      features     = [  "Octopus.Features.JsonConfigurationVariables", ]
+      can_be_used_for_project_versioning = false
+      condition                          = "Success"
+      is_disabled                        = false
+      is_required                        = true
+      name                               = "Deploy to K8s"
+      script_syntax                      = "Bash"
+      properties        = {
+         "Octopus.Action.EnabledFeatures" = "Octopus.Features.JsonConfigurationVariables"
+         "Octopus.Action.Package.JsonConfigurationVariablesTargets" = "vars.yaml"
+      }
+      script_body                        = <<-EOT
+            cd /home/srinivas/aksdeploy/
+            cat vars.yaml
+            ./deployment.sh $(get_octopusvariable "services")
+          
+        EOT
+      run_on_server                      = "true"
+      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+    }
+  }
+
 #   step {
 #     condition           = "Success"
-#     name                = "Deployment Summary"
-#     package_requirement = "LetOctopusDecide"
+#     name                = "Kubernetes Deploy"
 #     start_trigger       = "StartAfterPrevious"
-#     run_script_action {
-#       can_be_used_for_project_versioning = false
+#     target_roles        = ["Development"]
+#     run_kubectl_script_action {
+#       can_be_used_for_project_versioning = true
 #       condition                          = "Success"
-#       is_disabled                        = true
-#       is_required                        = true
-#       name                               = "Deployment Summary"
-#       script_syntax                      = "Bash"
-#       script_body                        = <<-EOT
-#           echo "Deployment summary"          
-#         EOT
-#       run_on_server                      = "true"
-#       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
-#     }
-#   }
-
-
-
-
-#   step {
-#     condition    = "Success"
-#     name         = "Manual intervention"
-#     manual_intervention_action {
-#       name                               = "Manual intervention"
-#       is_disabled                        = "true"
-#       is_required                        = true
-#       responsible_teams                  = "teams-everyone"
-#       instructions                       = "Approve"
-# #      can_be_used_for_project_versioning = "true"
+#       environments                       = []
+#       excluded_environments              = []
+#       name                               = "Run a kubectl CLI Script"
+#       is_disabled                        = false
+#       is_required                        = false
 #       properties                         = {
-#             "Octopus.Action.Manual.BlockConcurrentDeployments" = "True"
-#             "Octopus.Action.Manual.Instructions"              = "Approve"
-#                 }
-
-#     }
-#   }
-
-#   step {
-#     condition           = "Success"
-#     name                = "Create change request"
-#     package_requirement = "LetOctopusDecide"
-#     start_trigger       = "StartAfterPrevious"
-#     run_script_action {
-#       can_be_used_for_project_versioning = false
-#       condition                          = "Success"
-#       is_disabled                        = true
-#       is_required                        = true
-#       name                               = "Create change request"
-#       script_syntax                      = "Bash"
-#       script_body                        = <<-EOT
-#           echo "Create change request"          
-#         EOT
-#       run_on_server                      = "true"
-#       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
-#     }
-#   }
-
-#   step {
-#     condition           = "Success"
-#     name                = "Prepare to Deploy"
-#     package_requirement = "LetOctopusDecide"
-#     start_trigger       = "StartAfterPrevious"
-#     run_script_action {
-#       can_be_used_for_project_versioning = false
-#       condition                          = "Success"
-#       is_disabled                        = false
-#       is_required                        = true
-#       name                               = "Prepare to Deploy"
-#       script_syntax                      = "Bash"
-#       script_body                        = <<-EOT
-#             cd /home/srinivas/
-#             rm -rf aksdeploy
-#             git clone https://github.com/srinivasa9999/aksdeploy.git
-#             cd aksdeploy
-#             cat vars.yaml
-          
-#         EOT
-#       run_on_server                      = "true"
-#       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
-#     }
-#   }
-
-#   step {
-#     condition           = "Success"
-#     name                = "Deploy to K8s"
-#     package_requirement = "LetOctopusDecide"
-#     start_trigger       = "StartAfterPrevious"
-#     run_script_action {
-#       features     = [  "Octopus.Features.JsonConfigurationVariables", ]
-#       can_be_used_for_project_versioning = false
-#       condition                          = "Success"
-#       is_disabled                        = false
-#       is_required                        = true
-#       name                               = "Deploy to K8s"
-#       script_syntax                      = "Bash"
-#       properties        = {
-#          "Octopus.Action.EnabledFeatures" = "Octopus.Features.JsonConfigurationVariables"
-#          "Octopus.Action.Package.JsonConfigurationVariablesTargets" = "vars.yaml"
+#           "Octopus.Action.Package.DownloadOnTentacle" = "True"
+#           "Octopus.Action.Package.FeedId"             = "Feeds-1002"
+#           "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
+#  #         "Octopus.Action.RunOnServer"                = "True"
+#           "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
+#           "Octopus.Action.Script.ScriptSource"        = "Package"
 #       }
-#       script_body                        = <<-EOT
-#             cd /home/srinivas/aksdeploy/
-#             cat vars.yaml
-#             ./deployment.sh $(get_octopusvariable "services")
-          
-#         EOT
-#       run_on_server                      = "true"
-#       worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+#        run_on_server                      = "true"
+#        script_file_name                   = "firsttime_deployment.sh"
+#        package {
+#           acquisition_location = "ExecutionTarget"
+#           feed_id              = "Feeds-1002"
+#           name                 = "k8stest"
+#           extract_during_deployment = "true"
+#           package_id           = "srinivasa9999/k8stest"
+
+#       }
+#    #   worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
+
 #     }
 #   }
 
-# #   step {
-# #     condition           = "Success"
-# #     name                = "Kubernetes Deploy"
-# #     start_trigger       = "StartAfterPrevious"
-# #     target_roles        = ["Development"]
-# #     run_kubectl_script_action {
-# #       can_be_used_for_project_versioning = true
-# #       condition                          = "Success"
-# #       environments                       = []
-# #       excluded_environments              = []
-# #       name                               = "Run a kubectl CLI Script"
-# #       is_disabled                        = false
-# #       is_required                        = false
-# #       properties                         = {
-# #           "Octopus.Action.Package.DownloadOnTentacle" = "True"
-# #           "Octopus.Action.Package.FeedId"             = "Feeds-1002"
-# #           "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
-# #  #         "Octopus.Action.RunOnServer"                = "True"
-# #           "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
-# #           "Octopus.Action.Script.ScriptSource"        = "Package"
-# #       }
-# #        run_on_server                      = "true"
-# #        script_file_name                   = "firsttime_deployment.sh"
-# #        package {
-# #           acquisition_location = "ExecutionTarget"
-# #           feed_id              = "Feeds-1002"
-# #           name                 = "k8stest"
-# #           extract_during_deployment = "true"
-# #           package_id           = "srinivasa9999/k8stest"
+step {
+          condition           = "Success"
+          name                = "Send an Email"
+          package_requirement = "LetOctopusDecide"
+          properties          = {} 
+          start_trigger       = "StartAfterPrevious"
+          action {
+              action_type                        = "Octopus.Email" 
+              can_be_used_for_project_versioning = false 
+              condition                          = "Success"
+              features                           = []
+              is_disabled                        = false
+              is_required                        = false
+              name                               = "Send an Email"
+              properties                         = {
+                  "Octopus.Action.Email.Body"      = "deployment completed successfully"
+                  "Octopus.Action.Email.Subject"   = "AVA Deployment"
+                  "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
+                  "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
+                }
+              run_on_server                      = false
 
-# #       }
-# #    #   worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
+            }
+}
 
-# #     }
-# #   }
-
-# step {
-#           condition           = "Success"
-#           name                = "Send an Email"
-#           package_requirement = "LetOctopusDecide"
-#           properties          = {} 
-#           start_trigger       = "StartAfterPrevious"
-#           action {
-#               action_type                        = "Octopus.Email" 
-#               can_be_used_for_project_versioning = false 
-#               condition                          = "Success"
-#               features                           = []
-#               is_disabled                        = false
-#               is_required                        = false
-#               name                               = "Send an Email"
-#               properties                         = {
-#                   "Octopus.Action.Email.Body"      = "deployment completed successfully"
-#                   "Octopus.Action.Email.Subject"   = "AVA Deployment"
-#                   "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
-#                   "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
-#                 }
-#               run_on_server                      = false
-
-#             }
-# }
-
-#   depends_on = [
-#      octopusdeploy_project.pcreate
-#        ]
-# }
+  depends_on = [
+     octopusdeploy_project.pcreate
+       ]
+}
 
 # locals {
 #   yamlvars = yamldecode(file("../vars.yaml"))
