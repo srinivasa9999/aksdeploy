@@ -10,7 +10,7 @@ for SERVICE_NAME in ${SERVICES[@]};do
     echo -e "$SERVICE_NAME -> $DEPLOY_ACTION -> $DEPLOY_STRATEGY -> $K8S_REPO"
 
     git clone $K8S_REPO -b $ENVIRONMENT $SERVICE_NAME/$DEPLOY_STRATEGY
-    sed -i s/$IMAGEVER/imageversion/g ./$SERVICE_NAME/$DEPLOY_STRATEGY/deploy.yml
+    sed -i s/imageversion/$IMAGEVER/g ./$SERVICE_NAME/$DEPLOY_STRATEGY/deploy.yml
 
     case $DEPLOY_ACTION in
         firsttime)
