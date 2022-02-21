@@ -195,7 +195,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
-  projectlists = octopusdeploy_project.pcreate[count.index].id
+  projectlists = octopusdeploy_project.pcreate[*].id
 }
 
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
