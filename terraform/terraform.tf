@@ -349,7 +349,7 @@ step {
               name                               = "Send an Email"
               properties                         = {
                   "Octopus.Action.Email.Body"      = "deployment completed successfully"
-                  "Octopus.Action.Email.Subject"   = "AVA Deployemnt"
+                  "Octopus.Action.Email.Subject"   = "AVA Deployment"
                   "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
                   "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
                 }
