@@ -201,7 +201,7 @@ locals  {
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
    for_each = toset(var.projectlists)
  #  count                   = length(var.pname)
-  project_id              =  octopusdeploy_project.pcreate[each.id]
+  project_id              =  local.projectlists[each.value]
   step {
     condition           = "Success"
     name                = "Deployment Summary"
