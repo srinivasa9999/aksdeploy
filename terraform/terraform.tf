@@ -203,7 +203,7 @@ output "test" {
 }
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
   for_each = toset(local.projectlists)
-  count                                = length(var.pname)
+ # count                                = length(var.pname)
   project_id              =  each.value
   step {
     condition           = "Success"
