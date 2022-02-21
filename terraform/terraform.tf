@@ -119,7 +119,7 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
 resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     name                          = "dynamicWorkerpool"
     worker_type                   = "UbuntuDefault"
-    is_default                    = "true"
+    is_default                    = "false"
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
