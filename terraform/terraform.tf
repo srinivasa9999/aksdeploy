@@ -193,7 +193,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 # }
 
-locals "projectlist" {
+locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
   projectlists = octopusdeploy_project.pcreate.projects[*].id
 }
