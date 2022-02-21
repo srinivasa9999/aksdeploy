@@ -167,15 +167,15 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 #   private_key_file = "instance"
 #   username         = "srinivas"
 # }
-resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
-  name        = "vmtarget"
-  fingerprint = ""
-  host        = "34.125.179.254"
-  port        = 22
-  account_id  = "createmanually"
-  roles       = ["vmtarget"]
-  environments= [local.vardev,local.varqa,local.varprod]
-}
+# resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
+#   name        = "vmtarget"
+#   fingerprint = ""
+#   host        = "34.125.179.254"
+#   port        = 22
+#   account_id  = "createmanually"
+#   roles       = ["vmtarget"]
+#   environments= [local.vardev,local.varqa,local.varprod]
+# }
 
 # Define deployment Process
 
