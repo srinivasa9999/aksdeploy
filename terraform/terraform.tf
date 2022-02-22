@@ -124,7 +124,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
-  name     = "Username-Password Account "
+  name     = "Username-Password Account"
   password = var.ssh_password #get from secure environment/store
   username = var.ssh_username
 }
@@ -134,7 +134,10 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
   name   =  "Static WorkerPool"
 }
 
-
+resource "octopusdeploy_gcp_account" "gcpaccount" {
+  json_key = "octopus.json"
+  name     = "GCP Account"
+}
 resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   name        = "SSH Connection Deployment Target"
   fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"
