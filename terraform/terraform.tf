@@ -124,7 +124,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 resource "octopusdeploy_ssh_key_account" "example" {
   name             = "SSH Key Pair Account (OK to Delete)"
-  private_key_file = "dddd.key"
+  private_key_passphrase = "dddd.key"
   username         = "srinivas"
 }
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
