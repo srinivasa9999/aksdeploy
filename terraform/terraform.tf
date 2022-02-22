@@ -122,6 +122,13 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
+
+resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
+  name     = "Username-Password Account (OK to Delete)"
+  password = var.ssh_password get from secure environment/store
+  username = var.ssh_username
+}
+
 ## Create Project Group
 
 resource "octopusdeploy_project_group" "gcreate" {
