@@ -1,4 +1,4 @@
 pgname = "AVAA"
-pname = "testproject"
+pname = ["testproject"]
 ssh_username = "srinivas"
 ssh_password = "srinivas"
