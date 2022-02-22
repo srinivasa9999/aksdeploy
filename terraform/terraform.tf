@@ -129,6 +129,13 @@ resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
   username = var.ssh_username
 }
 
+
+resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
+  name   =  "Static WorkerPool"
+}
+
+
+
 ## Create Project Group
 
 resource "octopusdeploy_project_group" "gcreate" {
@@ -182,9 +189,9 @@ locals  {
   depends_on  = [octopusdeploy_project.pcreate]
 }
 
-output "test" {
-  value = local.projectlists
-}
+# output "test" {
+#   value = local.projectlists
+# }
  resource "octopusdeploy_deployment_process" "deploymentProcess" {
   for_each = toset(var.pname)
  # count                                = length(var.pname)
