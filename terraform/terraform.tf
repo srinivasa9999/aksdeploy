@@ -286,7 +286,7 @@ locals  {
           
         EOT
       run_on_server                      = "true"
-      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+      worker_pool_id                     = octopusdeploy_static_worker_pool.staticworkerpool.id
     }
   }
 
@@ -310,7 +310,7 @@ locals  {
           
         EOT
       run_on_server                      = "true"
-      worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id
+      worker_pool_id                     = octopusdeploy_static_worker_pool.staticworkerpool.id
     }
   }
 
@@ -326,7 +326,7 @@ step {
               can_be_used_for_project_versioning = false 
               condition                          = "Success"
               features                           = []
-              is_disabled                        = false
+              is_disabled                        = "true"
               is_required                        = false
               name                               = "Send an Email"
               properties                         = {
