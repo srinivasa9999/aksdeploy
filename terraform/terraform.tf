@@ -280,7 +280,7 @@ locals  {
       script_body                        = <<-EOT
             cd /home/srinivas/
             rm -rf aksdeploy
-            git clone https://github.com/srinivasa9999/aksdeploy.git
+            git clone https://github.com/srinivasa9999/aksdeploy.git -b multiproject
             cd aksdeploy
             cat vars.yaml
           
