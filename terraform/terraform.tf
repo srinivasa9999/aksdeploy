@@ -145,7 +145,7 @@ resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   port        = 22
   environments = [local.vardev,local.varqa,local.varprod]
   roles        = ["Deployment"]
-  account_id  = octopusdeploy_username_password_account.sshuserpassaccount.id
+  account_id  = octopusdeploy_gcp_account.gcpaccount.id
 }
 ## Create Project Group
 
