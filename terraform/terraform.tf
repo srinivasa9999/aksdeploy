@@ -11,13 +11,6 @@
 # }
 
 terraform {
-  backend "gcs" {
-    bucket  = "terraform-octopus"
-    prefix  = "terraform/state"
-  }
-}
-
-terraform {
   required_providers {
     octopusdeploy = {
       source = "OctopusDeployLabs/octopusdeploy"
