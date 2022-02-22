@@ -175,20 +175,20 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
-# resource "octopusdeploy_ssh_key_account" "sshaccount" {
-#   name             = "SSH Key Pair Account"
-#   private_key_file = ""
-#   username         = "srinivas"
-# }
-# resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
-#   name        = "vmtarget"
-#   fingerprint = ""
-#   host        = "34.125.179.254"
-#   port        = 22
-#   account_id  = "createmanually"
-#   roles       = ["vmtarget"]
-#   environments= [local.vardev,local.varqa,local.varprod]
-# }
+resource "octopusdeploy_ssh_key_account" "sshaccount" {
+  name             = "SSH Key Pair Account"
+  private_key_file = "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlHNUFJQkFBS0NBWUVBNkdoc3dvOGdNL2NrL3BoU3JKVE53VjROQ2thK3BKcTlGN3lOWTUvbENaaEJVZFdmCmpQYnIrSEJ2SWE0N3ZBWHAyNUhWM0tlK0hxWlJaV2FxZFVTd0FPUUhocUVSallTUEpydmJ2azRRZ2RFVTJGRk4KdFdRNHlsc0NvV3cycHRVZkl1d2tXajF2d0ZGeUlGSWV2bm5LV0Y4TzlENldnNmxzY1pFY0xWV29WUjZFR2J3TgpGcFJEU0puRTdodlFiUXJSSXpxSlh2L3Z3a2daYnc1ZkdlKy8rbFRNbU42OWlGbXpqTHowZjl6SW5HVDJzTE1FCkpEdmZTQ0EvNlA3R0ZRUkNiM2czZENGK0VzRHVxdUMyYVBCSkR0WUltUlRuUTRheXVmTDFVTzRCQnR5dHczNG0KaGRFVWRCVTFjVER3TnFoMGJlREZBN1BnNmpWODdZcHpNYmw0aHZrMExadlJkMWc1b2FvblI3ZDMrUHBiR25LaAo1K0VLUWlXOGNZRnowMUFzMnZ3NFJBSkpzVzVaU3Fyc3RLYmxTOENtM0h1U1FMNlh0bnBadE9JVmhEZjcvekZ2Clc5Y3F6Zm5QMnUyRG9Oa09Ub0swZUF3ZTE3cWsxamJlRVQrUHBkNFFKaGtLdzNUSnlWSkhrWGFLUkVlN1Q2S0kKRkIwMmhyRmdBd3B2aEtCM0FnTUJBQUVDZ2dHQWJEdmRrc3BIREF4b0xTMVJLMUJ0ZGtWUHUxNXhBSVdUMUk4YQpKYkJjWVJpSUt3MWFyYko4K0ltY0o4cFZ4VjNYcUVzRmx5cURqeENUemE1L2FmZWdJL29PU3pPTjBpTk82NUlICloxeEJzY05tZXN0NmJpU0xraW5LVXRUcnFzeU1JSjVxMjUvTEFIeXRzc0dyMGJjMGRlMW5NSFpKY0cyaHRFNEoKR2svUEFqMGc5ajh1dFRvOUQzMlZTZktvSVhBdEw4UGVIK0QvanJJM0xoSTZWZ0RpbmptSnd4UFFuc1J2cXZhQQp3MTlXQ2dlM0gxbHZiMVIyeXNkQ0hFY3locTBoUkRGTDhtdGpJdE1zak9YT3ZyZ2UybG01aFJVSk51S1pDemdPCm10N09lN3g1OHRPRTJNWGRWSm5NN2puRytaOGFzbTRUWGNKbFlCa29ZMmJYc3RFeEdpQTVEcVlwQkd1RkszSmIKOVJoQmlzeGFiTzl6Y0hDNGxIajQzQkYvU0d5NmpJdUxOSjQ3SlRNTm5ncXhOWGZDQmJOMi8wVmluQWNXL2Y3QQpzbmlweGcrTUhYcXh5ZHZHdjBlV21kZHJoblBJOEorazZJUDNsTkNrU3VBemZEbE9hVnEvZWlzQjlPSWlHbGtNCnNGL05YM1I4SW9XMVBIRGVYMUt3ZkZDdFpvRVJBb0hCQVBzQU5MeG5JOEpCZUlPRDRibVl5RTgzRDVNa2FITlIKcDMvakRMVGhlTjgzLytlaSt4RVc1N3FxUk9JUmduMXUxYjFTbUJTOVBKMU1pT3NnL0cvUGNtVWdjQmpmS2VIRApiQzdGN3J3VDJxaTdoTDRtb3E4cmlnRytzUk9VYjVjNzNVSlloK0p5UlNMaTg3cFFrTlBsWk9MYVhoZVUrN1JZCjhsanVzMjcySW5xNEExaGdzWDZIK3FHMDFndk1WUDZIaXV3NU43WGhpN09YRzVPbzMyQ0N2M1k3RTFSbGYrRWkKYmZibEtESndTeXNaY0VLdC9GS3dkbkJwejE2NUIvWUJlUUtCd1FEdENXc0ZUWHdPWm9XWVNHU2ZDN0xpMDl1cgpBUXF2eklBazM4R3FqbURjeXNVcVpQTEZDSDkwMG9HU3Y2bzRib2oyREpJc2lnL3p0Z2NObVdQaldTdHJ6blM1CjhtNUdYenZqdGFZdmJGNDBSZ0hGem00dzkwQng2UWlmc01naEdzQzhOZkprQkRqM3ZiRFRYQVIrYjVlSDNOdnEKakwyS0N1cVl0TE9LWVBqWC9CdDM5cWJUeXdCNHgyZXhQRjBQbFByMnBzLzg2aUdxanNXSGg5eEgxYkd3L1d6QQoxb3NQcGQzTk4xdDNIQkxFY3lhbDU5dCs4WHAxbXRrSEE2bGZwVzhDZ2NCb1JldWlvVTV2c3ZjMzI1LzRsSW9TCnJwTWYwNjQ0eWlGRnRiTmZxWk9uV0FKTjNwMWl1aHRHcHRtNitQODIwTWFtd2hzLzhtV3VDMCtPTHNQd1IwUUUKMHZiK3ZpY09EVHR5S3ZSRTJoS3Fxa3c1R3AvWEdjVlplRGprSTNSQVpiUkRqYmZWMFJiN3FVRUxrOUMyMXNPVQpvcGNZUU9KWVIrTldJc1FVUXRpTUZzbjgreDZCckVmb3lkRnFVVmExN3VVOXdYOXRaZWU5a2ZiNDN0ejlvUk9kCk1HbVZWQjFPRUJtU3loeHE1OCt5ZGZ6M0ZvU09iWlNtbXE1MWNYVG5OREVDZ2NFQW5VWk9lQ285VWVDOGE1bzkKQ1RwZDZ4cmUrY3VySjVIc3hJcWltV1AyNlFpeFlidXhTUUttYndEdGNFMHp5Rld2RW5LczJsaVExUWZHRGtQawpmd2kvUXJ5dHZtTVl3Q0NZUURKYW5jU3RqTW1XaTRTNG9FeXR1ZWNCRGRQaU5mVG1SUHNXWlQ1WC9pa2lsbHJMCnNJaWlaa2NvczZ2R1p6MXZBdnVDMVNJYWVsU1FkVHgyM0xncEMvcGkxcnBTbFBBb3hGZFNVV0dZRE83R0tYTC8KdWJvVU9IY3VIWlU4bDVsYVhidUpPTEtyMFNVR1U3WlBjUjhRUGRBTWlCYnAzc2lKQW9IQkFMMkZ4cktCK0lsYwptbU1BRWhZQXBsWVBUSjNLU0ZSbkFyNkZZbHp6enZhREg3cWlqSVIwVjROU2Ziejh0cnl5SzcxR2JGSUlvUE5ZClROd2ZXcWVlTmRQTkhZajJ3ektPSkxVaUV3Z1lNRk0yaEp4UjZaWWU5czRLMTZ2YVJpbGh2WGppdjR1Vk5JZC8KdFV3V0pXOFJuYzR0TXlOY3pCK0NwUVRpd1hZNVpyWlB1WjRQVEU0MmEzSVh6SmF6MmZCMWhETFFpVUgwQVBUZQpadmRkdjhKNWtFU2RER1F4NjFCaWM3ai9VcWZ3KzRqNDZrdURSNm9GVzB2ZW8wVkwyYzdKWHc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQ=="
+  username         = "srinivas"
+}
+resource "octopusdeploy_ssh_connection_deployment_target" "vmtarget" {
+  name        = "vmtarget"
+  fingerprint = ""
+  host        = "34.125.179.254"
+  port        = 22
+  account_id  = octopusdeploy_ssh_key_account.sshaccount.id
+  roles       = ["vmtarget"]
+  environments= [local.vardev,local.varqa,local.varprod]
+}
 
 # Define deployment Process
 
