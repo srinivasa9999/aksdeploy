@@ -125,7 +125,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
   name     = "Username-Password Account (OK to Delete)"
-  password = var.ssh_password get from secure environment/store
+  password = var.ssh_password #get from secure environment/store
   username = var.ssh_username
 }
 
