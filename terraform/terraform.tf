@@ -122,7 +122,11 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
     description                   =  "workers will be loaded from Octopus cloud"
 }
 
-
+resource "octopusdeploy_ssh_key_account" "example" {
+  name             = "SSH Key Pair Account (OK to Delete)"
+  private_key_file = "dddd.key"
+  username         = "srinivas"
+}
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
   name     = "Username-Password Account"
   password = var.ssh_password #get from secure environment/store
@@ -134,10 +138,7 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
   name   =  "Static WorkerPool"
 }
 
-resource "octopusdeploy_gcp_account" "gcpaccount" {
-  json_key = "octopus.json"
-  name     = "GCP Account"
-}
+
 resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   name        = "SSH Connection Deployment Target"
   fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"
@@ -145,7 +146,7 @@ resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   port        = 22
   environments = [local.vardev,local.varqa,local.varprod]
   roles        = ["Deployment"]
-  account_id  = octopusdeploy_gcp_account.gcpaccount.id
+  account_id  = octopusdeploy_username_password_account.sshuserpassaccount.id
 }
 ## Create Project Group
 
