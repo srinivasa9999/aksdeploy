@@ -140,6 +140,9 @@ resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   fingerprint = ""
   host        = var.ssh_host
   port        = 22
+  environments = 
+  roles        = "Development"
+  account_id  = octopusdeploy_username_password_account.sshuserpassaccount.id
 }
 ## Create Project Group
 
