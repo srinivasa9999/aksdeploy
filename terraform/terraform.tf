@@ -306,7 +306,8 @@ locals  {
       script_body                        = <<-EOT
             cd /home/srinivas/aksdeploy/
             cat vars.yaml
-            ./deployment.sh $(get_octopusvariable "services")
+            SERVICES=$(python3 yamlparser.py services name)
+            ./deployment.sh $SERVICES
           
         EOT
       run_on_server                      = "true"
