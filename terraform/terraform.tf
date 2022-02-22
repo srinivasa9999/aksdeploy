@@ -137,7 +137,7 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
 
 resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   name        = "SSH Connection Deployment Target"
-  fingerprint = "MD5:6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"
+  fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"
   host        = var.ssh_host
   port        = 22
   environments = [local.vardev,local.varqa,local.varprod]
