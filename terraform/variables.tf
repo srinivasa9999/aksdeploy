@@ -34,3 +34,8 @@ variable "ssh_password" {
  # default     = ""
   sensitive   = true
 }
+
+variable "ssh_host" {
+  type        = string
+  default     = "SSH Hostname or IP Addr"
+}

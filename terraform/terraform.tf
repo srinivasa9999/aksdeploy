@@ -124,7 +124,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
-  name     = "Username-Password Account (OK to Delete)"
+  name     = "Username-Password Account "
   password = var.ssh_password #get from secure environment/store
   username = var.ssh_username
 }
@@ -135,7 +135,12 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
 }
 
 
-
+resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
+  name        = "SSH Connection Deployment Target"
+  fingerprint = ""
+  host        = var.ssh_host
+  port        = 22
+}
 ## Create Project Group
 
 resource "octopusdeploy_project_group" "gcreate" {
