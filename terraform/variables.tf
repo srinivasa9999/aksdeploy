@@ -32,7 +32,7 @@ variable "ssh_username" {
 variable "ssh_password" {
   type        = string
  # default     = ""
-  sensitive   = true
+#  sensitive   = true
 }
 
 variable "ssh_host" {
