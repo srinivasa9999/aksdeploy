@@ -313,46 +313,42 @@ locals  {
       worker_pool_id                     = octopusdeploy_static_worker_pool.staticworkerpool.id
     }
   }
-step {
-          condition           = "Success"
-          name                = "Deploy to kubernetes"
-          package_requirement = "LetOctopusDecide"
-          properties          = {
-              "Octopus.Action.TargetRoles" = "Development"
-            } 
-          start_trigger       = "StartAfterPrevious"
-          target_roles        = ["Development",]
 
-          run_kubectl_script_action {
-              can_be_used_for_project_versioning = false
-              condition                          = "Success"
-              is_disabled                        = false
-              is_required                        = false
-              name                               = "Deploy to kubernetes" 
-              properties                         = {
-                  #"Octopus.Action.RunOnServer"         = "true"
-                  "Octopus.Action.Script.ScriptBody"   = <<-EOT
-                        cd /home/srinivas/aksdeploy/
-                        cat vars.yaml
-                        SERVICES=$(python3 yamlparser.py services name)
-                        ./deployment.sh $SERVICES
-                    EOT
-                  "Octopus.Action.Script.ScriptSource" = "Inline"
-                  "Octopus.Action.Script.Syntax"       = "Bash"
-                }
-              
-              #run_on_server                      = true
-              script_source                      = "Inline"
-              package {
-                  acquisition_location = "ExecutionTarget"
-                  feed_id              = "Feeds-1002"
-                  name                 = "k8stest"
-                  extract_during_deployment = "true"
-                  package_id           = "srinivasa9999/k8stest"
-              }
-              worker_pool_id = octopusdeploy_static_worker_pool.staticworkerpool.id              
-            }
-}
+  step {
+    condition           = "Success"
+    name                = "Kubernetes Deploy"
+    start_trigger       = "StartAfterPrevious"
+    target_roles        = ["Development"]
+    run_kubectl_script_action {
+      can_be_used_for_project_versioning = true
+      condition                          = "Success"
+      environments                       = []
+      excluded_environments              = []
+      name                               = "Run a kubectl CLI Script"
+      is_disabled                        = false
+      is_required                        = false
+      properties                         = {
+          "Octopus.Action.Package.DownloadOnTentacle" = "True"
+          "Octopus.Action.Package.FeedId"             = "Feeds-1002"
+          "Octopus.Action.Package.PackageId"          = "srinivasa9999/aksdeploy"
+ #         "Octopus.Action.RunOnServer"                = "True"
+          "Octopus.Action.Script.ScriptFileName"      = "firsttime_deployment.sh"
+          "Octopus.Action.Script.ScriptSource"        = "Package"
+      }
+       run_on_server                      = "true"
+       script_file_name                   = "firsttime_deployment.sh"
+       package {
+          acquisition_location = "ExecutionTarget"
+          feed_id              = "Feeds-1002"
+          name                 = "k8stest"
+          extract_during_deployment = "true"
+          package_id           = "srinivasa9999/k8stest"
+
+      }
+   #   worker_pool_id                     = octopusdeploy_dynamic_worker_pool.dynamicworker.id 
+
+    }
+  }
 
 step {
           condition           = "Success"
