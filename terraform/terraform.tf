@@ -337,6 +337,7 @@ locals  {
                     EOT
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
+                  "Octopus.Action.Script.ScriptFilename" = "None"
        }
     }
   }
