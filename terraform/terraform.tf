@@ -330,7 +330,7 @@ step {
               is_required                        = false
               name                               = "Deploy to kubernetes" 
               properties                         = {
-                  "Octopus.Action.RunOnServer"         = "true"
+                  #"Octopus.Action.RunOnServer"         = "true"
                   "Octopus.Action.Script.ScriptBody"   = <<-EOT
                         cd /home/srinivas/aksdeploy/
                         cat vars.yaml
