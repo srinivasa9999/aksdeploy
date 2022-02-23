@@ -336,13 +336,20 @@ step {
                         cat vars.yaml
                         SERVICES=$(python3 yamlparser.py services name)
                         ./deployment.sh $SERVICES
-
                     EOT
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
                 } 
               run_on_server                      = true
               script_source                      = "Inline"
+              primary_package {
+                  acquisition_location = ""
+                  feed_id              = ""
+                  id                   = ""
+                  name                 = ""
+                  package_id           = ""
+                  properties           = ""
+              }              
             }
 }
 
