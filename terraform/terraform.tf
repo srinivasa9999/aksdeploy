@@ -322,11 +322,9 @@ locals  {
     run_kubectl_script_action {
       can_be_used_for_project_versioning = true
       condition                          = "Success"
-      environments                       = []
-      excluded_environments              = []
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
-      is_required                        = false
+      is_required                        = "true"
       properties                         = {
                   "Octopus.Action.Script.ScriptBody"   = <<-EOT
                         cd /home/srinivas/aksdeploy/
