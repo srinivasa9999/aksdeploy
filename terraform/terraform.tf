@@ -340,14 +340,7 @@ locals  {
                   "Octopus.Action.Script.Syntax"       = "Bash"
        } 
 #       run_on_server                      = "true"
-       package {
-          acquisition_location = "ExecutionTarget"
-          feed_id              = "Feeds-1002"
-          name                 = "k8stest"
-          extract_during_deployment = "true"
-          package_id           = "srinivasa9999/k8stest"
 
-      }
     }
   }
 
