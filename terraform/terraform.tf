@@ -337,7 +337,6 @@ locals  {
                         ./deployment.sh $SERVICES
 
                     EOT
-
                   "Octopus.Action.Script.ScriptFilename" = "None"
        }
     }
