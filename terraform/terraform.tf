@@ -328,6 +328,8 @@ locals  {
       script_source                      = "Inline" 
       run_on_server                      = "true"      
       properties                         = {
+                  "Octopus.Action.Script.ScriptSource" = "Inline"
+                  "Octopus.Action.Script.Syntax"       = "Bash"
                   "Octopus.Action.Script.ScriptBody"   = <<-EOT
                         cd /home/srinivas/aksdeploy/
                         cat vars.yaml
@@ -335,8 +337,7 @@ locals  {
                         ./deployment.sh $SERVICES
 
                     EOT
-                  "Octopus.Action.Script.ScriptSource" = "Inline"
-                  "Octopus.Action.Script.Syntax"       = "Bash"
+
                   "Octopus.Action.Script.ScriptFilename" = "None"
        }
     }
