@@ -340,7 +340,6 @@ locals  {
                   "Octopus.Action.Script.Syntax"       = "Bash"
        } 
 #       run_on_server                      = "true"
-       script_file_name                   = "firsttime_deployment.sh"
        package {
           acquisition_location = "ExecutionTarget"
           feed_id              = "Feeds-1002"
