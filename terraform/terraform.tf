@@ -305,7 +305,6 @@ locals  {
       script_syntax                      = "Bash"  ## HArdcoded shell script
       script_body                        = <<-EOT
             cd /home/srinivas/aksdeploy/
-            cat vars.yaml
             SERVICES=$(python3 yamlparser.py services name)
             ./deployment.sh $SERVICES
           
