@@ -339,7 +339,7 @@ locals  {
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
        } 
-#       run_on_server                      = "true"
+       run_on_server                      = "true"
 
     }
   }
