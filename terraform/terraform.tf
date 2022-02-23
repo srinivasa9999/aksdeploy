@@ -299,7 +299,7 @@ locals  {
       features     = [  "Octopus.Features.JsonConfigurationVariables", ]
       can_be_used_for_project_versioning = false
       condition                          = "Success"
-      is_disabled                        = false
+      is_disabled                        = true
       is_required                        = true
       name                               = "Deploy to K8s"
       script_syntax                      = "Bash"  ## HArdcoded shell script
@@ -313,7 +313,38 @@ locals  {
       worker_pool_id                     = octopusdeploy_static_worker_pool.staticworkerpool.id
     }
   }
+step {
+          condition           = "Success"
+          name                = "Deploy to kubernetes"
+          package_requirement = "LetOctopusDecide"
+          properties          = {
+              "Octopus.Action.TargetRoles" = "Development"
+            } 
+          start_trigger       = "StartAfterPrevious"
+          target_roles        = ["Development",]
 
+          run_kubectl_script_action {
+              can_be_used_for_project_versioning = false
+              condition                          = "Success"
+              is_disabled                        = false
+              is_required                        = false
+              name                               = "Deploy to kubernetes" 
+              properties                         = {
+                  "Octopus.Action.RunOnServer"         = "true"
+                  "Octopus.Action.Script.ScriptBody"   = <<-EOT
+                        cd /home/srinivas/aksdeploy/
+                        cat vars.yaml
+                        SERVICES=$(python3 yamlparser.py services name)
+                        ./deployment.sh $SERVICES
+
+                    EOT
+                  "Octopus.Action.Script.ScriptSource" = "Inline"
+                  "Octopus.Action.Script.Syntax"       = "Bash"
+                } 
+              run_on_server                      = true
+              script_source                      = "Inline"
+            }
+}
 
 step {
           condition           = "Success"
