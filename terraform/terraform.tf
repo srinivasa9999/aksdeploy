@@ -340,15 +340,14 @@ step {
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
                 } 
-              run_on_server                      = true
-              script_source                      = "Inline"
-              primary_package {
-                  acquisition_location = ""
-                  feed_id              = ""
-                  id                   = ""
-                  name                 = ""
-                  package_id           = ""
-              }              
+              # run_on_server                      = true
+              # script_source                      = "Inline"
+              # primary_package {
+              #     acquisition_location = ""
+              #     feed_id              = ""
+              #     name                 = "Optional"
+              #     package_id           = ""
+              # }              
             }
 }
 
