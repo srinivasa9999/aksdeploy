@@ -13,7 +13,7 @@ variable "pname" {
 variable "environments" {
   description = "Create Environments with these Names"
   type        = list(string)
-  default     = ["development", "qa", "prod"]
+#  default     = ["development", "qa", "prod"]
 }
 
 variable "k8scluster" {
