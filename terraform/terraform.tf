@@ -328,7 +328,6 @@ locals  {
       is_disabled                        = false
       is_required                        = false
       properties                         = {
-                  "Octopus.Action.RunOnServer"         = "true"
                   "Octopus.Action.Script.ScriptBody"   = <<-EOT
                         cd /home/srinivas/aksdeploy/
                         cat vars.yaml
