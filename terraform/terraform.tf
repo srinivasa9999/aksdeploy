@@ -340,7 +340,7 @@ step {
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
                 }
-              worker_pool_id = octopusdeploy_static_worker_pool.staticworkerpool.id 
+              
               # run_on_server                      = true
               script_source                      = "Inline"
               # primary_package {
@@ -348,7 +348,8 @@ step {
               #     feed_id              = ""
               #     name                 = "Optional"
               #     package_id           = ""
-              # }              
+              # }
+              worker_pool_id = octopusdeploy_static_worker_pool.staticworkerpool.id              
             }
 }
 
