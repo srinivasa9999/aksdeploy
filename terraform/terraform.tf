@@ -295,6 +295,10 @@ locals  {
     name                = "Deploy to K8s"
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
+    properties          = {
+         "Octopus.Action.TargetRoles" = "Development"
+            }
+    target_roles        = ["Development", ] 
     run_script_action {
       features     = [  "Octopus.Features.JsonConfigurationVariables", ]
       can_be_used_for_project_versioning = false
