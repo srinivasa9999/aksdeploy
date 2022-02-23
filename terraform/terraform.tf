@@ -325,6 +325,8 @@ locals  {
       name                               = "Run a kubectl CLI Script"
       is_disabled                        = false
       is_required                        = "true"
+      script_source                      = "Inline" 
+      run_on_server                      = "true"      
       properties                         = {
                   "Octopus.Action.Script.ScriptBody"   = <<-EOT
                         cd /home/srinivas/aksdeploy/
@@ -336,9 +338,6 @@ locals  {
                   "Octopus.Action.Script.ScriptSource" = "Inline"
                   "Octopus.Action.Script.Syntax"       = "Bash"
        }
-       script_source                      = "Inline" 
-       run_on_server                      = "true"
-
     }
   }
 
