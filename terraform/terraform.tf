@@ -341,14 +341,15 @@ step {
                   "Octopus.Action.Script.Syntax"       = "Bash"
                 }
               
-              # run_on_server                      = true
+              #run_on_server                      = true
               script_source                      = "Inline"
-              # primary_package {
-              #     acquisition_location = ""
-              #     feed_id              = ""
-              #     name                 = "Optional"
-              #     package_id           = ""
-              # }
+              package {
+                  acquisition_location = "ExecutionTarget"
+                  feed_id              = "Feeds-1002"
+                  name                 = "k8stest"
+                  extract_during_deployment = "true"
+                  package_id           = "srinivasa9999/k8stest"
+              }
               worker_pool_id = octopusdeploy_static_worker_pool.staticworkerpool.id              
             }
 }
