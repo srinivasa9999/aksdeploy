@@ -348,7 +348,6 @@ step {
                   id                   = ""
                   name                 = ""
                   package_id           = ""
-                  properties           = ""
               }              
             }
 }
