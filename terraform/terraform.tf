@@ -299,7 +299,7 @@ locals  {
       features     = [  "Octopus.Features.JsonConfigurationVariables", ]
       can_be_used_for_project_versioning = false
       condition                          = "Success"
-      is_disabled                        = true
+      is_disabled                        = false
       is_required                        = true
       name                               = "Deploy to K8s"
       script_syntax                      = "Bash"  ## HArdcoded shell script
@@ -314,33 +314,33 @@ locals  {
     }
   }
 
-  step {
-    condition           = "Success"
-    name                = "Kubernetes Deploy"
-    start_trigger       = "StartAfterPrevious"
-    target_roles        = ["Development"]
-    run_kubectl_script_action {
-      can_be_used_for_project_versioning = true
-      condition                          = "Success"
-      name                               = "Run a kubectl CLI Script"
-      is_disabled                        = false
-      is_required                        = "true"
-      script_source                      = "Inline" 
-      run_on_server                      = "true"      
-      properties                         = {
-                  "Octopus.Action.Script.ScriptSource" = "Inline"
-                  "Octopus.Action.Script.Syntax"       = "Bash"
-                  "Octopus.Action.Script.ScriptBody"   = <<-EOT
-                        cd /home/srinivas/aksdeploy/
-                        cat vars.yaml
-                        SERVICES=$(python3 yamlparser.py services name)
-                        ./deployment.sh $SERVICES
+  # step {
+  #   condition           = "Success"
+  #   name                = "Kubernetes Deploy"
+  #   start_trigger       = "StartAfterPrevious"
+  #   target_roles        = ["Development"]
+  #   run_kubectl_script_action {
+  #     can_be_used_for_project_versioning = true
+  #     condition                          = "Success"
+  #     name                               = "Run a kubectl CLI Script"
+  #     is_disabled                        = false
+  #     is_required                        = "true"
+  #     script_source                      = "Inline" 
+  #     run_on_server                      = "true"      
+  #     properties                         = {
+  #                 "Octopus.Action.Script.ScriptSource" = "Inline"
+  #                 "Octopus.Action.Script.Syntax"       = "Bash"
+  #                 "Octopus.Action.Script.ScriptBody"   = <<-EOT
+  #                       cd /home/srinivas/aksdeploy/
+  #                       cat vars.yaml
+  #                       SERVICES=$(python3 yamlparser.py services name)
+  #                       ./deployment.sh $SERVICES
 
-                    EOT
-                  "Octopus.Action.Script.ScriptFilename" = "None"
-       }
-    }
-  }
+  #                   EOT
+  #                 "Octopus.Action.Script.ScriptFilename" = "None"
+  #      }
+  #   }
+  # }
 
 step {
           condition           = "Success"
