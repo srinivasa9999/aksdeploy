@@ -363,7 +363,7 @@ step {
                   "Octopus.Action.Email.To"        = "srinivasa.nallapati@gmail.com"
                   "Octopus.Action.Email.ToTeamIds" = "teams-everyone"
                 }
-              run_on_server                      = false
+#              run_on_server                      = false
 
             }
 }
