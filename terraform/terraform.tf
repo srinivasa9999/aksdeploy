@@ -23,7 +23,7 @@ terraform {
 provider "octopusdeploy" {
   alias    = "spacesupport"
   address    = "https://srinivas.octopus.app/"   
-  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
+  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"        ##   Hardcoded
 }
 
 resource "octopusdeploy_space" "spaces" {
@@ -38,7 +38,7 @@ resource "octopusdeploy_space" "spaces" {
 
 provider "octopusdeploy" {
   address    = "https://srinivas.octopus.app/"   
-  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
+  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"     ##Hardcoded
   space_id   =  octopusdeploy_space.spaces.id
 }
 
@@ -56,14 +56,14 @@ resource "octopusdeploy_environment" "environments" {
 # }
 
 locals {
-  vardev = octopusdeploy_environment.environments["development"].id
+  vardev = octopusdeploy_environment.environments["development"].id   ## Hardcoded
 }
 
 locals {
-  varqa = octopusdeploy_environment.environments["qa"].id
+  varqa = octopusdeploy_environment.environments["qa"].id    #### Hardcoded
 }
 locals {
-  varprod = octopusdeploy_environment.environments["prod"].id
+  varprod = octopusdeploy_environment.environments["prod"].id   #### Hardcoded
 }
 
 
@@ -97,7 +97,7 @@ resource "octopusdeploy_token_account" "akstoken" {
   name  = "Token Account"
   space_id = octopusdeploy_space.spaces.id
   token = "e43a46946cb6e5f2652d2ab7b5189ebcfca5856f45b5656a5945869d00b21cc1e353493fa833f6f2bda390d470e720749089d4ddf9da2fe403c4323f1620e20f"
-}
+}     ##Hardcoded
 
 resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
@@ -137,7 +137,7 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
 
 resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
   name        = "SSH Connection Deployment Target"
-  fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"
+  fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"   ##Hardcoded
   host        = var.ssh_host
   port        = 22
   environments = [local.vardev,local.varqa,local.varprod]
@@ -276,7 +276,7 @@ locals  {
       is_disabled                        = false
       is_required                        = true
       name                               = "Prepare to Deploy"
-      script_syntax                      = "Bash"
+      script_syntax                      = "Bash"    #Hardcoded bash script
       script_body                        = <<-EOT
             cd /home/srinivas/
             rm -rf aksdeploy
@@ -302,7 +302,7 @@ locals  {
       is_disabled                        = false
       is_required                        = true
       name                               = "Deploy to K8s"
-      script_syntax                      = "Bash"
+      script_syntax                      = "Bash"  ## HArdcoded shell script
       script_body                        = <<-EOT
             cd /home/srinivas/aksdeploy/
             cat vars.yaml
