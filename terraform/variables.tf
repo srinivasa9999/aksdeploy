@@ -1,6 +1,6 @@
 variable "octopusaddress" {
   type         = string
-  description  = "Project Group Name"
+  description  = "octopus URL"
 }
 
 variable "octopus_api_key" {
