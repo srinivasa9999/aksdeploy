@@ -103,7 +103,7 @@ resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
   environments                      = [local.vardev,local.varqa,local.varprod]
   name                              = "Kubernetes Cluster"
-  roles                             = ["Development"]
+  roles                             = ["akscluster"]
   tenanted_deployment_participation = "Untenanted"
   skip_tls_verification             = "true"
 
@@ -296,9 +296,9 @@ locals  {
     package_requirement = "LetOctopusDecide"
     start_trigger       = "StartAfterPrevious"
     properties          = {
-         "Octopus.Action.TargetRoles" = "Development"
+         "Octopus.Action.TargetRoles" = "akscluster"
             }
-    target_roles        = ["Development", ] 
+    target_roles        = ["akscluster", ] 
     run_script_action {
       features     = [  "Octopus.Features.JsonConfigurationVariables", ]
       can_be_used_for_project_versioning = false
