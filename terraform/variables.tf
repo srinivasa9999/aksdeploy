@@ -1,38 +1,47 @@
+variable "octopusaddress" {
+  type         = string
+  description  = "Project Group Name"
+}
+
+variable "octopus_api_key" {
+  type         = string
+  description  = "API key to authenticate Octopus"
+}
+
 variable "pgname" {
   type         = string
- # default      = "CVS"
   description  = "Project Group Name"
 }
 
 variable "pname" {
   type         = list
-#  default      = ["ABC","DEF"]
   description  = "Project  Name"
 }
 
 variable "environments" {
-  description = "Create Environments with these Names"
-  type        = list(string)
-#  default     = ["development", "qa", "prod"]
+  description  = "Create Environments with these Names"
+  type         = list(string)
 }
 
 variable "k8scluster" {
-  type        = string
-  default     = "https://akscluster-dns-7f2e4cbb.hcp.eastus.azmk8s.io:443"
-  description = "Create k8s deployment target"
+  type         = string
+  description  = "Create k8s deployment target"
+}
+
+variable "akstoken" {
+  type         = string
+  description  = "Create k8s deployment target"
 }
 
 variable "ssh_username" {
   type        = string
- # default     = ""
   sensitive   = true
 }
 
 
 variable "ssh_password" {
   type        = string
- # default     = ""
-#  sensitive   = true
+  sensitive   = true
 }
 
 variable "ssh_host" {

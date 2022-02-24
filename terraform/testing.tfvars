@@ -1,6 +1,10 @@
-pgname = "Acc"
-pname = ["project"]
-ssh_username = "srinivas"
-ssh_password = "srinivas"
-ssh_host= "34.125.179.254"
-environments = ["development", "qa", "prod"]
+octopusaddress          = "https://srinivas.octopus.app/"
+octopus_api_key         = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"
+pgname                  = "Acc"
+pname                   = ["project"]
+k8scluster              = "https://akscluster-dns-7f2e4cbb.hcp.eastus.azmk8s.io:443"
+akstoken                = "e43a46946cb6e5f2652d2ab7b5189ebcfca5856f45b5656a5945869d00b21cc1e353493fa833f6f2bda390d470e720749089d4ddf9da2fe403c4323f1620e20f"
+ssh_username            = "srinivas"
+ssh_password            = "srinivas"
+ssh_host                = "34.125.179.254"
+environments            = ["development", "qa", "prod"]

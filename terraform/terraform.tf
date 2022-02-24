@@ -21,11 +21,12 @@ terraform {
 
 ##  Octopus Login 
 provider "octopusdeploy" {
-  alias    = "spacesupport"
-  address    = "https://srinivas.octopus.app/"   
-  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"        ##   Hardcoded
+  alias      = "spacesupport"
+  address    = var.octopusaddress  
+  api_key    = var.octopus_api_key
 }
 
+## Create Space same as project Group
 resource "octopusdeploy_space" "spaces" {
   provider                    = octopusdeploy.spacesupport
   description                 = ""
@@ -37,23 +38,20 @@ resource "octopusdeploy_space" "spaces" {
 }
 
 provider "octopusdeploy" {
-  address    = "https://srinivas.octopus.app/"   
-  api_key    = "API-IUDLNTKGAKKJYU2A4PVVIX5L9LXR72WA"     ##Hardcoded
-  space_id   =  octopusdeploy_space.spaces.id
+  address    = var.octopusaddress   
+  api_key    = var.octopus_api_key
+  space_id   = octopusdeploy_space.spaces.id
 }
 
 
 # ## Creating Environments (development, qa & Prod)
 resource "octopusdeploy_environment" "environments" {
-  for_each = toset(var.environments)
+  for_each                     = toset(var.environments)
   allow_dynamic_infrastructure = false
   name                         = each.value
   use_guided_failure           = false
 }
 
-# output "envs" {
-#   value = values(octopusdeploy_environment.environments)[*]
-# }
 
 locals {
   vardev = octopusdeploy_environment.environments["development"].id   ## Hardcoded
@@ -94,10 +92,10 @@ resource "octopusdeploy_lifecycle" "lifecycle" {
 
 
 resource "octopusdeploy_token_account" "akstoken" {
-  name  = "Token Account"
-  space_id = octopusdeploy_space.spaces.id
-  token = "e43a46946cb6e5f2652d2ab7b5189ebcfca5856f45b5656a5945869d00b21cc1e353493fa833f6f2bda390d470e720749089d4ddf9da2fe403c4323f1620e20f"
-}     ##Hardcoded
+  name       = "Token Account"
+  space_id   = octopusdeploy_space.spaces.id
+  token      = var.akstoken
+}     
 
 resource "octopusdeploy_kubernetes_cluster_deployment_target" "k8s-target" {
   cluster_url                       = var.k8scluster
@@ -125,7 +123,7 @@ resource "octopusdeploy_dynamic_worker_pool" "dynamicworker" {
 
 resource "octopusdeploy_username_password_account" "sshuserpassaccount" {
   name     = "Username-Password Account"
-  password = var.ssh_password #get from secure environment/store
+  password = var.ssh_password 
   username = var.ssh_username
 }
 
