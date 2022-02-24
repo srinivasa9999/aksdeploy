@@ -133,15 +133,15 @@ resource "octopusdeploy_static_worker_pool" "staticworkerpool" {
 }
 
 
-resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
-  name        = "SSH Connection Deployment Target"
-  fingerprint = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"   ##Hardcoded
-  host        = var.ssh_host
-  port        = 22
-  environments = [local.vardev,local.varqa,local.varprod]
-  roles        = ["Deployment"]
-  account_id  = octopusdeploy_username_password_account.sshuserpassaccount.id
-}
+# resource "octopusdeploy_ssh_connection_deployment_target" "sshtarget" {
+#   name         = "SSH Connection Deployment Target"
+#   fingerprint  = "6b:a8:31:bd:b4:c4:97:d0:09:d8:47:43:f2:4a:98:de"   ##Hardcoded
+#   host         = var.ssh_host
+#   port         = 22
+#   environments = [local.vardev,local.varqa,local.varprod]
+#   roles        = ["Deployment"]
+#   account_id   = octopusdeploy_username_password_account.sshuserpassaccount.id
+# }
 ## Create Project Group
 
 resource "octopusdeploy_project_group" "gcreate" {
@@ -192,7 +192,7 @@ depends_on  = [octopusdeploy_project_group.gcreate]
 locals  {
  # value = data.octopusdeploy_projects.projectnames.projects[*].id
   projectlists = octopusdeploy_project.pcreate
-  depends_on  = [octopusdeploy_project.pcreate]
+  depends_on   = [octopusdeploy_project.pcreate]
 }
 
 # output "test" {
